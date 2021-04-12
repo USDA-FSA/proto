@@ -1,4 +1,4 @@
-# proto
+# proto - New Branch
 
 Open Source design resource that allows for quick prototypes utilizing the Farm Production and Conservation Design System.
 
@@ -12,3 +12,4 @@ Now that all of your dependencies are installed, you can build the project and s
 npm run dev
 ```
 
+Open a browser window to `http://localhost:3000/` to view the base Hello World of a Vite project with Vue 3
