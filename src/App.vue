@@ -1,14 +1,23 @@
 <template>
-<span class="fsa-text-size--6">CH Testing 123</span>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+    <router-view></router-view>
 </template>
 
-<script setup>
-//import './style/test.scss';
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { useRoute } from 'vue-router'
+import { watch } from 'vue'
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
+export default {
+  name: "app",
+  setup(){
+    const route = useRoute();
+    watch(
+      () => route.params,
+      (toParams, fromParams) => {
+        // react to route changes...
+      }
+    )
+  }
+};
+
 </script>
 
