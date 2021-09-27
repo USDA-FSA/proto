@@ -48,11 +48,9 @@ export function useMenuSystem() {
     //openMenu(item);
   }
   
-
-  /// need to fix the below code
   const documentClickHandler = (event) => {
-    //console.log('documentClickHandler FIRED')
     if(isMenuOpen && theItem){
+      // try/catch used because theItem is not set until menu clicked
       try{
         let isItemClicked = theItem.contains(event.target);
         let isMenuClicked = theMenu.contains(event.target);    
@@ -64,7 +62,6 @@ export function useMenuSystem() {
       } catch (error){
         //console.log('Error', error)
       }
-      
     }
   }
 
