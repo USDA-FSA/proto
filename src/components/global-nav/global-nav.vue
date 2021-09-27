@@ -5,7 +5,7 @@
         <ul class="fsa-nav-global__list" aria-label="Primary Navigation" id="primary-navigation">
           <li v-for="item in navList" :class="'fsa-nav-global__list-item '+ item.columnClass">
             <div v-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='true'">
-              <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
+              <button :id="item.uid+'-BTN'" @click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
               <div class="fsa-nav-global__sub-menu" :id="item.uid" aria-hidden="true">
@@ -22,7 +22,7 @@
               </div>
             </div>
             <div v-else-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='false'">
-              <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
+              <button :id="item.uid+'-BTN'" @click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
               <div class="fsa-nav-global__sub-menu" :id="item.uid" aria-hidden="true">
@@ -36,7 +36,7 @@
               </div>
             </div>
             <div v-else-if="item.hasChild=='true' && item.multiColumn=='false'">
-              <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
+              <button :id="item.uid+'-BTN'" @click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
               <div class="fsa-nav-global__sub-menu" :id="item.uid" aria-hidden="true">
@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import useListener from '../../composables/useListener';
+import { ref, reactive, computed, onMounted, watch, onBeforeUnmount } from 'vue';
+import { useMenuSystem } from '../../composables/useMenuSystem';
 
 export default {
 
@@ -72,54 +72,51 @@ export default {
     EXTRA_CLASSES: String,
   },
   
-  setup(props){
-    const menuOpen = ref(false);
-    let item = ref({});
+  setup(props){    
     const { 
       openMenu,
       closeMenu,
       loopItems,
-      listenForKeys
-    } = useListener(item)
-    
-    //const toggleMenu = useToggleMenu;
+      listenForKeys,
+      documentClickHandler
+    } = useMenuSystem(); //useMenuSystem(theItem, theMenu, isMenuOpen);
 
     const navList = computed(()=>{
       return props.NAV_DATA;
     });
 
+    function toggleMenu(e) {
+      let theItem = e.currentTarget;
+      let theMenu = e.currentTarget.nextSibling;
+
+      let expanded = theItem.getAttribute('aria-expanded');
+      loopItems('closeAllMenus');
+
+      if (expanded=="true") closeMenu( theItem, theMenu );
+      else openMenu( theItem, theMenu );
+      
+    };
+
     onMounted(()=>{
       window.addEventListener('keydown', listenForKeys);
+      document.addEventListener('click', documentClickHandler);
       loopItems('addFocusListeners');
-      
     });
     
     onBeforeUnmount(()=>{
       window.removeEventListener('keydown', listenForKeys);
+      document.removeEventListener('click', documentClickHandler);
       loopItems('removeFocusListeners');
-    });
+    });    
     
     return {
-      item,
-      menuOpen,
-      listenForKeys,
-      loopItems,
-      navList
-    }
-  },
 
-  methods: {
-    toggleMenu: (e) => {
-      item = e.currentTarget;
-      let expanded = item.getAttribute('aria-expanded');
-      loopItems('closeAllMenus');
-      if (expanded=="true"){
-        closeMenu( item );
-        menuOpen = false;
-      } else {
-        openMenu( item );
-        menuOpen = true;
-      }
+      openMenu,
+      closeMenu,
+      loopItems,
+      listenForKeys,
+      navList,
+      toggleMenu
     }
   }
   
