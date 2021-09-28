@@ -79,7 +79,7 @@ export default {
       loopItems,
       listenForKeys,
       documentClickHandler
-    } = useMenuSystem(); //useMenuSystem(theItem, theMenu, isMenuOpen);
+    } = useMenuSystem();
 
     const navList = computed(()=>{
       return props.NAV_DATA;

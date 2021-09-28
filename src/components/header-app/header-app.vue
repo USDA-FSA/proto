@@ -30,10 +30,16 @@ export default {
     PROFILE_NAME: String,
     LOGOFF_URL: String,
   },
+
   setup(props){
+
     const appTitleValue = computed(() => {
       return props.APP_ABBR_NAME + " Prototype Kit"
-    })
+    });
+
+    return {
+      appTitleValue,
+    }
   }
 }
 </script>
