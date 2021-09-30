@@ -7,6 +7,8 @@
         <div class="fsa-section__bd">
           <h1>Home Page</h1>
 
+          <card NAME="Animal Things" :CARDDATA="cardData"></card>
+
           <form @submit.prevent="handleSubmit">
 
             <field
@@ -78,14 +80,24 @@ import { inject, onMounted, ref, computed } from 'vue';
 
 import baseHeader from '../partials/BaseHeader.vue';
 import baseFooter from '../partials/BaseFooter.vue';
+const card = () => import('../components/card/card');
 
 export default {
   setup(props){
-    
+    let cardData = [
+      { label:'bird', desc: 'things that fly' },
+      { label: 'cat', desc: 'things that jump' },
+      { label: 'dog', desc: 'things that lick' },
+      { label: 'fish', desc: 'things that swim' }
+    ];
+    return{
+      cardData
+    }
   },
   components: {
     baseHeader,
     baseFooter,
+    card
   }
 }
 </script>
