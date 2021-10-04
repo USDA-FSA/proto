@@ -42,11 +42,13 @@
               LABEL="E-Mail"
               INPUT_VALUE=""
               INPUT_TYPE="text"
-              REQUIRED="true"
+              REQUIRED="false"
               ARIA_REQUIRED="true"
               BEHAVIOR=""
               ARIA_DESCRIBEDBY="email__help"
-              ERROR_FIELD=""
+              ERROR_FIELD="fsa-field--error"
+              HAS_HELP="true"
+              HAS_MESSAGE="true"
             >
               
               <template v-slot:labelDescribe>
@@ -62,7 +64,9 @@
 
             </field>
 
-            <button class="fsa-btn fsa-btn--secondary" type="submit">Add User</button> 
+            <p class="fsa-m-t--l">
+              <button class="fsa-btn fsa-btn--secondary" type="submit">Add User</button>
+            </p>
 
           </form>
         </div>
@@ -74,11 +78,15 @@
 </template>
 
 <script>
-import { inject, onMounted, ref, computed } from 'vue';
+import { defineAsyncComponent  } from 'vue';
 
 import baseHeader from '../partials/BaseHeader.vue';
 import baseFooter from '../partials/BaseFooter.vue';
 
+//import field from '../components/field/field.vue';
+
+const field = defineAsyncComponent(() => import('../components/field/field.vue'));
+ 
 export default {
   setup(props){
     
@@ -89,6 +97,7 @@ export default {
   components: {
     baseHeader,
     baseFooter,
+    field,
   }
 }
 </script>
