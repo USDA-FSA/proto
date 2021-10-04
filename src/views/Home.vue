@@ -82,6 +82,9 @@ import baseFooter from '../partials/BaseFooter.vue';
 export default {
   setup(props){
     
+    const handleError = () =>{
+
+    };
   },
   components: {
     baseHeader,
