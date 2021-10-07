@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useErrorState } from '@/composables/useErrorState';
 
 export default {
@@ -40,7 +40,7 @@ export default {
     ARIA_DESCRIBEDBY: String,
     HELP_MESSAGE: String,
     ERROR_MESSAGE: String,
-    HAS_ERROR: Boolean
+    HAS_ERROR: String
   },
 
   setup(props){
@@ -54,9 +54,9 @@ export default {
       setErrorMessage,
     } = useErrorState();
 
-    const onMounted = () => {
+    onMounted(() => {
       if(props.HAS_ERROR == 'true') setHasError(true); 
-    }
+    })
 
     return {
       hasError,

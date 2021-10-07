@@ -5,8 +5,7 @@ export function useErrorState() {
   let hasError = ref(false)
   let errorMessage = ref('Form Field Error')
 
-  const setHasError = (type, boo) => {
-    console.log('setHasError',boo)
+  const setHasError = (boo) => {
     hasError.value = boo
   }
 

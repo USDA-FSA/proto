@@ -7,9 +7,8 @@
         <div class="fsa-section__bd">
           <h1>Home Page</h1>
 
-          <div class="fsa-grid">
-            <div class="fsa-grid fsa-grid__1/2">
-
+          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
+            <span>
               <field
                 ID="name"
                 EXTRA_CLASSES=""
@@ -22,16 +21,20 @@
                 ARIA_DESCRIBEDBY="name__help"
                 HELP_MESSAGE="Use your full name, please."
                 ERROR_MESSAGE="Hey, you forgot your name, Buddy!"
+                HAS_ERROR="false"
                 ref="nameField"
               >
               </field>
-            </div>
-            <div class="fsa-grid fsa-grid__1/2">
+            </span>
+            <span>
               <p class="fsa-m-t--l">
                 <button @click="setError('name')" class="fsa-btn fsa-btn--secondary">Toggle Name Error</button>
               </p>
-            </div>
-            <div class="fsa-grid fsa-grid__1/2">
+            </span>
+          </div>
+
+          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
+            <span>
               <field
                 ID="email"
                 EXTRA_CLASSES=""
@@ -47,38 +50,40 @@
                 ref="emailField"
               >
               </field>
-            </div>
-            <div class="fsa-grid fsa-grid__1/2">
-            <p class="fsa-m-t--l">
+            </span>
+            <span>
+              <p class="fsa-m-t--l">
                 <button @click="setError('email')" class="fsa-btn fsa-btn--secondary">Toggle Email Error</button>
               </p>
-              
-            </div>
-            <div class="fsa-grid fsa-grid__1/2">
-              <radio-group
+            </span>
+          </div>
+
+          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
+            <span>
+              <field-group
                 GROUP_ID="pies"
+                GROUP_TYPE="radio"
+                DISPLAY=""
                 LABEL="Pick a Pie"
                 :DATA="pieData"
                 REQUIRED=""
                 BEHAVIOR=""
-                EXTRA_CLASSES=""
+                EXTRA_CLASSES="fsa-field--block"
                 FIELD_ERROR_CLASS=""
                 ARIA_REQUIRED="false"
                 HELP_MESSAGE="Select your favorite."
                 ERROR_MESSAGE="Why don't you like my pies?"
                 ref="pieField"
               >
-              </radio-group>
-            </div>
-            <div class="fsa-grid fsa-grid__1/2">
+              </field-group>
+            </span>
+            <span>
               <p class="fsa-m-t--l">
                 <button @click="setError('pies')" class="fsa-btn fsa-btn--secondary">Toggle Pie Error</button>
               </p>
-            </div>
-
-
-
+            </span>
           </div>
+
         </div>
       </div>
     </main>
@@ -95,14 +100,16 @@ import baseHeader from '@/partials/BaseHeader.vue';
 import baseFooter from '@/partials/BaseFooter.vue';
 
 const field = defineAsyncComponent(() => import('@/components/field/field.vue'));
-const radioGroup = defineAsyncComponent(() => import('@/components/radio-group/radio-group.vue'));
+const fieldGroup = defineAsyncComponent(() => import('@/components/field-group/field-group.vue'));
+//const radioGroup = defineAsyncComponent(() => import('@/components/radio-group/radio-group.vue'));
  
 export default {
   components: {
     baseHeader,
     baseFooter,
     field,
-    radioGroup
+    fieldGroup,
+    //radioGroup
   },
 
   setup(props){
@@ -124,15 +131,15 @@ export default {
     const setError = (type) => {
       if(type=='name'){
         nameHasError.value = nameHasError.value ? false : true;
-        nameField.value.setHasError(type, nameHasError.value);
+        nameField.value.setHasError(nameHasError.value);
       } 
       if(type=='email'){
         emailHasError.value = emailHasError.value ? false : true;
-        emailField.value.setHasError(type, emailHasError.value);
+        emailField.value.setHasError(emailHasError.value);
       }
       if(type=='pies'){
         piesHasError.value = piesHasError.value ? false : true;
-        pieField.value.setHasError(type, piesHasError.value);
+        pieField.value.setHasError(piesHasError.value);
       } 
     }
 
