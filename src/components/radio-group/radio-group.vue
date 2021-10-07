@@ -10,7 +10,7 @@
 
     <ul class="fsa-form-list" :aria-labelledby="GROUP_ID">
 
-      <li v-for="data in radioGroupData">
+      <li v-for="data in radioGroupData" :key="data.id">
         <span>
           <input class="fsa-radio"
             type="radio"
