@@ -63,7 +63,7 @@
 
 <script>
 import { ref, reactive, computed, onMounted, watch, onBeforeUnmount } from 'vue';
-import { useMenuSystem } from '../../composables/useMenuSystem';
+import { useMenuSystem } from '@/composables/useMenuSystem';
 
 export default {
 

@@ -19,21 +19,10 @@
               ARIA_REQUIRED="true"
               BEHAVIOR=""
               ARIA_DESCRIBEDBY="name__help"
-              ERROR_FIELD=""
-              HAS_HELP="true"
+              HELP_MESSAGE="Use your full name, please."
+              ERROR_MESSAGE="Hey, you forgot your name, Buddy!"
+              ref="nameField"
             >
-              
-              <template v-slot:labelDescribe>
-                <span class="fsa-field__label-desc">Required</span>
-              </template>
-              <!-- Below 2 Slots should be used with above ARIA_DESCRIBEDBY -->
-              <template v-slot:help>
-                <span id="name__help" class="fsa-field__help">Use your full name, please.</span>
-              </template>
-              <template v-slot:message>
-                <span id="name-id__error-message" class="fsa-field__message" role="alert">Hey, you forgot your own name, silly!</span>
-              </template>
-
             </field>
 
             <field
@@ -46,29 +35,20 @@
               ARIA_REQUIRED="true"
               BEHAVIOR=""
               ARIA_DESCRIBEDBY="email__help"
-              ERROR_FIELD="fsa-field--error"
-              HAS_HELP="true"
-              HAS_MESSAGE="true"
+              HELP_MESSAGE="Only valid emails should be used."
+              ERROR_MESSAGE="'Hey, you forgot your email address!'"
+              ref="emailField"
             >
-              
-              <template v-slot:labelDescribe>
-                <span class="fsa-field__label-desc">Required</span>
-              </template>
-              <!-- Below 2 Slots should be used with above ARIA_DESCRIBEDBY -->
-              <template v-slot:help>
-                <span id="email__help" class="fsa-field__help">Only valid emails should be used.</span>
-              </template>
-              <template v-slot:message>
-                <span id="email__error-message" class="fsa-field__message" role="alert">Hey, you forgot your email address!</span>
-              </template>
-
             </field>
 
-            <p class="fsa-m-t--l">
-              <button class="fsa-btn fsa-btn--secondary" type="submit">Add User</button>
-            </p>
-
           </form>
+
+          <p class="fsa-m-t--l">
+            <button @click="setError('name')" class="fsa-btn fsa-btn--secondary">Toggle Name Error</button>
+          </p>
+          <p class="fsa-m-t--l">
+            <button @click="setError('email')" class="fsa-btn fsa-btn--secondary">Toggle Email Error</button>
+          </p>
         </div>
       </div>
     </main>
@@ -78,26 +58,47 @@
 </template>
 
 <script>
-import { defineAsyncComponent  } from 'vue';
+import { ref, defineAsyncComponent  } from 'vue';
 
-import baseHeader from '../partials/BaseHeader.vue';
-import baseFooter from '../partials/BaseFooter.vue';
 
-//import field from '../components/field/field.vue';
+import baseHeader from '@/partials/BaseHeader.vue';
+import baseFooter from '@/partials/BaseFooter.vue';
 
-const field = defineAsyncComponent(() => import('../components/field/field.vue'));
+const field = defineAsyncComponent(() => import('@/components/field/field.vue'));
  
 export default {
-  setup(props){
-    
-    const handleError = () =>{
-
-    };
-  },
   components: {
     baseHeader,
     baseFooter,
     field,
+  },
+
+  setup(props){
+    const nameField = ref(null);
+    const emailField = ref(null);
+
+    let nameHasError = ref(false);
+    let emailHasError = ref(false);
+
+    const setError = (type) => {
+      if(type=='name'){
+        nameHasError.value = nameHasError.value ? false : true;
+        nameField.value.setHasError(type, nameHasError.value);
+      } 
+      if(type=='email'){
+        emailHasError.value = emailHasError.value ? false : true;
+        emailField.value.setHasError(type, emailHasError.value);
+      } 
+    }
+
+    return {
+      nameField,
+      emailField,
+      //nameHasError,
+      //emailHasError,
+      setError
+    }
   }
+
 }
 </script>

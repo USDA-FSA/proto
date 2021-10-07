@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import path from 'path';
 import vue from '@vitejs/plugin-vue'
 //import path from 'path'
 
@@ -10,6 +11,11 @@ const config = {
   server: { port: 3000 },
   base: '/proto/',
   plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {

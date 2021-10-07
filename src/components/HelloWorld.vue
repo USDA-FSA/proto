@@ -38,7 +38,7 @@
 
 <script>
 import { inject, onMounted, ref, computed } from 'vue';
-import modal from '../components/Modal.vue';
+import modal from '@/components/Modal.vue';
 
 export default {
   setup(props){

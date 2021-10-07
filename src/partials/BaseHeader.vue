@@ -27,10 +27,10 @@
 <script>
 import { inject, onMounted, ref, computed } from 'vue';
 
-import tophat from '../components/tophat/tophat.vue';
-import headerApp from '../components/header-app/header-app.vue';
-import globalNav from '../components/global-nav/global-nav.vue';
-//import modal from '../components/Modal.vue';
+import tophat from '@/components/tophat/tophat.vue';
+import headerApp from '@/components/header-app/header-app.vue';
+import globalNav from '@/components/global-nav/global-nav.vue';
+//import modal from '@/components/Modal.vue';
 
 export default {
   setup(props){
