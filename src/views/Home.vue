@@ -41,6 +41,21 @@
             >
             </field>
 
+            <radio-group
+              GROUP_ID="pies"
+              LABEL="Pick a Pie"
+              :DATA="pieData"
+              REQUIRED=""
+              BEHAVIOR=""
+              EXTRA_CLASSES=""
+              FIELD_ERROR_CLASS=""
+              ARIA_REQUIRED="false"
+              HELP_MESSAGE="Select your favorite."
+              ERROR_MESSAGE="Why don't you like my pies?"
+              ref="pieField"
+            >
+            </radio-group>
+
           </form>
 
           <p class="fsa-m-t--l">
@@ -48,6 +63,9 @@
           </p>
           <p class="fsa-m-t--l">
             <button @click="setError('email')" class="fsa-btn fsa-btn--secondary">Toggle Email Error</button>
+          </p>
+          <p class="fsa-m-t--l">
+            <button @click="setError('pies')" class="fsa-btn fsa-btn--secondary">Toggle Pie Error</button>
           </p>
         </div>
       </div>
@@ -65,20 +83,37 @@ import baseHeader from '@/partials/BaseHeader.vue';
 import baseFooter from '@/partials/BaseFooter.vue';
 
 const field = defineAsyncComponent(() => import('@/components/field/field.vue'));
+const radioGroup = defineAsyncComponent(() => import('@/components/radio-group/radio-group.vue'));
  
 export default {
   components: {
     baseHeader,
     baseFooter,
     field,
+    radioGroup
   },
 
   setup(props){
     const nameField = ref(null);
     const emailField = ref(null);
+    const pieField = ref(null);
+
+    const pieData = [
+      {
+        id: "pie1",
+        label: "Apple Pie",
+        name: "piegroup",
+      },
+      {
+        id: "pie2",
+        label: "Pumpkin Pie",
+        name: "piegroup"
+      }
+    ];
 
     let nameHasError = ref(false);
     let emailHasError = ref(false);
+    let piesHasError = ref(false);
 
     const setError = (type) => {
       if(type=='name'){
@@ -88,15 +123,19 @@ export default {
       if(type=='email'){
         emailHasError.value = emailHasError.value ? false : true;
         emailField.value.setHasError(type, emailHasError.value);
+      }
+      if(type=='pies'){
+        piesHasError.value = piesHasError.value ? false : true;
+        pieField.value.setHasError(type, piesHasError.value);
       } 
     }
 
     return {
       nameField,
       emailField,
-      //nameHasError,
-      //emailHasError,
-      setError
+      pieField,
+      setError,
+      pieData
     }
   }
 
