@@ -7,7 +7,7 @@
         {{ LABEL }} <span v-if="REQUIRED=='true'" class="fsa-field__label-desc">Required</span>
     </label>
 
-    <select v-if="isGroupedData" class="fsa-select fsa-field__item" :id="ID" :aria-describedby="ID + '__help'" :aria-required="ARIA_REQUIRED" :name="ID">
+    <select v-if="isGroupedData" :class="'fsa-select fsa-field__item ' + SELECT_CLASSES" :id="ID" :aria-describedby="ID + '__help'" :aria-required="ARIA_REQUIRED" :name="ID">
       <optgroup v-for="gData in selectionData"
         :key="gData.groupId"
         :label="gData.groupLabel">
@@ -20,7 +20,7 @@
       </optgroup>
     </select>
 
-    <select v-if="!isGroupedData" class="fsa-select fsa-field__item" :id="ID" :aria-describedby="ID + '__help'" :aria-required="ARIA_REQUIRED" :name="ID">
+    <select v-if="!isGroupedData" :class="'fsa-select fsa-field__item' + SELECT_CLASSES" :id="ID" :aria-describedby="ID + '__help'" :aria-required="ARIA_REQUIRED" :name="ID">
       <option v-for="sd in selectionData"
         :key="sd.id"
         :value="sd.val"
@@ -43,6 +43,7 @@ export default {
     LABEL: String,
     DATA: Array,
     REQUIRED: String,
+    SELECT_CLASSES: String,
     EXTRA_CLASSES: String,
     FIELD_ERROR_CLASS: String,
     ARIA_REQUIRED: String,

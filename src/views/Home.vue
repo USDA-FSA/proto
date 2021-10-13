@@ -88,10 +88,11 @@
             <span>
               <selection
                 ID="vehicle"
-                LABEL="What vehicle do you drive?"
+                LABEL="What do you drive?"
                 :DATA="vehicleData"
-                REQUIRED=""
-                EXTRA_CLASSES="fsa-field--block"
+                REQUIRED="true"
+                SELECT_CLASSES="fsa-select--large"
+                EXTRA_CLASSES=""
                 FIELD_ERROR_CLASS=""
                 ARIA_REQUIRED="false"
                 HELP_MESSAGE="Select your ride."
@@ -106,6 +107,7 @@
               </p>
             </span>
           </div>
+
 
         </div>
       </div>

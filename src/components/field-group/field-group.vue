@@ -7,7 +7,7 @@
         {{ LABEL }} <span v-if="REQUIRED=='true'" class="fsa-field__label-desc">Required</span>
     </label>
     <ul :class="ulClass" :aria-describedby="GROUP_ID + '__help'" :aria-labelledby="GROUP_ID">
-      <li v-for="data in checkboxesData" :key="data.id">
+      <li v-for="data in groupData" :key="data.id">
         <span>
           <input :class="'fsa-'+GROUP_TYPE"
             :type="GROUP_TYPE"
@@ -45,7 +45,7 @@ export default {
   },
 
   setup(props){
-    const checkboxesData = props.DATA ? props.DATA : reactive(null);
+    const groupData = props.DATA ? props.DATA : reactive(null);
     const fieldErrorClass = props.FIELD_ERROR_CLASS ? props.FIELD_ERROR_CLASS : ref('fsa-field--error');
     const displayType = props.DISPLAY ? props.DISPLAY : 'vertical';
     const extraFieldClasses = ref('');
@@ -73,7 +73,7 @@ export default {
       hasError,
       setHasError,
       fieldErrorClass,
-      checkboxesData,
+      groupData,
       extraFieldClasses,
       ulClass
     }
