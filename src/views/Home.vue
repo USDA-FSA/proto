@@ -84,6 +84,29 @@
             </span>
           </div>
 
+          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
+            <span>
+              <selection
+                ID="vehicle"
+                LABEL="What vehicle do you drive?"
+                :DATA="vehicleData"
+                REQUIRED=""
+                EXTRA_CLASSES="fsa-field--block"
+                FIELD_ERROR_CLASS=""
+                ARIA_REQUIRED="false"
+                HELP_MESSAGE="Select your ride."
+                ERROR_MESSAGE="You must like walking!"
+                ref="vehicleField"
+              >
+              </selection>
+            </span>
+            <span>
+              <p class="fsa-m-t--l">
+                <button @click="setError('vehicle')" class="fsa-btn fsa-btn--secondary">Toggle Vehicle Error</button>
+              </p>
+            </span>
+          </div>
+
         </div>
       </div>
     </main>
@@ -101,7 +124,7 @@ import baseFooter from '@/partials/BaseFooter.vue';
 
 const field = defineAsyncComponent(() => import('@/components/field/field.vue'));
 const fieldGroup = defineAsyncComponent(() => import('@/components/field-group/field-group.vue'));
-//const radioGroup = defineAsyncComponent(() => import('@/components/radio-group/radio-group.vue'));
+const selection = defineAsyncComponent(() => import('@/components/selection/selection.vue'));
  
 export default {
   components: {
@@ -109,13 +132,14 @@ export default {
     baseFooter,
     field,
     fieldGroup,
-    //radioGroup
+    selection
   },
 
   setup(props){
     const nameField = ref(null);
     const emailField = ref(null);
     const pieField = ref(null);
+    const vehicleField = ref(null);
 
     const pieData = [
       { id: "pie1", label: "Apple Pie", name: "piegroup" },
@@ -124,9 +148,54 @@ export default {
       { id: "pie4", label: "French Silk Pie", name: "piegroup" },
     ];
 
+    const vehicleDataXYZ = [
+      { id: "v1", label: "Motor Scooter", val: "scoot", name: "small"},
+      { id: "v2", label: "Cafe Racer", val: "cf", name: "small"},
+      { id: "v3", label: "Can-Am", val: "can", name: "small"},
+      { id: "v4", label: "4-Door Sedan", val: "sedan", name: "medium"},
+      { id: "v5", label: "Sports Coupe", isSelected: "selected", val: "Coupe", name: "medium"},
+      { id: "v6", label: "Cross Over SUV", val: "xo", name: "medium"},
+      { id: "v7", label: "Minivan", val: "van", name: "large"},
+      { id: "v8", label: "Pickup Truck", val: "truck", name: "large"},
+      { id: "v9", label: "7 Passenger SUV", val: "suv", name: "large"},
+      { id: "v10", label: "15 Passenger Van", val: "bigvan", name: "large"}
+    ];
+
+    const vehicleData = [
+      { 
+        groupId: "g1",
+        groupLabel: "Small Vehicales",
+        groupData: [
+          { id: "v1", label: "Motor Scooter", val: "scoot", name: "small"},
+          { id: "v2", label: "Cafe Racer", val: "cf", name: "small"},
+          { id: "v3", label: "Can-Am", val: "can", name: "small"},
+        ]
+      },
+      { 
+        groupId: "g2",
+        groupLabel: "Medium Vehicales",
+        groupData: [
+          { id: "v4", label: "4-Door Sedan", val: "sedan", name: "medium"},
+          { id: "v5", label: "Sports Coupe", isSelected: "selected", val: "Coupe", name: "medium"},
+          { id: "v6", label: "Cross Over SUV", val: "xo", name: "medium"},
+        ]
+      },
+      { 
+        groupId: "g3",
+        groupLabel: "Large Vehicales",
+        groupData: [
+          { id: "v7", label: "Minivan", val: "van", name: "large"},
+          { id: "v8", label: "Pickup Truck", val: "truck", name: "large"},
+          { id: "v9", label: "7 Passenger SUV", val: "suv", name: "large"},
+          { id: "v10", label: "15 Passenger Van", val: "bigvan", name: "large"},
+        ]
+      },
+    ];
+
     let nameHasError = ref(false);
     let emailHasError = ref(false);
     let piesHasError = ref(false);
+    let vehicleHasError = ref(false);
 
     const setError = (type) => {
       if(type=='name'){
@@ -140,15 +209,21 @@ export default {
       if(type=='pies'){
         piesHasError.value = piesHasError.value ? false : true;
         pieField.value.setHasError(piesHasError.value);
-      } 
+      }
+      if(type=='vehicle'){
+        vehicleHasError.value = vehicleHasError.value ? false : true;
+        vehicleField.value.setHasError(vehicleHasError.value);
+      }  
     }
 
     return {
       nameField,
       emailField,
       pieField,
+      vehicleField,
       setError,
-      pieData
+      pieData,
+      vehicleData,
     }
   }
 
