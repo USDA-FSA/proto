@@ -56,9 +56,7 @@ export default {
       setErrorMessage,
     } = useErrorState();
 
-    const {
-      getClosest
-    } = useUtilities();
+    const { getClosest } = useUtilities();
 
     onMounted(() => {
       if(props.HAS_ERROR == 'true') setHasError(true); 
