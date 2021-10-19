@@ -13,7 +13,7 @@
             :type="GROUP_TYPE"
             :id="data.id"
             :name="data.name"
-            :checked="data.checked"
+            :checked="data.isChecked"
           >
           <label :for="data.id">{{ data.label }}</label>
         </span>

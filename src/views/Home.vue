@@ -94,7 +94,7 @@
                 SELECT_CLASSES="fsa-select--large"
                 EXTRA_CLASSES=""
                 FIELD_ERROR_CLASS=""
-                ARIA_REQUIRED="false"
+                ARIA_REQUIRED="true"
                 HELP_MESSAGE="Select your ride."
                 ERROR_MESSAGE="You must like walking!"
                 ref="vehicleField"
@@ -104,6 +104,29 @@
             <span>
               <p class="fsa-m-t--l">
                 <button @click="setError('vehicle')" class="fsa-btn fsa-btn--secondary">Toggle Vehicle Error</button>
+              </p>
+            </span>
+          </div>
+
+          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
+            <span>
+              <selectMulti
+                ID="animal"
+                LABEL="Select large animals."
+                :DATA="animalData"
+                REQUIRED="false"
+                EXTRA_CLASSES=""
+                FIELD_ERROR_CLASS=""
+                ARIA_REQUIRED="false"
+                HELP_MESSAGE="Please don't feed them."
+                ERROR_MESSAGE="Those are small ones, buddy!"
+                ref="animalField"
+              >
+              </selectMulti>
+            </span>
+            <span>
+              <p class="fsa-m-t--l">
+                <button @click="setError('animal')" class="fsa-btn fsa-btn--secondary">Toggle Animal Error</button>
               </p>
             </span>
           </div>
@@ -127,6 +150,7 @@ import baseFooter from '@/partials/BaseFooter.vue';
 const field = defineAsyncComponent(() => import('@/components/field/field.vue'));
 const fieldGroup = defineAsyncComponent(() => import('@/components/field-group/field-group.vue'));
 const selection = defineAsyncComponent(() => import('@/components/selection/selection.vue'));
+const selectMulti = defineAsyncComponent(() => import('@/components/select-multi/select-multi.vue'))
  
 export default {
   components: {
@@ -134,7 +158,8 @@ export default {
     baseFooter,
     field,
     fieldGroup,
-    selection
+    selection,
+    selectMulti
   },
 
   setup(props){
@@ -142,6 +167,7 @@ export default {
     const emailField = ref(null);
     const pieField = ref(null);
     const vehicleField = ref(null);
+    const animalField = ref(null);
 
     const pieData = [
       { id: "pie1", label: "Apple Pie", name: "piegroup" },
@@ -194,10 +220,22 @@ export default {
       },
     ];
 
+    const animalData = [
+      { id: "a0", label: "Select all", val: "", name: "a0", behavior: "select-multi-all"},
+      { id: "a1", label: "Aligator", val: "", name: "a1", behavior: ""},
+      { id: "a2", label: "Buffalo", val: "checked", name: "a2", behavior: ""},
+      { id: "a3", label: "Cow", val: "", name: "a3", behavior: ""},
+      { id: "a4", label: "Dolphin", val: "", name: "a4", behavior: ""},
+      { id: "a5", label: "Elephant", val: "", name: "a5", behavior: ""},
+      { id: "a6", label: "Frog", val: "", name: "a6", behavior: ""},
+      { id: "a7", label: "Goose", val: "", name: "a7", behavior: ""},
+    ];
+
     let nameHasError = ref(false);
     let emailHasError = ref(false);
     let piesHasError = ref(false);
     let vehicleHasError = ref(false);
+    let animalHasError = ref(false);
 
     const setError = (type) => {
       if(type=='name'){
@@ -215,6 +253,10 @@ export default {
       if(type=='vehicle'){
         vehicleHasError.value = vehicleHasError.value ? false : true;
         vehicleField.value.setHasError(vehicleHasError.value);
+      }
+      if(type=='animal'){
+        animalHasError.value = animalHasError.value ? false : true;
+        animalField.value.setHasError(animalHasError.value);
       }  
     }
 
@@ -223,9 +265,11 @@ export default {
       emailField,
       pieField,
       vehicleField,
+      animalField,
       setError,
       pieData,
       vehicleData,
+      animalData
     }
   }
 
