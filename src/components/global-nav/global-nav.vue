@@ -3,7 +3,7 @@
     <div class="fsa-nav-global">
       <div class="fsa-nav-global__bd">
         <ul class="fsa-nav-global__list" aria-label="Primary Navigation" id="primary-navigation">
-          <li v-for="item in navList" :class="'fsa-nav-global__list-item '+ item.columnClass">
+          <li v-for="item in NAV_DATA" :class="'fsa-nav-global__list-item '+ item.columnClass">
             <div v-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='true'">
               <button :id="item.uid+'-BTN'" @click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
@@ -81,10 +81,6 @@ export default {
       documentClickHandler
     } = useMenuSystem();
 
-    const navList = computed(()=>{
-      return props.NAV_DATA;
-    });
-
     function toggleMenu(e) {
       let theItem = e.currentTarget;
       let theMenu = e.currentTarget.nextSibling;
@@ -98,6 +94,7 @@ export default {
     };
 
     onMounted(()=>{
+      console.log('global-nav onMounted');
       window.addEventListener('keydown', listenForKeys);
       document.addEventListener('click', documentClickHandler);
       loopItems('addFocusListeners');
@@ -115,7 +112,6 @@ export default {
       closeMenu,
       loopItems,
       listenForKeys,
-      navList,
       toggleMenu
     }
   }

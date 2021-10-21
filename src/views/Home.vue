@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <baseHeader></baseHeader>
 
     <main id="main-content" tabindex="-1">
@@ -141,7 +142,7 @@
 </template>
 
 <script>
-import { ref, defineAsyncComponent  } from 'vue';
+import { ref, defineAsyncComponent, onMounted } from 'vue';
 
 
 import baseHeader from '@/partials/BaseHeader.vue';
@@ -259,6 +260,10 @@ export default {
         animalField.value.setHasError(animalHasError.value);
       }  
     }
+
+    onMounted(()=>{
+      console.log('Home onMounted');
+    });
 
     return {
       nameField,

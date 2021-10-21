@@ -25,7 +25,9 @@
 </template>
 
 <script>
-import { inject, onMounted, ref, computed } from 'vue';
+import { inject, onMounted, ref, reactive, computed } from 'vue';
+
+import { navigationService } from '@/_services/navigation.service';
 
 import tophat from '@/components/tophat/tophat.vue';
 import headerApp from '@/components/header-app/header-app.vue';
@@ -33,11 +35,36 @@ import globalNav from '@/components/global-nav/global-nav.vue';
 //import modal from '@/components/Modal.vue';
 
 export default {
+  components: {
+    tophat,
+    headerApp,
+    globalNav
+  },
   setup(props){
 
-    //const navigationData = ref( () => [] );
+    const { getNavigation } = navigationService();
 
-    const navigationData = ref(
+    let navigationData = reactive([]);
+
+    const setData = ( data ) => {
+      navigationData = data;
+      console.log('navigationData 2',navigationData)
+    };
+
+    onMounted(()=>{
+      console.log('BaseHeader onMounted');
+      console.log('navigationData 1',navigationData)
+      getNavigation( setData )
+    });
+
+    return {
+      navigationData
+    }
+  }  
+}
+
+/*
+const navigationData = ref(
       [
         {
           uid: "home-id",
@@ -311,16 +338,6 @@ export default {
         }
       ]
     );
+*/
 
-    return {
-      navigationData
-    }
-  },
-  components: {
-    tophat,
-    headerApp,
-    globalNav
-  }
-}
-    
 </script>
