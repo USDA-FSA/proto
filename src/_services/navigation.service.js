@@ -277,8 +277,7 @@ const apiData = [
 export function navigationService(){
 
   const getNavigation = ( callback ) => {
-    callback( apiData );
-    //setTimeout( () => callback( apiData ) ,50);
+    setTimeout( () => callback( apiData ) ,500);
   }
 
   return{
