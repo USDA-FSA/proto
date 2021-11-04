@@ -1,55 +1,40 @@
-/////// FAKE API ///////
-
-/* const users = [
-  { name: 'John Stevens', email: 'john.stevens@domain.com' },
-  { name: 'Mark Majors', email: 'mark.majors@domain.com' }
-]; */
-
-import { fromFetch } from 'rxjs/fetch';
-import { switchMap, catchError, map } from 'rxjs/operators';
 
 const URL = 'https://jsonplaceholder.typicode.com/users';
-
-const simplifyUserData = (user) => {
-    return {
-        name: user.name,
-        email: user.email,
-    }
-}
-
-export const service = {
-
-  /*
-  getAllUsers( callback ){
-    //setTimeout( () => callback( users ) ,50);
+const HEADERS = new Headers();
+HEADERS.append(
+  "Authorization",
+  "api_key"
+);
+const REQ = new Request( URL,
+  {
+    method: "GET",
+    //HEADERS,
+    mode: "cors",
+    cache: "default"
   }
-  */
+);
 
-  getAllUsers( callback ){
+export const usersService = {
+  
+  isLoaded: false,
 
-    const users$ = fromFetch(URL).pipe(
-      switchMap( response => {
-        if (response.ok) {
-          // OK return data
-          return response.json();
-        } else {
-          // Server is returning a status requiring the client to try something else.
-          return of({ error: true, message: `Error ${response.status}` });
-        }
-      }),
-      catchError(err => {
-        // Network or other error, handle appropriately
-        console.error(err);
-        return of({ error: true, message: err.message })
-      })
-    );
-
-    users$.subscribe({
-      next: results => callback( results ),
-      complete: () => console.log('users done loading'),
-    })
-
+  getUsers: async (callback) => {
+    const response = await fetch(REQ);
+    try{
+      let res = await response.json();
+      usersService.requestNext( res, callback, 'getUsers' ); 
+    } catch(e){
+      console.log( 'getUsers' + ' Users SERVICE ERROR', e)
+    }
     
+  },
+
+  requestNext: (res, callback, methodCalled) => {
+    if(res.errors){
+      callback({ status: false, errors: res.error });
+    } else {
+      callback({ status: true, data: res });
+    }
   }
   
-};
+}

@@ -28,6 +28,8 @@
 import { inject, onMounted, ref, reactive, computed } from 'vue';
 
 import { navigationService } from '@/_services/navigation.service';
+import { useStore } from 'vuex';
+
 
 import tophat from '@/components/tophat/tophat.vue';
 import headerApp from '@/components/header-app/header-app.vue';
@@ -41,6 +43,7 @@ export default {
     globalNav
   },
   setup(props){
+    const store = useStore();
 
     const { getNavigation } = navigationService();
 
@@ -51,6 +54,7 @@ export default {
     };
 
     onMounted(()=>{
+      
       getNavigation( setData )
     });
 
