@@ -157,9 +157,10 @@
               </table>
             </span>
             <span>
-              <p class="fsa-m-t--l">
-                <button @click="getUsersData()" class="fsa-btn fsa-btn--secondary">Show Data</button>
+              <p class="fsa-m-t--l fsa-text-align--right">
+                <button @click="getUsersData()" class="fsa-btn fsa-btn--secondary">Get Data From API</button>
               </p>
+              <p><a href="https://jsonplaceholder.typicode.com/users" target="_blank">https://jsonplaceholder.typicode.com/users</a></p>
             </span>
           </div>
 
