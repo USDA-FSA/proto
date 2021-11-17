@@ -9,6 +9,7 @@ import { watch } from 'vue'
 export default {
   name: "app",
   setup(){
+    
     const route = useRoute();
     watch(
       () => route.params,
@@ -16,6 +17,7 @@ export default {
         // react to route changes...
       }
     )
+    
   }
 };
 

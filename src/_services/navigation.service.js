@@ -9,6 +9,13 @@ const apiData = [
     columnClass: ""
   },
   {
+    uid: "users-id",
+    label: "Users Demo",
+    path: "/users",
+    hasChild: "false",
+    columnClass: ""
+  },
+  {
     uid: "boilerplate-id",
     label: "Boilerplate",
     path: "/boilerplate",

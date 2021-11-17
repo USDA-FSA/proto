@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 const Home = () => import('../views/Home.vue');
+const Users = () => import('../views/Users.vue');
+const Name = () => import('../views/Name.vue');
 const NotFound = () => import('../views/NotFound.vue');
 
 
@@ -9,6 +11,17 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: Users
+  },
+  {
+    path: '/name/:id',
+    name: 'Name',
+    component: Name,
+    props: true
   },
   { 
     path: '/:pathMatch(.*)*',
@@ -19,7 +32,7 @@ const routes = [
 
 export const router = createRouter({
   history: createWebHistory('/proto/'), // base diretory option now here createWebHistory('/base-directory/'),
-  routes: routes,
+  routes
 });
 
 router.resolve({
