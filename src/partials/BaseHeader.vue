@@ -13,7 +13,7 @@
      
     <headerApp
       APP_ABBR_NAME="UXP"
-      APP_FULL_NAME="User Experience ProtoKit"
+      APP_FULL_NAME="User Experience Prototype"
       PROFILE_NAME="Michael Scott (Log off)"
       LOGOFF_URL="https://www.eauth.usda.gov/Logout/logoff.asp"
     >
