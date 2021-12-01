@@ -3,17 +3,17 @@
     <div class="fsa-nav-global">
       <div class="fsa-nav-global__bd">
         <ul class="fsa-nav-global__list" aria-label="Primary Navigation" id="primary-navigation">
-          <li v-for="item in NAV_DATA" :class="'fsa-nav-global__list-item '+ item.columnClass">
+          <li v-for="item in NAV_DATA" :key="item.id" :class="'fsa-nav-global__list-item '+ item.columnClass">
             <div v-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='true'">
               <button :id="item.uid+'-BTN'" @click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
               <div class="fsa-nav-global__sub-menu" :id="item.uid" aria-hidden="true">
                 <div class="fsa-nav-global__sub-menu-bd" :aria-labelledby="item.uid+'-SUB'">
-                  <div v-for="child in item.children" class="fsa-nav-global__sub-menu-group">
+                  <div v-for="child in item.children" :key="child.id" class="fsa-nav-global__sub-menu-group">
                     <h3 class="fsa-nav-global__sub-menu-title" :id="child.uid">{{ child.header }}</h3>
                     <ul class="fsa-nav-global__sub-menu-list" :aria-labelledby="child.uid">
-                      <li v-for="gp in child.group" class="fsa-nav-global__sub-menu-item">
+                      <li v-for="gp in child.group" :key="gp.id" class="fsa-nav-global__sub-menu-item">
                         <router-link :to='gp.path' class="fsa-nav-global__sub-menu-link">{{ gp.label }}</router-link>
                       </li>
                     </ul>
@@ -28,7 +28,7 @@
               <div class="fsa-nav-global__sub-menu" :id="item.uid" aria-hidden="true">
                 <div class="fsa-nav-global__sub-menu-bd">
                   <ul class="fsa-nav-global__sub-menu-list" :aria-labelledby="item.uid+'-SUB'">
-                    <li v-for="child in item.children" class="fsa-nav-global__sub-menu-item">
+                    <li v-for="child in item.children" :key="child.id" class="fsa-nav-global__sub-menu-item">
                       <router-link :to='child.path' class="fsa-nav-global__sub-menu-link">{{child.label}}</router-link>
                     </li>
                   </ul>
@@ -42,7 +42,7 @@
               <div class="fsa-nav-global__sub-menu" :id="item.uid" aria-hidden="true">
                 <div class="fsa-nav-global__sub-menu-bd">
                   <ul class="fsa-nav-global__sub-menu-list" :aria-labelledby="item.uid+'-SUB'">
-                    <li v-for="child in item.children" class="fsa-nav-global__sub-menu-item">
+                    <li v-for="child in item.children" :key="child.id" class="fsa-nav-global__sub-menu-item">
                       <router-link :to='child.path' class="fsa-nav-global__sub-menu-link">{{child.label}}</router-link>
                     </li>
                   </ul>

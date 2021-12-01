@@ -16,9 +16,9 @@ const apiData = [
     columnClass: ""
   },
   {
-    uid: "boilerplate-id",
-    label: "Boilerplate",
-    path: "/boilerplate",
+    uid: "website-id",
+    label: "Web Site Example",
+    path: "/web",
     hasChild: "false",
     columnClass: ""
   },
@@ -29,8 +29,7 @@ const apiData = [
     hasChild: "true",
     columnClass: "fsa-nav-global__list-item--multi-column",
     hasHeaders: "false",
-    children: [
-      {
+    children: [{
         uid: "modal-growl-id",
         label: "Modal and Growl",
         path: "/demos/modal-growl",
@@ -66,7 +65,7 @@ const apiData = [
         path: "/reports/investment-placement",
         hasChild: "false",
       },
-      
+
       {
         uid: "performance-management-id",
         label: "Performance Management",
@@ -148,12 +147,10 @@ const apiData = [
     hasChild: "true",
     columnClass: "fsa-nav-global__list-item--multi-column",
     hasHeaders: "true",
-    children: [
-      {
+    children: [{
         uid: "reports-overview-id",
         header: "Cyclical Purchasing",
-        group: [
-          {
+        group: [{
             uid: "cyclical-purchasing-overview-id",
             label: "Overview",
             path: "/reports/overview",
@@ -176,8 +173,7 @@ const apiData = [
       {
         uid: "overage-charge-stream-id",
         header: "Overage Charge Stream",
-        group: [
-          {
+        group: [{
             uid: "overage-charge-stream-overview-id",
             label: "Overview",
             path: "/transaction/ocs-overview",
@@ -218,8 +214,7 @@ const apiData = [
       {
         uid: "fiscal-unit-development",
         header: "Fiscal Unit Development",
-        group: [
-          {
+        group: [{
             uid: "fud-cyclical-purchasing-overview-id",
             label: "fud-Overview",
             path: "/transaction/fud-overview",
@@ -248,8 +243,7 @@ const apiData = [
       {
         uid: "lorem-ipsum-dolor-id",
         header: "Lorem Ipsum Dolor",
-        group: [
-          {
+        group: [{
             uid: "lorem-ipsum-dolor-id",
             label: "Overview",
             path: "/transaction/lid-overview",
@@ -277,19 +271,18 @@ const apiData = [
     path: "/settings",
     hasChild: "false",
     columnClass: ""
-  },
-
+  }
 ];
 
-export function navigationService(){
+export function navigationService() {
 
-  const getNavigation = ( callback ) => {
-    setTimeout( () => callback( apiData ) ,250);
+  const getNavigation = (callback) => {
+    setTimeout(() => callback(apiData), 250);
   }
 
-  return{
+  return {
     getNavigation
   }
 
-  
+
 };

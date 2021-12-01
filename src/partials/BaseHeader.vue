@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { inject, onMounted, ref, reactive, computed } from 'vue';
+import { onMounted, ref, reactive, computed } from 'vue';
 
 import { navigationService } from '@/_services/navigation.service';
 import { useStore } from 'vuex';
