@@ -71,6 +71,46 @@
             </span>
           </div>
         </div>
+        <div v-if="USE_SEARCH == 'true'" class="fsa-nav-global__search">
+          <form action="dest.html">
+            <div class="fsa-search fsa-search--small" role="search">
+              <div class="fsa-search__bd">
+                <div class="fsa-search__entry fsa-search__entry--grow">
+                  <label class="fsa-search__label fsa-search__label--sr-only" for="UNIQUE-ID-88w84d">Search [app-name]</label>
+                  <input placeholder="Search" class="fsa-input fsa-input--small fsa-search__input" id="UNIQUE-ID-88w84d" type="search" name="search">
+                </div>
+                <div class="fsa-search__submit">
+                  <button class="fsa-btn fsa-btn--small fsa-search__btn fsa-search__btn--icon" type="submit">
+                    <span class="fsa-search__text">Search</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div v-if="USE_SCOPED_SEARCH == 'true'" class="fsa-nav-global__search">
+          <form action="dest.html">
+            <div class="fsa-search fsa-search--small" role="search">
+              <div class="fsa-search__bd">
+                <div class="fsa-search__entry fsa-search__entry--grow">
+                  <label class="fsa-search__label fsa-search__label--sr-only" for="UNIQUE-ID-huahfroa8">Search [app-name]</label>
+                  <input placeholder="Search" class="fsa-input fsa-input--small fsa-search__input" id="UNIQUE-ID-huahfroa8" type="search" name="search">
+                </div>
+                <div class="fsa-search__entry">
+                  <label class="fsa-search__label fsa-search__label--sr-only" for="UNIQUE-ID-PkkH6PooI6">Search Category</label>
+                  <select class="fsa-select fsa-select--small fsa-search__select" name="Statez" id="UNIQUE-ID-PkkH6PooI6">
+                    <option v-for="cat in SCOPED_SEARCH_CATEGORIES" :key="cat.label" :value="cat.val" :selected="cat.selected">{{ cat.label }}</option>
+                  </select>
+                </div>
+                <div class="fsa-search__submit">
+                  <button class="fsa-btn fsa-btn--small fsa-search__btn fsa-search__btn--icon" type="submit">
+                    <span class="fsa-search__text">Search</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </nav>
@@ -85,6 +125,8 @@ export default {
   props: {
     NAV_DATA: Object,
     EXTRA_CLASSES: String,
+    USE_SEARCH: String,
+    USE_SCOPED_SEARCH: String
   },
   
   setup(props){    

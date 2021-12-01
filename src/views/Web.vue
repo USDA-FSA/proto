@@ -1,7 +1,10 @@
 <template>
   <div>
     <header>
-      <globalNav :NAV_DATA="navigationData" EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"></globalNav>
+      <globalNav :NAV_DATA="navigationData"
+        EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"
+        USE_SEARCH="true"
+        ></globalNav>
     </header>
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
@@ -88,13 +91,16 @@ export default {
 
     const navigationData = computed(() => store.getters["web/getNavigation"]);
 
+    const scopedSearcCategories = computed(() => [{label:'One', val: 1},{label:'Two',val: 2},{label:'Three',val: 3},{label:'Four',val:4}] );
+
     onMounted(() => {
       console.log("Web onMounted");
       store.dispatch("web/setNavigation");
     });
 
     return {
-      navigationData
+      navigationData,
+      scopedSearcCategories
     };
   }
 };
