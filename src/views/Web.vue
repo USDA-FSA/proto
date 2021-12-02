@@ -4,6 +4,7 @@
       <globalNav :NAV_DATA="navigationData"
         EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"
         USE_SEARCH="true"
+        @emitSearch="submitSearch"
         ></globalNav>
     </header>
     <main id="main-content" tabindex="-1">
@@ -68,7 +69,8 @@
       </div>
       <div class="fsa-section">
         <div class="fsa-section__bd">
-          <h2>H2 Header</h2>
+          <h2>{{headerText}}</h2>
+          <span class="fsa-m-t--l">{{searchResults}}</span>
         </div>
       </div>
     </main>
@@ -91,7 +93,15 @@ export default {
 
     const navigationData = computed(() => store.getters["web/getNavigation"]);
 
+    const headerText = ref('Header Default');
+    const searchResults = ref('');
+
     const scopedSearcCategories = computed(() => [{label:'One', val: 1},{label:'Two',val: 2},{label:'Three',val: 3},{label:'Four',val:4}] );
+
+    const submitSearch = ( obj ) => {
+      headerText.value = 'Search Results:'
+      searchResults.value = obj.phrase;
+    };
 
     onMounted(() => {
       console.log("Web onMounted");
@@ -99,8 +109,11 @@ export default {
     });
 
     return {
+      headerText,
       navigationData,
-      scopedSearcCategories
+      scopedSearcCategories,
+      submitSearch,
+      searchResults
     };
   }
 };

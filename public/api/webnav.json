@@ -1,9 +1,16 @@
 {
   "main": [
     {
+      "uid": "home-id",
+      "label": "Home",
+      "path": "/",
+      "hasChild": "false",
+      "columnClass": ""
+    },
+    {
       "uid": "about-id",
       "label": "About",
-      "path": "/",
+      "path": "/about",
       "hasChild": "false",
       "columnClass": ""
     },

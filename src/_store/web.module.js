@@ -24,7 +24,6 @@ const actions = {
       if(result.errors){
         commit('SET_ERRORS', result.errors);
       } else {
-        console.log(result.data)
         commit('SET_NAV', result.data );
       }
     });

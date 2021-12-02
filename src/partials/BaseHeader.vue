@@ -19,7 +19,12 @@
     >
     </headerApp>
     
-    <globalNav :NAV_DATA="navigationData" EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"></globalNav>
+    <globalNav
+      :NAV_DATA="navigationData"
+      EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"
+      @emitSearch="submitSearch"
+      USE_SEARCH="true"
+    ></globalNav>
     
   </header>
 </template>
@@ -42,7 +47,7 @@ export default {
     headerApp,
     globalNav
   },
-  setup(props){
+  setup(props, {emit}){
     const store = useStore();
 
     const { getNavigation } = navigationService();
@@ -53,13 +58,19 @@ export default {
       navigationData.value = data;
     };
 
+    const submitSearch = ( obj ) => {
+      emit('emitSearch',obj)
+      console.log('NAV SEARCH BASEHEADER', obj)
+    };
+
     onMounted(()=>{
       
       getNavigation( setData )
     });
 
     return {
-      navigationData
+      navigationData,
+      submitSearch
     }
   }  
 }
