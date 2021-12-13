@@ -50,13 +50,7 @@ export default {
   setup(props, {emit}){
     const store = useStore();
 
-    const { getNavigation } = navigationService();
-
-    const navigationData = ref({});
-
-    const setData = ( data ) => {
-      navigationData.value = data;
-    };
+    const navigationData = computed(() => store.getters["navigation/getNavigation"]);
 
     const submitSearch = ( obj ) => {
       emit('emitSearch',obj)
@@ -64,8 +58,7 @@ export default {
     };
 
     onMounted(()=>{
-      
-      getNavigation( setData )
+      store.dispatch("navigation/setNavigation");
     });
 
     return {

@@ -1,7 +1,6 @@
 
 import { navigationService } from '../_services/navigation.service';
 
-
 const state = () =>({
   isLoaded: false,
   errors: [],
@@ -17,24 +16,18 @@ const getters = {
 
 const actions = {
 
-  async getNavApi( { commit, state, rootState }, payload ){
-    return new Promise( (resolve) => {
-      commit('SET_ERRORS', []);
-      navigationService.getNavigation(
-        {
-          data: payload
-        },
-        result => {
-          if(result.errors){
-            commit('SET_ERRORS', result.errors);
-          } else {
-            commit('SET_NAV', result.data );
-          }
-          resolve();
-        }
-      );
+  setNavigation( { commit, state, rootState }, payload ){
+    commit('SET_ERRORS', []);
+
+    navigationService.getNavigation( (result) => {
+      if(result.errors){
+        commit('SET_ERRORS', result.errors);
+      } else {
+        commit('SET_NAV', result.data );
+      }
     });
-  }  
+  }
+
 };
 
 const mutations = {

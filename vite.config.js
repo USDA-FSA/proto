@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 //const fsaScssPath = path.resolve(__dirname, "./node_modules/fsa-style/src/stylesheets/fsa-style.scss")
 // FSA Style path to allow for usage of SCSS variables
-const fsaScssPath = "./node_modules/fsa-style/src/stylesheets/fsa-style.scss"
+//const fsaScssPath = "./node_modules/fsa-style/src/stylesheets/fsa-style.scss"
 
 const config = {
   server: { port: 3000 },
@@ -15,7 +15,8 @@ const config = {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
-  },
+  }
+  /*
   css: {
     preprocessorOptions: {
       scss: {
@@ -23,7 +24,8 @@ const config = {
         additionalData: `@import "${fsaScssPath}";`
       }
     }
-  },  
+  }
+  */  
 }
 
 export default defineConfig(config);

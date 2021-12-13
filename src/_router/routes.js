@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-const Home = () => import('../views/Home.vue');
-const Users = () => import('../views/Users.vue');
-const Name = () => import('../views/Name.vue');
-const Web = () => import('../views/Web.vue');
-const NotFound = () => import('../views/NotFound.vue');
+const Home = () => import('@/views/Home.vue');
+const Users = () => import('@/views/Users.vue');
+const Name = () => import('@/views/Name.vue');
+const Web = () => import('@/views/Web.vue');
+const GlobalNavDemo = () => import('@/views/GlobalNavDemo.vue');
+const NotFound = () => import('@/views/NotFound.vue');
 
 
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
     path: '/web',
     name: 'Web',
     component: Web
+  },
+  {
+    path: '/demos/global-nav',
+    name: 'GlobalNavDemo',
+    component: GlobalNavDemo
   },
   { 
     path: '/:pathMatch(.*)*',

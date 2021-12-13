@@ -104,7 +104,6 @@ export default {
     };
 
     onMounted(() => {
-      console.log("Web onMounted");
       store.dispatch("web/setNavigation");
     });
 
