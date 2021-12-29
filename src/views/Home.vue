@@ -68,7 +68,7 @@
                 LABEL="What do you drive?"
                 :DATA="vehicleData"
                 REQUIRED="true"
-                SELECT_CLASSES="fsa-select--large"
+                SELECT_CLASSES=""
                 EXTRA_CLASSES=""
                 FIELD_ERROR_CLASS=""
                 ARIA_REQUIRED="true"
@@ -161,23 +161,30 @@ export default {
       { id: "pie4", label: "French Silk Pie", name: "piegroup" },
     ];
 
-    const vehicleDataXYZ = [
-      { id: "v1", label: "Motor Scooter", val: "scoot", name: "small"},
-      { id: "v2", label: "Cafe Racer", val: "cf", name: "small"},
-      { id: "v3", label: "Can-Am", val: "can", name: "small"},
-      { id: "v4", label: "4-Door Sedan", val: "sedan", name: "medium"},
-      { id: "v5", label: "Sports Coupe", isSelected: "selected", val: "Coupe", name: "medium"},
-      { id: "v6", label: "Cross Over SUV", val: "xo", name: "medium"},
-      { id: "v7", label: "Minivan", val: "van", name: "large"},
-      { id: "v8", label: "Pickup Truck", val: "truck", name: "large"},
-      { id: "v9", label: "7 Passenger SUV", val: "suv", name: "large"},
-      { id: "v10", label: "15 Passenger Van", val: "bigvan", name: "large"}
+    const vehicleDataZZZ = [
+      { id: "v0", label: "Select a Vehicle", name: "vehiclesGroup", val: 0, isDisabled: true, isSelected: true },
+      { id: "v1", label: "Motor Scooter", val: "scoot", name: "vehiclesGroup"},
+      { id: "v2", label: "Cafe Racer", val: "cf", name: "vehiclesGroup"},
+      { id: "v3", label: "Can-Am", val: "can", name: "vehiclesGroup"},
+      { id: "v4", label: "4-Door Sedan", val: "sedan", name: "vehiclesGroup"},
+      { id: "v5", label: "Sports Coupe", val: "Coupe", name: "vehiclesGroup"},
+      { id: "v6", label: "Cross Over SUV", val: "xo", name: "vehiclesGroup"},
+      { id: "v7", label: "Minivan", val: "van", name: "vehiclesGroup"},
+      { id: "v8", label: "Pickup Truck", val: "truck", name: "vehiclesGroup"},
+      { id: "v9", label: "7 Passenger SUV", val: "suv", name: "vehiclesGroup"},
+      { id: "v10", label: "15 Passenger Van", val: "bigvan", name: "vehiclesGroup"}
     ];
 
     const vehicleData = [
       { 
+        groupId: "g0",
+        groupData: [
+          { id: "v0", label: "Select a Vehicle", name: "vehiclesGroup", val: 0, isDisabled: true, isSelected: true },
+        ]
+      },
+      { 
         groupId: "g1",
-        groupLabel: "Small Vehicales",
+        groupLabel: "Small Vehicles",
         groupData: [
           { id: "v1", label: "Motor Scooter", val: "scoot", name: "small"},
           { id: "v2", label: "Cafe Racer", val: "cf", name: "small"},
@@ -186,16 +193,16 @@ export default {
       },
       { 
         groupId: "g2",
-        groupLabel: "Medium Vehicales",
+        groupLabel: "Medium Vehicles",
         groupData: [
           { id: "v4", label: "4-Door Sedan", val: "sedan", name: "medium"},
-          { id: "v5", label: "Sports Coupe", isSelected: "selected", val: "Coupe", name: "medium"},
+          { id: "v5", label: "Sports Coupe", val: "Coupe", name: "medium"},
           { id: "v6", label: "Cross Over SUV", val: "xo", name: "medium"},
         ]
       },
       { 
         groupId: "g3",
-        groupLabel: "Large Vehicales",
+        groupLabel: "Large Vehicles",
         groupData: [
           { id: "v7", label: "Minivan", val: "van", name: "large"},
           { id: "v8", label: "Pickup Truck", val: "truck", name: "large"},

@@ -14,7 +14,8 @@
         <option v-for="gd in gData.groupData"
           :key="gd.id"
           :value="gd.val"
-          :selected="gd.isSelected">
+          :selected="gd.isSelected?'selected':null"
+          :disabled="gd.isDisabled?'disabled':null">
           {{ gd.label }}
         </option>
       </optgroup>
@@ -24,7 +25,8 @@
       <option v-for="sd in selectionData"
         :key="sd.id"
         :value="sd.val"
-        :selected="sd.isSelected">
+        :selected="sd.isSelected?'selected':null"
+        :disabled="sd.isDisabled?'disabled':null">
         {{ sd.label }}
       </option>
     </select>
