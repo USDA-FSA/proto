@@ -1,44 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-const Home = () => import('@/views/Home.vue');
-const Users = () => import('@/views/Users.vue');
-const Name = () => import('@/views/Name.vue');
-const Web = () => import('@/views/Web.vue');
-const GlobalNavDemo = () => import('@/views/GlobalNavDemo.vue');
-const NotFound = () => import('@/views/NotFound.vue');
-
+import { sharedRoutes } from './shared.routes';
+import { demosRoutes } from './demos.routes';
+import { webRoutes } from './web.routes';
 
 const routes = [
-  { 
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/users',
-    name: 'users',
-    component: Users
-  },
-  {
-    path: '/name/:id',
-    name: 'Name',
-    component: Name,
-    props: true
-  },
-  {
-    path: '/web',
-    name: 'Web',
-    component: Web
-  },
-  {
-    path: '/demos/global-nav',
-    name: 'GlobalNavDemo',
-    component: GlobalNavDemo
-  },
+  ...sharedRoutes,
+  ...demosRoutes,
+  ...webRoutes,
   { 
     path: '/:pathMatch(.*)*',
     name: 'not-found',
-    component: NotFound
+    component: () => import('@/views/NotFound.vue')
   }
 ];
 

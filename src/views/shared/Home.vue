@@ -4,14 +4,34 @@
     <baseHeader @emitSearch="submitSearch"></baseHeader>
 
     <main id="main-content" tabindex="-1">
+
       <div class="fsa-section">
         <div class="fsa-section__bd">
-          <h1>Home Page</h1>
+
+          <div class="fsa-m-t--l">
+            <div class="fsa-level@m fsa-level--justify-between">
+              <h1 class="fsa-m--none">Home</h1>
+              <div class="fsa-level fsa-level--justify-between fsa-level--grow-auto">
+                <span>
+                  <button @click="showModal(helpModalId)" class="fsa-btn fsa-btn--block fsa-btn--flat" type="button">
+                    <svg class="fsa-icon fsa-icon--size-1" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+                    Help
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="fsa-section">
+        <div class="fsa-section__bd">
 
           <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
             <span>
               <field
-                ID="name"
+                :ID="nameFieldId"
                 EXTRA_CLASSES=""
                 LABEL="Full Name"
                 INPUT_VALUE=""
@@ -19,12 +39,20 @@
                 REQUIRED="true"
                 ARIA_REQUIRED="true"
                 BEHAVIOR=""
-                ARIA_DESCRIBEDBY="name__help"
+                :ARIA_DESCRIBEDBY="nameFieldId + '__help'"
                 HELP_MESSAGE="Use your full name, please."
                 ERROR_MESSAGE="Hey, you forgot your name, Buddy!"
                 HAS_ERROR="false"
+                USE_POPOVER="true"
+                POPOVER_TYPE="help"
+                POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
+                :POPOVER_ID="nameFieldId+'-help-popover'"
+                POPOVER_HEADER="Name Field Help"
                 ref="nameField"
               >
+                <div :id="nameFieldId + '-popup-body'">
+                  <p><strong>Note:</strong> Please provide your full legal given name, a it is written on your birth certificate.</p>
+                </div>
               </field>
             </span>
             <span>
@@ -117,6 +145,8 @@
         </div>
       </div>
 
+      <page-level-help-modal :MODAL_ID="helpModalId"></page-level-help-modal>
+
     </main>
 
     <baseFooter></baseFooter>
@@ -126,6 +156,10 @@
 <script>
 import { ref, defineAsyncComponent, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import { useNavigation } from '@/composables/useNavigation';
+import { useModalControls } from '@/composables/useModalControls';
+import { usePopoverControls } from '@/composables/usePopoverControls';
+import { v4 as uuidv4 } from 'uuid';
 
 
 import baseHeader from '@/partials/BaseHeader.vue';
@@ -134,7 +168,9 @@ import baseFooter from '@/partials/BaseFooter.vue';
 const field = defineAsyncComponent(() => import('@/components/field/field.vue'));
 const fieldGroup = defineAsyncComponent(() => import('@/components/field-group/field-group.vue'));
 const selection = defineAsyncComponent(() => import('@/components/selection/selection.vue'));
-const selectMulti = defineAsyncComponent(() => import('@/components/select-multi/select-multi.vue'))
+const selectMulti = defineAsyncComponent(() => import('@/components/select-multi/select-multi.vue'));
+const pageLevelHelpModal = defineAsyncComponent(() => import('@/views/demos/help/Page-Level-Help-Modal.vue'));
+const inlineHelp = defineAsyncComponent(() => import('@/components/inline-help/inline-help.vue'));
  
 export default {
   components: {
@@ -143,13 +179,30 @@ export default {
     field,
     fieldGroup,
     selection,
-    selectMulti
+    selectMulti,
+    pageLevelHelpModal,
+    inlineHelp
   },
 
   setup(props){
     const store = useStore();
+    const { goto } = useNavigation();
+
+    const {
+      setModalId,
+      getModalId,
+      showModal,
+      hideModal
+    } = useModalControls();
+
+    const { showPopover, hidePopover } = usePopoverControls();
+
+    const helpModalId = ref( uuidv4() );
+    setModalId(helpModalId.value);
 
     const nameField = ref(null);
+    const nameFieldId = ref( uuidv4() );
+
     const pieField = ref(null);
     const vehicleField = ref(null);
     const animalField = ref(null);
@@ -262,6 +315,7 @@ export default {
 
     return {
       nameField,
+      nameFieldId,
       pieField,
       vehicleField,
       animalField,
@@ -271,7 +325,12 @@ export default {
       animalData,
       submitSearch,
       searchResults,
-      headerText
+      headerText,
+      showModal,
+      hideModal,
+      helpModalId,
+      showPopover,
+      hidePopover
     }
   }
 

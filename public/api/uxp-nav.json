@@ -10,7 +10,7 @@
     {
       "uid": "users-id",
       "label": "Users Demo",
-      "path": "/users",
+      "path": "/demos/users",
       "hasChild": "false",
       "columnClass": ""
     },
