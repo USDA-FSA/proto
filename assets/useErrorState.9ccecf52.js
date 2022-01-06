@@ -1,0 +1,1 @@
+import{g as r}from"./vendor.98e3be04.js";function e(){let e=r(!1),o=r("Form Field Error");return{hasError:e,setHasError:r=>{e.value=r},errorMessage:o,setErrorMessage:r=>{console.log(r),o.value=r}}}export{e as u};
