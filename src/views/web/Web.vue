@@ -73,6 +73,34 @@
           <span class="fsa-m-t--l">{{searchResults}}</span>
         </div>
       </div>
+      <div class="fsa-section">
+        <div class="fsa-section__bd">
+          <field
+            :ID="nameFieldId"
+            EXTRA_CLASSES=""
+            LABEL="Full Name"
+            INPUT_VALUE=""
+            INPUT_TYPE="text"
+            REQUIRED="true"
+            ARIA_REQUIRED="true"
+            BEHAVIOR=""
+            :ARIA_DESCRIBEDBY="nameFieldId + '__help'"
+            HELP_MESSAGE="Use your full name, please."
+            ERROR_MESSAGE="Hey, you forgot your name, Buddy!"
+            HAS_ERROR="false"
+            USE_POPOVER="true"
+            POPOVER_TYPE="help"
+            POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
+            :POPOVER_ID="nameFieldId+'-help-popover'"
+            POPOVER_HEADER="Full Name Help"
+            ref="nameField"
+          >
+            <div :id="nameFieldId + '-popup-body'">
+              <p><strong>Note:</strong> Please provide your full legal given name, a it is written on your birth certificate.</p>
+            </div>
+          </field>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -80,12 +108,16 @@
 <script>
 import { ref, defineAsyncComponent, onMounted, computed } from "vue";
 import { useStore } from "vuex";
+import { v4 as uuidv4 } from 'uuid';
 
 import globalNav from "@/components/global-nav/global-nav.vue";
 
+import field from '@/components/field/field.vue';
+
 export default {
   components: {
-    globalNav
+    globalNav,
+    field
   },
 
   setup(props) {
@@ -103,6 +135,8 @@ export default {
       searchResults.value = obj.phrase;
     };
 
+    const nameFieldId = ref(uuidv4());
+
     onMounted(() => {
       store.dispatch("web/setNavigation");
     });
@@ -112,7 +146,8 @@ export default {
       navigationData,
       scopedSearcCategories,
       submitSearch,
-      searchResults
+      searchResults,
+      nameFieldId
     };
   }
 };
