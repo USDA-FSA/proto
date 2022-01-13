@@ -1,10 +1,11 @@
 <template>
-  <div :class="'fsa-field '+ (hasError ? fieldErrorClass : '') +' '+ EXTRA_CLASSES">
+  <div :class="'fsa-field '+ (hasError ? fieldErrorClass : '') +' '+ EXTRA_FIELD_CLASSES">
     <label
       class="fsa-field__label"
       :for="ID"
       :id="ID +'_label'">
-        {{ LABEL }} 
+        {{ LABEL }}
+        <span v-if="REQUIRED=='true'" class="fsa-field__label-desc">Required</span> 
         <span v-if="USE_POPOVER=='true'" class="fsa-field__label-desc fsa-m-l--xxs">
           <button @click="showPopover(POPOVER_ID)" class="fsa-btn fsa-btn--flat"
             data-behavior="toggle-popover"
@@ -17,8 +18,6 @@
             </svg>
           </button>
         </span>
-        <span v-if="REQUIRED=='true'" class="fsa-field__label-desc">Required</span>
-        
     </label>
     <!-- Popover START -->
     <div v-if="USE_POPOVER" :class="'fsa-popover '+ POPOVER_CLASSES" :id="POPOVER_ID" aria-hidden="true">
@@ -26,7 +25,7 @@
       <div class="fsa-popover__content">
         <div class="fsa-popover__hd">
           <div class="fsa-level@m fsa-level--justify-between">
-            <h2 class="fsa-popover__title">{{ POPOVER_HEADER }}</h2>
+            <span class="fsa-popover__title">{{ POPOVER_HEADER }}</span>
             <button @click="hidePopover(POPOVER_ID)" class="" type="button">
               <svg class="fsa-icon fsa-icon--size-2" aria-hidden="false" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
@@ -69,7 +68,7 @@ export default {
     INPUT_VALUE: String,
     INPUT_TYPE: String,
     BEHAVIOR: String,
-    EXTRA_CLASSES: String,
+    EXTRA_FIELD_CLASSES: String,
     FIELD_ERROR_CLASS: String,
     INPUT_ERROR_CLASS: String,
     ARIA_REQUIRED: String,

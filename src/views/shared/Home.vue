@@ -28,11 +28,12 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
 
-          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
-            <span>
+          <div class="fsa-grid">
+            <div class="fsa-grid__1/1 fsa-grid__1/2@m">
+
               <field
                 :ID="nameFieldId"
-                EXTRA_CLASSES=""
+                EXTRA_FIELD_CLASSES=""
                 LABEL="Full Name"
                 INPUT_VALUE=""
                 INPUT_TYPE="text"
@@ -45,7 +46,7 @@
                 HAS_ERROR="false"
                 USE_POPOVER="true"
                 POPOVER_TYPE="help"
-                POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
+                POPOVER_CLASSES="fsa-popover--rt fsa-popover--size-small"
                 :POPOVER_ID="nameFieldId+'-help-popover'"
                 POPOVER_HEADER="Name Field Help"
                 ref="nameField"
@@ -54,56 +55,79 @@
                   <p><strong>Note:</strong> Please provide your full legal given name, a it is written on your birth certificate.</p>
                 </div>
               </field>
-            </span>
-            <span>
-              <p class="fsa-m-t--l">
+
+            </div>
+            <div class="fsa-grid__1/1 fsa-grid__1/2@m">
+
+              <p class="fsa-m-t--m">
                 <button @click="setError('name')" class="fsa-btn fsa-btn--secondary">Toggle Name Error</button>
               </p>
-            </span>
+
+            </div>
           </div>
 
-
-          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
-            <span>
+          <div class="fsa-grid">
+            <div class="fsa-grid__1/1 fsa-grid__1/2@m">
+              
               <field-group
-                GROUP_ID="pies"
+                :ID="piesFieldId"
                 GROUP_TYPE="radio"
                 DISPLAY=""
                 LABEL="Pick a Pie"
                 :DATA="pieData"
                 REQUIRED=""
                 BEHAVIOR=""
-                EXTRA_CLASSES="fsa-field--block"
+                EXTRA_FIELD_CLASSES=""
                 FIELD_ERROR_CLASS=""
                 ARIA_REQUIRED="false"
                 HELP_MESSAGE="Select your favorite."
                 ERROR_MESSAGE="Why don't you like my pies?"
+                USE_POPOVER="true"
+                POPOVER_TYPE="help"
+                POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
+                :POPOVER_ID="piesFieldId+'-help-popover'"
+                POPOVER_HEADER="Pies Help"
                 ref="pieField"
               >
+                <div :id="piesFieldId + '-popup-body'">
+                  <p><strong>Note:</strong> Select the pie that you like the most to bring to parties.</p>
+                </div>
               </field-group>
-            </span>
-            <span>
+              
+            </div>
+            <div class="fsa-grid__1/1 fsa-grid__1/2@m">
+
               <p class="fsa-m-t--l">
                 <button @click="setError('pies')" class="fsa-btn fsa-btn--secondary">Toggle Pie Error</button>
               </p>
-            </span>
+              
+            </div>
           </div>
 
           <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
             <span>
               <selection
-                ID="vehicle"
+                :ID="vehicleId"
                 LABEL="What do you drive?"
                 :DATA="vehicleData"
                 REQUIRED="true"
                 SELECT_CLASSES=""
-                EXTRA_CLASSES=""
+                EXTRA_FIELD_CLASSES=""
+                EXTRA_SELECT_CLASSES="fsa-select--fill"
                 FIELD_ERROR_CLASS=""
                 ARIA_REQUIRED="true"
                 HELP_MESSAGE="Select your ride."
                 ERROR_MESSAGE="You must like walking!"
+                USE_POPOVER="true"
+                POPOVER_TYPE="help"
+                POPOVER_CLASSES="fsa-popover--rt fsa-popover--size-small"
+                :POPOVER_ID="vehicleId+'-help-popover'"
+                POPOVER_HEADER="Vehicle Help"
                 ref="vehicleField"
               >
+                <div :id="vehicleId + '-popup-body'">
+                  <p><strong>Note:</strong> Select the vehicle that has the least amount of C0<sub>2</sub> emissions.</p>
+                </div>
               </selection>
             </span>
             <span>
@@ -207,6 +231,7 @@ export default {
     const vehicleField = ref(null);
     const animalField = ref(null);
 
+    const piesFieldId = ref( uuidv4() );
     const pieData = [
       { id: "pie1", label: "Apple Pie", name: "piegroup" },
       { id: "pie2", label: "Pumpkin Pie", name: "piegroup" },
@@ -228,6 +253,7 @@ export default {
       { id: "v10", label: "15 Passenger Van", val: "bigvan", name: "vehiclesGroup"}
     ];
 
+    const vehicleId = ref(uuidv4());
     const vehicleData = [
       { 
         groupId: "g0",
@@ -316,7 +342,9 @@ export default {
     return {
       nameField,
       nameFieldId,
+      piesFieldId,
       pieField,
+      vehicleId,
       vehicleField,
       animalField,
       setError,
