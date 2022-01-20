@@ -9,7 +9,7 @@
           </svg>
           <span v-if="PREFIX">{{ PREFIX }}</span>
         </label>
-        <input class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
+        <input @keydown="handleKeydown" class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
       </span>
 
       <span v-if="USE_SUFFIX=='true'" class="fsa-affix fsa-affix--fill">
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useSpinboxControls } from '@/composables/useSpinboxControls';
 export default {
   props: {
@@ -49,23 +49,39 @@ export default {
     ARIA_DESCRIBEDBY: String
   },
   setup(props, {emit}) {
-    //const spinBoxId = computed(() => props.ID ? props.ID : '102938475762023984756768459392839404');
+    const prevValue = ref(null);
     const { stepUp, stepDown } = useSpinboxControls( props.ID, props.STEP);
     
-    const spin = (_dir) => {
-      if(_dir == 'up') stepUp();
-      if(_dir == 'down') stepDown();
-      let val = parseInt(document.getElementById(props.ID).value)
-
+    const callParent = (_dir, _val) => {
       emit('emitSpin', {
         id: props.ID,
         dir: _dir,
-        val: val
+        val: _val
       });
-    }
+    };
+
+    const spin = (_dir) => {
+      if(_dir == 'up') stepUp();
+      if(_dir == 'down') stepDown();
+      callParent(_dir, parseInt( document.getElementById(props.ID).value) );
+    };
+
+    const handleKeydown = (e) => {
+      if(e.keyCode === 38 && e.key == 'ArrowUp'){
+        e.preventDefault();
+        stepUp();
+        callParent('up', parseInt( document.getElementById(props.ID).value ) );
+      }
+      if(e.keyCode === 40 && e.key == 'ArrowDown'){
+        e.preventDefault();
+        stepDown();
+        callParent('down', parseInt( document.getElementById(props.ID).value ) );
+      }
+    };
     
     return {
-      spin
+      spin,
+      handleKeydown
     }
     
   }

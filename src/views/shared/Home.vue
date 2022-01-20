@@ -46,7 +46,7 @@
                 USE_SUFFIX="false"
                 SUFFIX="%"
                 USE_ICON="false"
-                ICON_PATH="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+                ICON_PATH="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM2 21h18v-2H2v2z"
                 ICON_SIZE_CLASS="fsa-icon--size-2"
                 :ARIA_DESCRIBEDBY="priceRangeFieldId + '__help'"
                 HELP_MESSAGE="Receive a better offer with a smaller price range"
