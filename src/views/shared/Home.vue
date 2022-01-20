@@ -28,6 +28,63 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
 
+        <div class="fsa-grid">
+            <div class="fsa-grid__1/1 fsa-grid__1/2@m">
+
+              <div class="fsa-field">
+                <label class="fsa-field__label" :for="priceRangeHighFieldId">Price Range</label>
+                <div class="fsa-level">
+                  
+                  <spinbox
+                    :ID="priceRangeLowFieldId"
+                    INPUT_VALUE="30"
+                    LABEL_TITLE="lower price"
+                    :STEP="getPriceRangeStep()"
+                    USE_PREFIX="true"
+                    PREFIX="$"
+                    USE_SUFFIX="false"
+                    SUFFIX="%"
+                    USE_ICON="false"
+                    ICON_PATH=""
+                    ICON_SIZE_CLASS="fsa-icon--size-2"
+                    @emitSpin="handleSpinboxLow"
+                    :ARIA_DESCRIBEDBY="priceRangeLowFieldId"
+                    >
+                  </spinbox>
+
+                  <div> - </div>
+                  
+                  <spinbox
+                    :ID="priceRangeHighFieldId"
+                    INPUT_VALUE="60"
+                    LABEL_TITLE="higher price"
+                    :STEP="getPriceRangeStep()"
+                    USE_PREFIX="true"
+                    PREFIX="$"
+                    USE_SUFFIX="false"
+                    SUFFIX="%"
+                    USE_ICON="false"
+                    ICON_PATH=""
+                    ICON_SIZE_CLASS="fsa-icon--size-2"
+                    @emitSpin="handleSpinboxHigh"
+                    :ARIA_DESCRIBEDBY="priceRangeHighFieldId"
+                    >
+                  </spinbox>
+
+                </div>
+                <span class="fsa-field__help" :id="priceRangeHighFieldId+'-help'">Provide a range of price.</span>
+              </div>  
+
+            </div>
+            <div class="fsa-grid__1/1 fsa-grid__1/2@m">
+
+              <p class="fsa-m-t--m">
+                <!--<button @click="setError('price-range')" class="fsa-btn fsa-btn--secondary">Toggle Price Range Error</button>-->
+              </p>
+
+            </div>
+          </div>
+
           <div class="fsa-grid">
             <div class="fsa-grid__1/1 fsa-grid__1/2@m">
 
@@ -195,6 +252,7 @@ const selection = defineAsyncComponent(() => import('@/components/selection/sele
 const selectMulti = defineAsyncComponent(() => import('@/components/select-multi/select-multi.vue'));
 const pageLevelHelpModal = defineAsyncComponent(() => import('@/views/demos/help/Page-Level-Help-Modal.vue'));
 const inlineHelp = defineAsyncComponent(() => import('@/components/inline-help/inline-help.vue'));
+const spinbox = defineAsyncComponent(() => import('@/components/spinbox/spinbox.vue'));
  
 export default {
   components: {
@@ -205,7 +263,8 @@ export default {
     selection,
     selectMulti,
     pageLevelHelpModal,
-    inlineHelp
+    inlineHelp,
+    spinbox
   },
 
   setup(props){
@@ -223,6 +282,34 @@ export default {
 
     const helpModalId = ref( uuidv4() );
     setModalId(helpModalId.value);
+
+    const priceRangeLowFieldId = ref( uuidv4() );
+    const priceRangeHighFieldId = ref( uuidv4() );
+    const priceRangeStep = ref(10);
+    const getPriceRangeStep = () => {
+      return priceRangeStep.value.toString();
+    }
+
+    const handleSpinboxLow = (_obj) => {
+      let sbHighElem = document.getElementById(priceRangeHighFieldId.value);
+      let sbHighValue = parseInt(sbHighElem.value);
+      let step = priceRangeStep.value;
+
+      if((_obj.val + step) >= sbHighValue) {
+        sbHighElem.value = (_obj.val + step)
+      }
+    }
+
+    const handleSpinboxHigh = (_obj) => {
+      let sbLowElem = document.getElementById(priceRangeLowFieldId.value);
+      let sbLowValue = parseInt(sbLowElem.value);
+      let step = priceRangeStep.value;
+
+      if((_obj.val - step) <= sbLowValue) {
+        sbLowElem.value = (_obj.val - step)
+      }
+    }
+
 
     const nameField = ref(null);
     const nameFieldId = ref( uuidv4() );
@@ -340,6 +427,8 @@ export default {
     });
 
     return {
+      priceRangeLowFieldId,
+      priceRangeHighFieldId,
       nameField,
       nameFieldId,
       piesFieldId,
@@ -358,7 +447,10 @@ export default {
       hideModal,
       helpModalId,
       showPopover,
-      hidePopover
+      hidePopover,
+      getPriceRangeStep,
+      handleSpinboxLow,
+      handleSpinboxHigh
     }
   }
 

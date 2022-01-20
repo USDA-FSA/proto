@@ -1,0 +1,72 @@
+<template>
+  <div class="fsa-spinbox fsa-field__item">
+    <div class="fsa-spinbox__number">
+
+      <span v-if="USE_PREFIX=='true'" class="fsa-affix fsa-affix--fill">
+        <label :for="ID" class="fsa-affix__prefix" aria-hidden="true" :title="LABEL_TITLE">
+          <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path :d="ICON_PATH"></path>
+          </svg>
+          <span v-if="PREFIX">{{ PREFIX }}</span>
+        </label>
+        <input class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
+      </span>
+
+      <span v-if="USE_SUFFIX=='true'" class="fsa-affix fsa-affix--fill">
+        <input class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
+        <label :for="ID" class="fsa-affix__suffix" aria-hidden="true" title="LABEL_TITLE">
+          <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path :d="ICON_PATH"></path>
+          </svg>
+          <span v-if="SUFFIX">{{ SUFFIX }}</span>
+        </label>
+      </span>
+
+    </div>
+    <div class="fsa-spinbox__actions" aria-hidden="true">
+      <button @click="spin('up')" tabindex="-1" class="fsa-spinbox__btn fsa-spinbox__btn--increment" type="button" data-behavior="spinbox-spin" title="Increase"></button>
+      <button @click="spin('down')" tabindex="-1" class="fsa-spinbox__btn fsa-spinbox__btn--decrement" type="button" data-behavior="spinbox-spin" title="Decrease"></button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { computed } from 'vue';
+import { useSpinboxControls } from '@/composables/useSpinboxControls';
+export default {
+  props: {
+    ID: String,
+    INPUT_VALUE: String,
+    LABEL_TITLE: String,
+    STEP: String,
+    USE_PREFIX: String,
+    PREFIX: String,
+    USE_SUFFIX: String,
+    SUFFIX: String,
+    USE_ICON: String,
+    ICON_PATH: String,
+    ICON_SIZE_CLASS: String,
+    ARIA_DESCRIBEDBY: String
+  },
+  setup(props, {emit}) {
+    //const spinBoxId = computed(() => props.ID ? props.ID : '102938475762023984756768459392839404');
+    const { stepUp, stepDown } = useSpinboxControls( props.ID, props.STEP);
+    
+    const spin = (_dir) => {
+      if(_dir == 'up') stepUp();
+      if(_dir == 'down') stepDown();
+
+      emit('emitSpin', {
+        id: props.ID,
+        dir: _dir,
+        val: parseInt(document.getElementById(props.ID).value)
+      });
+    }
+    
+    return {
+      spin
+    }
+    
+  }
+}
+</script>
