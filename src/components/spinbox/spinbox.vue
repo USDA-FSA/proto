@@ -55,11 +55,12 @@ export default {
     const spin = (_dir) => {
       if(_dir == 'up') stepUp();
       if(_dir == 'down') stepDown();
+      let val = parseInt(document.getElementById(props.ID).value)
 
       emit('emitSpin', {
         id: props.ID,
         dir: _dir,
-        val: parseInt(document.getElementById(props.ID).value)
+        val: val
       });
     }
     

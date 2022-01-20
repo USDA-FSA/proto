@@ -159,7 +159,6 @@ export default {
     }
 
     onMounted(()=>{
-      console.log('global-nav onMounted', props.NAV_DATA);
       window.addEventListener('keydown', listenForKeys);
       document.addEventListener('click', documentClickHandler);
       loopItems('addFocusListeners');

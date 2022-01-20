@@ -31,49 +31,38 @@
         <div class="fsa-grid">
             <div class="fsa-grid__1/1 fsa-grid__1/2@m">
 
-              <div class="fsa-field">
-                <label class="fsa-field__label" :for="priceRangeHighFieldId">Price Range</label>
-                <div class="fsa-level">
-                  
-                  <spinbox
-                    :ID="priceRangeLowFieldId"
-                    INPUT_VALUE="30"
-                    LABEL_TITLE="lower price"
-                    :STEP="getPriceRangeStep()"
-                    USE_PREFIX="true"
-                    PREFIX="$"
-                    USE_SUFFIX="false"
-                    SUFFIX="%"
-                    USE_ICON="false"
-                    ICON_PATH=""
-                    ICON_SIZE_CLASS="fsa-icon--size-2"
-                    @emitSpin="handleSpinboxLow"
-                    :ARIA_DESCRIBEDBY="priceRangeLowFieldId"
-                    >
-                  </spinbox>
-
-                  <div> - </div>
-                  
-                  <spinbox
-                    :ID="priceRangeHighFieldId"
-                    INPUT_VALUE="60"
-                    LABEL_TITLE="higher price"
-                    :STEP="getPriceRangeStep()"
-                    USE_PREFIX="true"
-                    PREFIX="$"
-                    USE_SUFFIX="false"
-                    SUFFIX="%"
-                    USE_ICON="false"
-                    ICON_PATH=""
-                    ICON_SIZE_CLASS="fsa-icon--size-2"
-                    @emitSpin="handleSpinboxHigh"
-                    :ARIA_DESCRIBEDBY="priceRangeHighFieldId"
-                    >
-                  </spinbox>
-
+              <range
+                :ID="priceRangeFieldId"
+                @emitRangeChange="handleRangeChange"
+                EXTRA_FIELD_CLASSES="fsa-field--fill"
+                RANGE_LABEL="Price Range"
+                LOW_VALUE="30"
+                LOW_LABEL_TITLE="lower price value"
+                HIGH_VALUE="60"
+                HIGH_LABEL_TITLE="higher price value"
+                :STEP="rangeStep"
+                USE_PREFIX="true"
+                PREFIX="$"
+                USE_SUFFIX="false"
+                SUFFIX="%"
+                USE_ICON="false"
+                ICON_PATH="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+                ICON_SIZE_CLASS="fsa-icon--size-2"
+                :ARIA_DESCRIBEDBY="priceRangeFieldId + '__help'"
+                HELP_MESSAGE="Receive a better offer with a smaller price range"
+                ERROR_MESSAGE="That price range is not acceptable."
+                HAS_ERROR="false"
+                USE_POPOVER="false"
+                POPOVER_TYPE="help"
+                POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
+                :POPOVER_ID="priceRangeFieldId+'-help-popover'"
+                POPOVER_HEADER="Price Range Help"
+                ref="priceField"
+              >
+                <div :id="priceRangeFieldId + '-popup-body'">
+                  <p><strong>Note:</strong> The low and high prices values will automatically adjust if one is exceeding the limits of the range..</p>
                 </div>
-                <span class="fsa-field__help" :id="priceRangeHighFieldId+'-help'">Provide a range of price.</span>
-              </div>  
+              </range>
 
             </div>
             <div class="fsa-grid__1/1 fsa-grid__1/2@m">
@@ -240,6 +229,7 @@ import { useStore } from 'vuex';
 import { useNavigation } from '@/composables/useNavigation';
 import { useModalControls } from '@/composables/useModalControls';
 import { usePopoverControls } from '@/composables/usePopoverControls';
+
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -252,7 +242,7 @@ const selection = defineAsyncComponent(() => import('@/components/selection/sele
 const selectMulti = defineAsyncComponent(() => import('@/components/select-multi/select-multi.vue'));
 const pageLevelHelpModal = defineAsyncComponent(() => import('@/views/demos/help/Page-Level-Help-Modal.vue'));
 const inlineHelp = defineAsyncComponent(() => import('@/components/inline-help/inline-help.vue'));
-const spinbox = defineAsyncComponent(() => import('@/components/spinbox/spinbox.vue'));
+const range = defineAsyncComponent(() => import('@/components/range/range.vue'));
  
 export default {
   components: {
@@ -264,7 +254,7 @@ export default {
     selectMulti,
     pageLevelHelpModal,
     inlineHelp,
-    spinbox
+    range
   },
 
   setup(props){
@@ -283,33 +273,13 @@ export default {
     const helpModalId = ref( uuidv4() );
     setModalId(helpModalId.value);
 
-    const priceRangeLowFieldId = ref( uuidv4() );
-    const priceRangeHighFieldId = ref( uuidv4() );
-    const priceRangeStep = ref(10);
-    const getPriceRangeStep = () => {
-      return priceRangeStep.value.toString();
+    const priceRangeFieldId = ref( uuidv4() );
+    const priceField = ref(null);
+    const rangeStep = ref('10'); // element property expects a string, not int
+    const handleRangeChange = (_obj) => {
+      let step = parseInt( rangeStep.value ); 
+      console.log('handleRangeChange > val', _obj.val)
     }
-
-    const handleSpinboxLow = (_obj) => {
-      let sbHighElem = document.getElementById(priceRangeHighFieldId.value);
-      let sbHighValue = parseInt(sbHighElem.value);
-      let step = priceRangeStep.value;
-
-      if((_obj.val + step) >= sbHighValue) {
-        sbHighElem.value = (_obj.val + step)
-      }
-    }
-
-    const handleSpinboxHigh = (_obj) => {
-      let sbLowElem = document.getElementById(priceRangeLowFieldId.value);
-      let sbLowValue = parseInt(sbLowElem.value);
-      let step = priceRangeStep.value;
-
-      if((_obj.val - step) <= sbLowValue) {
-        sbLowElem.value = (_obj.val - step)
-      }
-    }
-
 
     const nameField = ref(null);
     const nameFieldId = ref( uuidv4() );
@@ -423,12 +393,13 @@ export default {
     };
 
     onMounted(()=>{
-      console.log('Home onMounted');
+
     });
 
     return {
-      priceRangeLowFieldId,
-      priceRangeHighFieldId,
+      priceRangeFieldId,
+      handleRangeChange,
+      rangeStep,
       nameField,
       nameFieldId,
       piesFieldId,
@@ -447,10 +418,7 @@ export default {
       hideModal,
       helpModalId,
       showPopover,
-      hidePopover,
-      getPriceRangeStep,
-      handleSpinboxLow,
-      handleSpinboxHigh
+      hidePopover
     }
   }
 
