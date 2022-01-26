@@ -57,7 +57,7 @@
                 POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
                 :POPOVER_ID="priceRangeFieldId+'-help-popover'"
                 POPOVER_HEADER="Price Range Help"
-                ref="priceField"
+                ref="priceRangeField"
               >
                 <div :id="priceRangeFieldId + '-popup-body'">
                   <p><strong>Note:</strong> The low and high prices values will automatically adjust if one is exceeding the limits of the range..</p>
@@ -68,7 +68,7 @@
             <div class="fsa-grid__1/1 fsa-grid__1/2@m">
 
               <p class="fsa-m-t--m">
-                <!--<button @click="setError('price-range')" class="fsa-btn fsa-btn--secondary">Toggle Price Range Error</button>-->
+                <button @click="setError('price-range')" class="fsa-btn fsa-btn--secondary">Toggle Price Range Error</button>
               </p>
 
             </div>
@@ -272,9 +272,9 @@ export default {
 
     const helpModalId = ref( uuidv4() );
     setModalId(helpModalId.value);
-
+    
+    const priceRangeField = ref(null);
     const priceRangeFieldId = ref( uuidv4() );
-    const priceField = ref(null);
     const rangeStep = ref('10'); // element property expects a string, not int
     const handleRangeChange = (_obj) => {
       let step = parseInt( rangeStep.value ); 
@@ -363,6 +363,7 @@ export default {
     let piesHasError = ref(false);
     let vehicleHasError = ref(false);
     let animalHasError = ref(false);
+    let priceRangeHasError = ref(false);
 
     const setError = (type) => {
       if(type=='name'){
@@ -380,7 +381,12 @@ export default {
       if(type=='animal'){
         animalHasError.value = animalHasError.value ? false : true;
         animalField.value.setHasError(animalHasError.value);
-      }  
+      } 
+      if(type=='price-range'){
+        priceRangeHasError.value = priceRangeHasError.value ? false : true;
+        priceRangeField.value.setHasError(priceRangeHasError.value);
+        priceRangeField.value.hasErrorCaller(priceRangeHasError.value);
+      } 
     }
 
     const headerText = ref('Search Header Default');
@@ -396,6 +402,7 @@ export default {
     });
 
     return {
+      priceRangeField,
       priceRangeFieldId,
       handleRangeChange,
       rangeStep,

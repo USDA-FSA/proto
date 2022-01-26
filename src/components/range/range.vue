@@ -42,6 +42,8 @@
         :ID="ID+'-low'"
         :INPUT_VALUE="LOW_VALUE"
         :LABEL_TITLE="LOW_LABEL_TITLE"
+        :INPUT_ERROR_CLASS="INPUT_ERROR_CLASS"
+        :HAS_ERROR="HAS_ERROR"
         :STEP="STEP"
         :USE_PREFIX="USE_PREFIX"
         :PREFIX="PREFIX"
@@ -62,6 +64,8 @@
         :ID="ID+'-high'"
         :INPUT_VALUE="HIGH_VALUE"
         :LABEL_TITLE="HIGH_LABEL_TITLE"
+        :INPUT_ERROR_CLASS="INPUT_ERROR_CLASS"
+        :HAS_ERROR="HAS_ERROR"
         :STEP="STEP"
         :USE_PREFIX="USE_PREFIX"
         :PREFIX="PREFIX"
@@ -109,6 +113,7 @@ export default {
     ICON_PATH: String,
     ICON_SIZE_CLASS: String,
     FIELD_ERROR_CLASS: String,
+    INPUT_ERROR_CLASS: String,
     ARIA_REQUIRED: String,
     ARIA_DESCRIBEDBY: String,
     HELP_MESSAGE: String,
@@ -127,7 +132,9 @@ export default {
 
   setup(props, {emit}){
     const fieldErrorClass = props.FIELD_ERROR_CLASS ? props.FIELD_ERROR_CLASS : ref('fsa-field--error');
-    
+    const inputErrorClass = props.INPUT_ERROR_CLASS ? props.INPUT_ERROR_CLASS : ref('fsa-input--error');
+
+
     const { showPopover, hidePopover } = usePopoverControls();
     
     const {
@@ -141,6 +148,9 @@ export default {
       setSpinboxLow,
       setSpinboxHigh,
       getRangeValues } = useRangeControls();
+
+    const lowRangeRef = ref(null);
+    const highRangeRef = ref(null);
     
     const handleSpinboxLow = (_obj) => callSpinbox( setSpinboxLow, _obj);
     const handleSpinboxHigh = (_obj) => callSpinbox( setSpinboxHigh, _obj);
@@ -157,6 +167,11 @@ export default {
       emit('emitRangeChange', newObj);
     }
 
+    const hasErrorCaller = (_boo) => {
+      lowRangeRef.value.setHasError(_boo);
+      highRangeRef.value.setHasError(_boo);
+    }
+
     onMounted(() => {
       if(props.HAS_ERROR == 'true') setHasError(true);
     })
@@ -164,9 +179,13 @@ export default {
     return {
       hasError,
       setHasError,
+      lowRangeRef,
+      highRangeRef,
+      hasErrorCaller,
       handleSpinboxLow,
       handleSpinboxHigh,
       fieldErrorClass,
+      inputErrorClass,
       showPopover,
       hidePopover
     }
