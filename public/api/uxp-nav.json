@@ -22,10 +22,34 @@
       "columnClass": ""
     },
     {
+      "uid": "menu-demo-id",
+      "label": "Menu Demo",
+      "path": "/demos",
+      "hasChild": "true",
+      "multiColumn": "false",
+      "columnClass": "fsa-nav-global__link--has-sub-menu",
+      "hasHeaders": "false",
+      "children": [
+        {
+          "uid": "menu-demo-one-id",
+          "label": "Submenu System",
+          "path": "/",
+          "hasChild": "false"
+        },
+        {
+          "uid": "menu-demo-two-id",
+          "label": "Menu Subsystem",
+          "path": "/",
+          "hasChild": "false"
+        }
+      ]
+    },
+    {
       "uid": "component-demos-id",
       "label": "Component Demos",
       "path": "/demos",
       "hasChild": "true",
+      "multiColumn": "true",
       "columnClass": "fsa-nav-global__list-item--multi-column",
       "hasHeaders": "false",
       "children": [
@@ -145,6 +169,7 @@
       "label": "Reports",
       "path": "/reports",
       "hasChild": "true",
+      "multiColumn": "true",
       "columnClass": "fsa-nav-global__list-item--multi-column",
       "hasHeaders": "true",
       "children": [
@@ -269,13 +294,6 @@
           ]
         }
       ]
-    },
-    {
-      "uid": "settings-id",
-      "label": "Settings",
-      "path": "/settings",
-      "hasChild": "false",
-      "columnClass": ""
     }
   ],
   "side": [
