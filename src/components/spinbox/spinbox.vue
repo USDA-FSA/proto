@@ -9,11 +9,33 @@
           </svg>
           <span v-if="PREFIX">{{ PREFIX }}</span>
         </label>
-        <input @blur="handleBlur" @keydown="handleKeydown" class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
+        <!-- :class="'fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item ' + (hasError ? inputErrorClass : '')" -->
+        <input
+          @blur="handleBlur"
+          @keydown="handleKeydown"
+          class="fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item"
+          type="number"
+          :value="INPUT_VALUE"
+          :step="STEP"
+          :id="ID"
+          :aria-describedby="ARIA_DESCRIBEDBY"
+          :name="ID"
+        >
       </span>
 
       <span v-if="USE_SUFFIX=='true'" class="fsa-affix fsa-affix--fill">
-        <input class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
+      <!-- :class="'fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item ' + (hasError ? inputErrorClass : '')" -->
+        <input
+          @blur="handleBlur"
+          @keydown="handleKeydown"
+          class="fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item"
+          type="number"
+          :value="INPUT_VALUE"
+          :step="STEP"
+          :id="ID"
+          :aria-describedby="ARIA_DESCRIBEDBY"
+          :name="ID"
+        >
         <label :for="ID" class="fsa-affix__suffix" aria-hidden="true" title="LABEL_TITLE">
           <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
@@ -32,12 +54,15 @@
 
 <script>
 import { ref, computed } from 'vue';
+import { useErrorState } from '@/composables/useErrorState';
 import { useSpinboxControls } from '@/composables/useSpinboxControls';
+
 export default {
   props: {
     ID: String,
     INPUT_VALUE: String,
     LABEL_TITLE: String,
+    INPUT_ERROR_CLASS: String,
     STEP: String,
     USE_PREFIX: String,
     PREFIX: String,
@@ -49,6 +74,10 @@ export default {
     ARIA_DESCRIBEDBY: String
   },
   setup(props, {emit}) {
+    const inputErrorClass = props.INPUT_ERROR_CLASS ? props.INPUT_ERROR_CLASS : ref('fsa-input--error');
+
+    const { hasError, setHasError } = useErrorState();
+
     const prevValue = ref(null);
     const { stepUp, stepDown } = useSpinboxControls( props.ID, props.STEP);
     
@@ -88,9 +117,13 @@ export default {
     }
     
     return {
+      hasError,
+      setHasError,
       spin,
       handleKeydown,
-      handleBlur
+      handleBlur,
+      hasError,
+      inputErrorClass
     }
     
   }
