@@ -9,7 +9,7 @@
           </svg>
           <span v-if="PREFIX">{{ PREFIX }}</span>
         </label>
-        <input @keydown="handleKeydown" class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
+        <input @blur="handleBlur" @keydown="handleKeydown" class="fsa-input fsa-spinbox__input fsa-affix__item" type="number" :value="INPUT_VALUE" :step="STEP" :id="ID" :aria-describedby="ARIA_DESCRIBEDBY" :name="ID">
       </span>
 
       <span v-if="USE_SUFFIX=='true'" class="fsa-affix fsa-affix--fill">
@@ -52,36 +52,45 @@ export default {
     const prevValue = ref(null);
     const { stepUp, stepDown } = useSpinboxControls( props.ID, props.STEP);
     
-    const callParent = (_dir, _val) => {
+    const callParent = (_dir) => {
       emit('emitSpin', {
         id: props.ID,
         dir: _dir,
-        val: _val
+        val: parseInt( document.getElementById(props.ID).value )
       });
     };
 
     const spin = (_dir) => {
       if(_dir == 'up') stepUp();
       if(_dir == 'down') stepDown();
-      callParent(_dir, parseInt( document.getElementById(props.ID).value) );
+      callParent(_dir);
+      prevValue.value = parseInt( document.getElementById(props.ID).value );
     };
 
-    const handleKeydown = (e) => {
-      if(e.keyCode === 38 && e.key == 'ArrowUp'){
-        e.preventDefault();
+    const handleKeydown = (_e) => {
+      if(_e.keyCode === 38 && _e.key == 'ArrowUp'){
+        _e.preventDefault();
         stepUp();
-        callParent('up', parseInt( document.getElementById(props.ID).value ) );
+        callParent('up');
       }
-      if(e.keyCode === 40 && e.key == 'ArrowDown'){
-        e.preventDefault();
+      if(_e.keyCode === 40 && _e.key == 'ArrowDown'){
+        _e.preventDefault();
         stepDown();
-        callParent('down', parseInt( document.getElementById(props.ID).value ) );
+        callParent('down');
       }
     };
+
+    const handleBlur = () => {
+      let val = parseInt( document.getElementById(props.ID).value );
+      if( prevValue.value > val) callParent('up');
+      else callParent('down');
+      prevValue.value = val;
+    }
     
     return {
       spin,
-      handleKeydown
+      handleKeydown,
+      handleBlur
     }
     
   }

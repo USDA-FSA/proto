@@ -157,7 +157,6 @@ export default {
       emit('emitRangeChange', newObj);
     }
 
-
     onMounted(() => {
       if(props.HAS_ERROR == 'true') setHasError(true);
     })

@@ -278,7 +278,6 @@ export default {
     const rangeStep = ref('10'); // element property expects a string, not int
     const handleRangeChange = (_obj) => {
       let step = parseInt( rangeStep.value ); 
-      console.log('handleRangeChange > val', _obj.val)
     }
 
     const nameField = ref(null);
