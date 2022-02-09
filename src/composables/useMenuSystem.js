@@ -27,12 +27,13 @@ export function useMenuSystem() {
   }
   
   const closeMenu = (item, closeAll = false) => {
-    console.log('closeMenu')
     let id = item.getAttribute('aria-controls');
-    item.setAttribute('aria-expanded', 'false');
-    document.getElementById(id).setAttribute('aria-hidden', 'true');
-    // Set status here for Unfocus actions
-    setMenuStatus(false);
+    if(id) {
+      item.setAttribute('aria-expanded', 'false');
+      document.getElementById( id ).setAttribute('aria-hidden', 'true');
+      // Set status here for Unfocus actions
+      setMenuStatus(false);
+    }
   }
   
   const addFocusListeners = (item) => {
