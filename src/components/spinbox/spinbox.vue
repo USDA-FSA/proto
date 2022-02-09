@@ -1,19 +1,18 @@
 <template>
-  <div class="fsa-spinbox fsa-field__item">
+  <div :class="'fsa-spinbox ' + (hasError ? ERROR_CLASS : '')">
     <div class="fsa-spinbox__number">
 
-      <span v-if="USE_PREFIX=='true'" class="fsa-affix fsa-affix--fill">
+      <span v-if="usePrefix" class="fsa-affix fsa-affix--fill">
         <label :for="ID" class="fsa-affix__prefix" aria-hidden="true" :title="LABEL_TITLE">
           <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
           </svg>
-          <span v-if="PREFIX">{{ PREFIX }}</span>
+          <span v-if="usePrefix">{{ PREFIX }}</span>
         </label>
-        <!-- :class="'fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item ' + (hasError ? inputErrorClass : '')" -->
         <input
           @blur="handleBlur"
           @keydown="handleKeydown"
-          class="fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item"
+          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (usePrefix ? 'fsa-affix__item' : '') + (hasError ? ' '+ inputErrorClass : '')"
           type="number"
           :value="INPUT_VALUE"
           :step="STEP"
@@ -23,12 +22,11 @@
         >
       </span>
 
-      <span v-if="USE_SUFFIX=='true'" class="fsa-affix fsa-affix--fill">
-      <!-- :class="'fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item ' + (hasError ? inputErrorClass : '')" -->
+      <span v-if="useSuffix" class="fsa-affix fsa-affix--fill">
         <input
           @blur="handleBlur"
           @keydown="handleKeydown"
-          class="fsa-input fsa-field__item fsa-spinbox__input fsa-affix__item"
+          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (useSuffix ? 'fsa-affix__item' : '') + (hasError ? inputErrorClass : '')"
           type="number"
           :value="INPUT_VALUE"
           :step="STEP"
@@ -36,11 +34,11 @@
           :aria-describedby="ARIA_DESCRIBEDBY"
           :name="ID"
         >
-        <label :for="ID" class="fsa-affix__suffix" aria-hidden="true" title="LABEL_TITLE">
+        <label :for="ID" class="fsa-affix__suffix" aria-hidden="true" :title="LABEL_TITLE">
           <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
           </svg>
-          <span v-if="SUFFIX">{{ SUFFIX }}</span>
+          <span v-if="useSuffix">{{ SUFFIX }}</span>
         </label>
       </span>
 
@@ -53,7 +51,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useErrorState } from '@/composables/useErrorState';
 import { useSpinboxControls } from '@/composables/useSpinboxControls';
 
@@ -62,6 +60,7 @@ export default {
     ID: String,
     INPUT_VALUE: String,
     LABEL_TITLE: String,
+    ERROR_CLASS: String,
     INPUT_ERROR_CLASS: String,
     STEP: String,
     USE_PREFIX: String,
@@ -75,6 +74,8 @@ export default {
   },
   setup(props, {emit}) {
     const inputErrorClass = props.INPUT_ERROR_CLASS ? props.INPUT_ERROR_CLASS : ref('fsa-input--error');
+    const usePrefix = ref(false);
+    const useSuffix = ref(false);
 
     const { hasError, setHasError } = useErrorState();
 
@@ -115,6 +116,11 @@ export default {
       else callParent('down');
       prevValue.value = val;
     }
+
+    onMounted(()=>{
+      usePrefix.value = props.USE_PREFIX == 'true' ? true : false;
+      useSuffix.value = props.USE_SUFFIX == 'true' ? true : false;
+    })
     
     return {
       hasError,
@@ -123,7 +129,9 @@ export default {
       handleKeydown,
       handleBlur,
       hasError,
-      inputErrorClass
+      inputErrorClass,
+      usePrefix,
+      useSuffix
     }
     
   }

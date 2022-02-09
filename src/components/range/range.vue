@@ -42,8 +42,9 @@
         :ID="ID+'-low'"
         :INPUT_VALUE="LOW_VALUE"
         :LABEL_TITLE="LOW_LABEL_TITLE"
-        :INPUT_ERROR_CLASS="INPUT_ERROR_CLASS"
         :HAS_ERROR="HAS_ERROR"
+        ERROR_CLASS="fsa-spinbox--error"
+        INPUT_ERROR_CLASS="fsa-input--error"
         :STEP="STEP"
         :USE_PREFIX="USE_PREFIX"
         :PREFIX="PREFIX"
@@ -64,8 +65,9 @@
         :ID="ID+'-high'"
         :INPUT_VALUE="HIGH_VALUE"
         :LABEL_TITLE="HIGH_LABEL_TITLE"
-        :INPUT_ERROR_CLASS="INPUT_ERROR_CLASS"
         :HAS_ERROR="HAS_ERROR"
+        ERROR_CLASS="fsa-spinbox--error"
+        INPUT_ERROR_CLASS="fsa-input--error"
         :STEP="STEP"
         :USE_PREFIX="USE_PREFIX"
         :PREFIX="PREFIX"
@@ -113,7 +115,6 @@ export default {
     ICON_PATH: String,
     ICON_SIZE_CLASS: String,
     FIELD_ERROR_CLASS: String,
-    INPUT_ERROR_CLASS: String,
     ARIA_REQUIRED: String,
     ARIA_DESCRIBEDBY: String,
     HELP_MESSAGE: String,
