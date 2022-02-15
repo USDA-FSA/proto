@@ -7,7 +7,6 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
           <h1>Content Tabs Demo</h1>
-
           
           <div class="fsa-m-t--m">
             <content-tabs :TABS_DATA="tabsData" @emitTabSelection="handleTabSelected">
@@ -15,11 +14,9 @@
                 <div :id="tableOneId">
                   <table-one ref="tableOneRef"></table-one>
                 </div>
-
                 <div :id="tableTwoId">
                   <table-two ref="tableTwoRef"></table-two>
                 </div>
-
                 <div :id="tableThreeId">
                   <table-three ref="tableThreeRef"></table-three>
                 </div>
@@ -28,8 +25,9 @@
           </div>
           
         </div>
+        <!-- fsa-section__bd END --> 
       </div>
-
+      <!-- fsa-section END --> 
     </main>
 
     <baseFooter></baseFooter>
@@ -74,9 +72,16 @@ export default {
 
     const tabsData = ref([
       {
+        id: 'tabby-three-id',
+        label: 'Search Records',
+        isSelected: true,
+        containerId: tableThreeId,
+        containerRef: tableThreeRef
+      },
+      {
         id: 'tabby-two-id',
         label: 'Program Information',
-        isSelected: true,
+        isSelected: false,
         containerId: tableTwoId,
         containerRef: tableTwoRef
       },
@@ -86,14 +91,6 @@ export default {
         isSelected: false,
         containerId: tableOneId,
         containerRef: tableOneRef
-      },
-      
-      {
-        id: 'tabby-three-id',
-        label: 'Search Records',
-        isSelected: false,
-        containerId: tableThreeId,
-        containerRef: tableThreeRef
       }
     ]);
 
