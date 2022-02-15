@@ -34,7 +34,7 @@
                   <ul class="fsa-nav-global__sub-menu-list" :aria-labelledby="item.uid+'-SUB'">
                     <li v-for="child in item.children" :key="child.uid" class="fsa-nav-global__sub-menu-item">
                       
-                      <a href="#" @click.prevent="goto(gp.path)" class="fsa-nav-global__sub-menu-link">{{ child.label }}</a>
+                      <a href="#" @click.prevent="goto(child.path)" class="fsa-nav-global__sub-menu-link">{{ child.label }}</a>
 
                     </li>
                   </ul>
