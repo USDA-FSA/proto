@@ -1,0 +1,1 @@
+import{_ as e}from"./index.94f1a9ed.js";import{o,f as t}from"./vendor.054b4197.js";const r={setup(){}};function n(s,a,c,p,d,f){return o(),t("h1",null,"Page Not Found")}var i=e(r,[["render",n]]);export{i as default};

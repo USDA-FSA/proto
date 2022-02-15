@@ -84,9 +84,9 @@
           "hasChild": "false"
         },
         {
-          "uid": "investment-placement",
-          "label": "Investment Placement",
-          "path": "/reports/investment-placement",
+          "uid": "content-tabs-id",
+          "label": "Content Tabs Demo",
+          "path": "/demos/content-tabs",
           "hasChild": "false"
         },
         
