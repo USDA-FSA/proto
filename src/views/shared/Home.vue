@@ -36,7 +36,7 @@
                 @emitRangeChange="handleRangeChange"
                 EXTRA_FIELD_CLASSES="fsa-field--fill"
                 RANGE_LABEL="Price Range"
-                LOW_VALUE="30"
+                LOW_VALUE="20"
                 LOW_LABEL_TITLE="lower price value"
                 HIGH_VALUE="60"
                 HIGH_LABEL_TITLE="higher price value"
@@ -277,7 +277,8 @@ export default {
     const priceRangeFieldId = ref( uuidv4() );
     const rangeStep = ref('10'); // element property expects a string, not int
     const handleRangeChange = (_obj) => {
-      let step = parseInt( rangeStep.value ); 
+      // Do stuff here to control Parent
+      //let step = parseInt( rangeStep.value ); 
     }
 
     const nameField = ref(null);

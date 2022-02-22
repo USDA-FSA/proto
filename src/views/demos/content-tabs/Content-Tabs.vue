@@ -7,9 +7,10 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
           <h1>Content Tabs Demo</h1>
-          
           <div class="fsa-m-t--m">
+
             <content-tabs :TABS_DATA="tabsData" @emitTabSelection="handleTabSelected">
+              
               <template v-slot:containers>
                 <div :id="tableOneId">
                   <table-one ref="tableOneRef"></table-one>
@@ -21,9 +22,11 @@
                   <table-three ref="tableThreeRef"></table-three>
                 </div>
               </template>
+
             </content-tabs>
+
+
           </div>
-          
         </div>
         <!-- fsa-section__bd END --> 
       </div>
@@ -70,31 +73,32 @@ export default {
     const tableTwoRef = ref(null);
     const tableThreeRef = ref(null);
 
+
     const tabsData = ref([
       {
-        id: 'tabby-three-id',
-        label: 'Search Records',
+        id: 'tab-one-id',
+        label: 'LDP Applications',
         isSelected: true,
-        containerId: tableThreeId,
-        containerRef: tableThreeRef
+        containerId: tableOneId
       },
       {
-        id: 'tabby-two-id',
+        id: 'tab-two-id',
         label: 'Program Information',
         isSelected: false,
-        containerId: tableTwoId,
-        containerRef: tableTwoRef
-      },
+        containerId: tableTwoId
+      },      
       {
-        id: 'tabby-one-id',
-        label: 'LDP Applications',
+        id: 'tab-three-id',
+        label: 'Search Records',
         isSelected: false,
-        containerId: tableOneId,
-        containerRef: tableOneRef
+        containerId: tableThreeId
       }
+      
     ]);
 
+
     const handleTabSelected = (_obj) => {
+      // Do something in Parent Component when Tab Selected
       console.log('_obj.id',_obj.id)
     }
 
