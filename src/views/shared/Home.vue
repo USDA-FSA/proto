@@ -36,9 +36,9 @@
                 @emitRangeChange="handleRangeChange"
                 EXTRA_FIELD_CLASSES="fsa-field--fill"
                 RANGE_LABEL="Price Range"
-                LOW_VALUE="20"
+                LOW_VALUE="30"
                 LOW_LABEL_TITLE="lower price value"
-                HIGH_VALUE="60"
+                HIGH_VALUE="70"
                 HIGH_LABEL_TITLE="higher price value"
                 :STEP="rangeStep"
                 USE_PREFIX="true"
@@ -50,6 +50,7 @@
                 ICON_SIZE_CLASS="fsa-icon--size-2"
                 :ARIA_DESCRIBEDBY="priceRangeFieldId + '__help'"
                 HELP_MESSAGE="Receive a better offer with a smaller price range"
+                INPUT_ERROR_CLASS="fsa-input--error"
                 ERROR_MESSAGE="That price range is not acceptable."
                 HAS_ERROR="false"
                 USE_POPOVER="false"
@@ -57,7 +58,7 @@
                 POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
                 :POPOVER_ID="priceRangeFieldId+'-help-popover'"
                 POPOVER_HEADER="Price Range Help"
-                ref="priceRangeField"
+                ref="priceRangeFieldRef"
               >
                 <div :id="priceRangeFieldId + '-popup-body'">
                   <p><strong>Note:</strong> The low and high prices values will automatically adjust if one is exceeding the limits of the range..</p>
@@ -273,7 +274,7 @@ export default {
     const helpModalId = ref( uuidv4() );
     setModalId(helpModalId.value);
     
-    const priceRangeField = ref(null);
+    const priceRangeFieldRef = ref(null);
     const priceRangeFieldId = ref( uuidv4() );
     const rangeStep = ref('10'); // element property expects a string, not int
     const handleRangeChange = (_obj) => {
@@ -385,8 +386,9 @@ export default {
       } 
       if(type=='price-range'){
         priceRangeHasError.value = priceRangeHasError.value ? false : true;
-        priceRangeField.value.setHasError(priceRangeHasError.value);
-        priceRangeField.value.hasErrorCaller(priceRangeHasError.value);
+        let el = priceRangeFieldRef.value;
+        el.setHasError(priceRangeHasError.value);
+        el.hasErrorCaller(priceRangeHasError.value);
       } 
     }
 
@@ -403,7 +405,7 @@ export default {
     });
 
     return {
-      priceRangeField,
+      priceRangeFieldRef,
       priceRangeFieldId,
       handleRangeChange,
       rangeStep,

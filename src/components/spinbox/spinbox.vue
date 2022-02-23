@@ -2,31 +2,19 @@
   <div :class="'fsa-spinbox ' + (hasError ? ERROR_CLASS : '')">
     <div class="fsa-spinbox__number">
 
-      <span v-if="usePrefix" class="fsa-affix fsa-affix--fill">
-        <label :for="ID" class="fsa-affix__prefix" aria-hidden="true" :title="LABEL_TITLE">
+      <span class="fsa-affix fsa-affix--fill">
+        <label v-if="usePrefix" :for="+'-prefix-label'" class="fsa-affix__prefix" aria-hidden="true" :title="LABEL_TITLE">
           <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
           </svg>
           <span v-if="usePrefix">{{ PREFIX }}</span>
         </label>
-        <input
-          @blur="handleBlur"
-          @keydown="handleKeydown"
-          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (usePrefix ? 'fsa-affix__item' : '') + (hasError ? ' '+ inputErrorClass : '')"
-          type="number"
-          :value="INPUT_VALUE"
-          :step="STEP"
-          :id="ID"
-          :aria-describedby="ARIA_DESCRIBEDBY"
-          :name="ID"
-        >
-      </span>
+        
 
-      <span v-if="useSuffix" class="fsa-affix fsa-affix--fill">
         <input
           @blur="handleBlur"
           @keydown="handleKeydown"
-          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (useSuffix ? 'fsa-affix__item' : '') + (hasError ? inputErrorClass : '')"
+          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (usePrefix || useSuffix ? 'fsa-affix__item' : '') + (hasError ? ' '+ inputErrorClass : '')"
           type="number"
           :value="INPUT_VALUE"
           :step="STEP"
@@ -34,7 +22,21 @@
           :aria-describedby="ARIA_DESCRIBEDBY"
           :name="ID"
         >
-        <label :for="ID" class="fsa-affix__suffix" aria-hidden="true" :title="LABEL_TITLE">
+
+        <!-- <input
+          @blur="handleBlur"
+          @keydown="handleKeydown"
+          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (useSuffix  ? 'fsa-affix__item' : '') + (hasError ? inputErrorClass : '')"
+          type="number"
+          :value="INPUT_VALUE"
+          :step="STEP"
+          :id="ID"
+          :aria-describedby="ARIA_DESCRIBEDBY"
+          :name="ID"
+        > -->
+
+        
+        <label v-if="useSuffix" :for="ID +'-suffix-label'" class="fsa-affix__suffix" aria-hidden="true" :title="LABEL_TITLE">
           <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
           </svg>
