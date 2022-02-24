@@ -21,5 +21,9 @@ export const demosRoutes = [
   {
     path: '/demos/content-tabs',
     component: () => import('@/views/demos/content-tabs/Content-Tabs.vue')
+  },
+  {
+    path: '/demos/stepped',
+    component: () => import('@/views/demos/stepped/Stepped.vue')
   }
 ]

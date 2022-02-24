@@ -56,8 +56,9 @@ export function useUtilities() {
   }
 
   const setPropertyFromId = (_id, _key, _val, _arr) => {
-    let tab = _arr.find(item => item.id == _id);
-    if(tab[ _key ]) tab[ _key ] = _val;
+    _arr.forEach(item => {
+      if(item.id == _id) item[ _key ] = _val;
+    });
   }
 
   const setPropertyFromProperty = (_val, _prop, _prop2, _val2, _arr) => {
