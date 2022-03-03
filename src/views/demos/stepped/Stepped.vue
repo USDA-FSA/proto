@@ -51,7 +51,22 @@
 
         </div>
       </div>
-             
+
+      <div class="fsa-section">
+        <div class="fsa-section__bd">
+
+          <stepped-control
+            :USE_PREV="usePrev"
+            :PREV_LABEL="prevLabel"
+            :USE_NEXT="useNext"
+            :NEXT_LABEL="nextLabel"
+            EXTRA_CLASSES="fsa-m-t--l"
+            @emitPrev="prev"
+            @emitNext="next">
+          </stepped-control>
+
+        </div>
+      </div>
 
     </main>
 
@@ -64,29 +79,34 @@ import { ref, defineAsyncComponent, watch, onMounted } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
 import { useStore } from 'vuex';
 import { useNavigation } from '@/composables/useNavigation';
-import { useUtilities } from '@/composables/useUtilities.js';
+import { useSteppedControls } from '@/composables/useSteppedControls';
+import { useUtilities } from '@/composables/useUtilities';
 
 
 import baseHeader from '@/partials/BaseHeader.vue';
 import baseFooter from '@/partials/BaseFooter.vue';
 
 const steppedTabs = defineAsyncComponent(() => import('@/components/stepped-tabs/stepped-tabs.vue'));
+const steppedControl = defineAsyncComponent(() => import('@/components/stepped-control/stepped-control.vue'));
  
 export default {
 
   components: {
     baseHeader,
     baseFooter,
-    steppedTabs
+    steppedTabs,
+    steppedControl
   },
 
   setup(props){
     const store = useStore();
     const { goto } = useNavigation();
+    const { updateSteppedControls } = useSteppedControls();
     const { getPropertyFromId, setPropertyFromId, setPropertyFromProperty } = useUtilities();
 
     const steppedTabsRef = ref(null);
     const steppedTabsId = ref( uuidv4() );
+    const currentTabIndex = ref(0);
     const steppedTabsData = ref(
       [
         {
@@ -128,7 +148,7 @@ export default {
         {
           "id": "step-five-tab-1011",
           "label": "Step Five",
-          "path":  "/",
+          "path":  "",
           "useIcon": "true",
           "iconPath": "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z",
           "isEnabled": false,
@@ -144,24 +164,68 @@ export default {
 
     const setActiveTab = (_id) => {
 
-      let ind = tabsData.value.findIndex(o => o.id == _id);
+      currentTabIndex.value = tabsData.value.findIndex(o => o.id == _id);
       tabsData.value.forEach((o, index)=>{
-        if(index < ind) {
+        if(index < currentTabIndex.value) {
           o.status = 'complete';
           o.isEnabled = true;
-        } else if((index > ind) && o.status != 'incomplete') {
+        } else if((index > currentTabIndex.value) && o.status != 'incomplete') {
           o.status = 'complete';
         }
       });
       setPropertyFromId(_id, 'isEnabled', true, tabsData.value);
       setPropertyFromId(_id, 'status', 'active', tabsData.value);
+      setSteppedButtons(currentTabIndex.value, 'next', tabsData.value);
 
-      /*
-      if( getPropertyFromId(_id, 'isEnabled', tabsData.value) ){
-        let path = getPropertyFromId(_id, 'path', tabsData.value);
-        if(path!='') goto(path);
+    }
+
+    const usePrev = ref('false');
+    const useNext = ref('true');
+    const prevLabel = ref('Back');
+    const nextLabel = ref('Next Step');
+
+    const setSteppedButtons = (_ind, _dir, _arr) => {
+      if(_dir=='next'){
+        useNext.value = (_ind+1) == _arr.length ? 'false' : 'true';
+        usePrev.value = _ind > 0 ? 'true' : 'false';
       }
-      */
+      if(_dir=='prev'){
+        usePrev.value = _ind == 0 ? 'false' : 'true';
+        useNext.value = _ind < _arr.length ? 'true' : 'false';
+      }
+    }
+
+    const next = () => {
+
+      let ind = currentTabIndex.value + 1;
+      setSteppedButtons(ind, 'next', steppedTabsData.value);
+
+      let tabData = steppedTabsData.value[ind] ? steppedTabsData.value[ind] : {};
+    
+      if(tabData.id) setActiveTab(tabData.id)
+
+      let newData = { data: 'data being passed to Store' }
+      let newPath = tabData.path || '';
+      let errMsg = 'There was an error updating the data.'
+      
+      updateSteppedControls( newData, newPath, errMsg );
+      
+    }
+
+    const prev = () => {
+
+      let ind = currentTabIndex.value - 1;
+      setSteppedButtons(ind, 'prev', steppedTabsData.value);
+
+      let tabData = steppedTabsData.value[ind] ? steppedTabsData.value[ind] : {};
+
+      if(tabData.id) setActiveTab(tabData.id)
+
+      let newData = { data: 'data being passed to Store' }
+      let newPath = tabData.path || '';
+      let errMsg = 'There was an error updating the data.'
+      
+      updateSteppedControls( newData, newPath, errMsg );
     }
 
     const setTabsData = (_data) => {
@@ -181,7 +245,13 @@ export default {
       steppedTabsRef,
       tabsData,
       handleSelectedTab,
-      setActiveTab
+      setActiveTab,
+      prev,
+      next,
+      usePrev,
+      useNext,
+      prevLabel,
+      nextLabel
     }
   }
 
