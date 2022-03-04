@@ -54,7 +54,21 @@
 
       <div class="fsa-section">
         <div class="fsa-section__bd">
-
+          
+          <!--
+          USE_PREV: String,
+          PREV_LABEL: String,
+          USE_PREV_SECONDARY: String,
+          PREV_SECONDARY_LABEL: String,
+          USE_NEXT: String,
+          NEXT_LABEL: String,
+          NEXT_DISABLED: String,
+          EXTRA_CLASSES: String,
+          USE_STEPS: String,
+          STEPS_CURRENT: String,
+          STEPS_TOTAL: String,
+          STEPS_LABEL: String
+          -->
           <stepped-control
             :USE_PREV="usePrev"
             :PREV_LABEL="prevLabel"
