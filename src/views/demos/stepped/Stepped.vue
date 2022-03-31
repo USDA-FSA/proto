@@ -93,8 +93,11 @@ import { ref, defineAsyncComponent, watch, onMounted } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
 import { useStore } from 'vuex';
 import { useNavigation } from '@/composables/useNavigation';
-import { useSteppedControls } from '@/composables/useSteppedControls';
 import { useUtilities } from '@/composables/useUtilities';
+
+
+import { useSteppedControls } from '@/composables/useSteppedControls';
+import { useGrowlControls } from '@/composables/useGrowlControls';
 
 
 import baseHeader from '@/partials/BaseHeader.vue';
@@ -113,7 +116,14 @@ export default {
   },
 
   setup(props){
+
     const store = useStore();
+    const { 
+      showDefaultGrowl,
+      showSuccessGrowl,
+      showErrorGrowl
+    } = useGrowlControls();
+
     const { goto } = useNavigation();
     const { updateSteppedControls } = useSteppedControls();
     const { getPropertyFromId, setPropertyFromId, setPropertyFromProperty } = useUtilities();
@@ -191,6 +201,8 @@ export default {
       setPropertyFromId(_id, 'status', 'active', tabsData.value);
       setSteppedButtons(currentTabIndex.value, 'next', tabsData.value);
 
+      checkAlerts(currentTabIndex.value);
+
     }
 
     const usePrev = ref('false');
@@ -240,10 +252,38 @@ export default {
       let errMsg = 'There was an error updating the data.'
       
       updateSteppedControls( newData, newPath, errMsg );
+
     }
 
     const setTabsData = (_data) => {
       tabsData.value = _data;
+    }
+
+    const checkAlerts = (_index) => {
+      if(_index == (tabsData.value.length - 1)) {
+        let alertObj = {
+          "id": uuidv4(),
+          "title": "Success",
+          "useIcon": 'true',
+          "msg": "You have successfully completed the Stepped Process.",
+        }
+        showSuccessGrowl(alertObj)
+      } else if(_index == 0){
+        let alertObj = {
+          "id": uuidv4(),
+          "title": "Error",
+          "useIcon": 'true',
+          "msg": "Wrong Direction! Please step thru the process.",
+        }
+        showErrorGrowl(alertObj)
+      } else if(_index == (tabsData.value.length - 2)) {
+        let alertObj = {
+          "id": uuidv4(),
+          "title": "Keep Going",
+          "msg": "You are almost done.",
+        }
+        showDefaultGrowl(alertObj)
+      }
     }
     
     watch(steppedTabsData, (value)=>{

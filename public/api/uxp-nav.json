@@ -71,6 +71,13 @@
           "path": "/demos/stepped",
           "hasChild": "false"
         },
+
+        {
+          "uid": "system-alerts-id",
+          "label": "Alerts - Growl",
+          "path": "/demos/alerts/growl",
+          "hasChild": "false"
+        },
         {
           "uid": "timeline-id",
           "label": "Timeline",
@@ -79,7 +86,7 @@
         },
         {
           "uid": "search-demo-id",
-          "label": "Search wtih RxJS",
+          "label": "Search with RxJS",
           "path": "/demos/search",
           "hasChild": "false"
         },
@@ -90,12 +97,7 @@
           "hasChild": "false"
         },
         
-        {
-          "uid": "performance-management-id",
-          "label": "Performance Management",
-          "path": "/reports/performance-management",
-          "hasChild": "false"
-        },
+        
         {
           "uid": "budgetary-max-funding-id",
           "label": "Budgetary Max Funding",

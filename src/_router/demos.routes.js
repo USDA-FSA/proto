@@ -25,5 +25,9 @@ export const demosRoutes = [
   {
     path: '/demos/stepped',
     component: () => import('@/views/demos/stepped/Stepped.vue')
+  },
+  {
+    path: '/demos/alerts/growl',
+    component: () => import('@/views/demos/alerts/Growl.vue')
   }
 ]
