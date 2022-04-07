@@ -1,25 +1,121 @@
 
 import { useStore } from "vuex";
+import { useUtilities } from './useUtilities';
 import { v4 as uuidv4 } from 'uuid';
 
 export function useGrowlControls() {
 
   const store = useStore();
+  const { 
+    hasClass,
+    getAnimationString
+   } = useUtilities();
+
+  let firstTabStop = null;
+  let lastTabStop = null;
+  const originStr = 'data-growl-origin';
 
   const showGrowl = (_id) => {
-    document.getElementById(_id).setAttribute('aria-hidden', false);
+    let growl = document.getElementById(_id);
+
+    growl.setAttribute('aria-hidden', false);    
+    // for Center Modal style only
+    if( hasClass(growl, 'fsa-growl--centered') ){
+      // trap tabs inside of modal
+      growl.addEventListener('keydown', trapTab);
+      // Find all focusable children
+      let focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+      let focusableElements = growl.querySelectorAll(focusableElementsString);
+
+      // Convert NodeList to Array
+      focusableElements = Array.prototype.slice.call(focusableElements);
+
+      firstTabStop = focusableElements[0];
+      lastTabStop = focusableElements[focusableElements.length - 1];
+      firstTabStop.focus();
+      growl.focus();
+    }else{
+      growl.addEventListener( getAnimationString(growl), showDelay);
+    }
   }
 
   const hideGrowl = (_id, _callback=null) => {
-    document.getElementById(_id).setAttribute('aria-hidden', true);
-    document.getElementById(_id).classList.add('fsa-growl--dismissing');
+    dismiss( document.getElementById(_id), _callback);
+  }
+
+  const trapTab = (_e) => {
+    // Check for TAB key press
+    if (_e.keyCode === 9) {
+      // SHIFT + TAB
+      if (_e.shiftKey) {
+        if (document.activeElement === firstTabStop) {
+          _e.preventDefault();
+          lastTabStop.focus();
+        }
+      // TAB
+      } else {
+        if (document.activeElement === lastTabStop) {
+          _e.preventDefault();
+          firstTabStop.focus();
+        }
+      }
+    }
+    // ESCAPE
+    if (_e.keyCode === 27) {
+      dismiss();
+    }
+  }
+
+  const showDelay = (_e) => {
+    let growl = _e.target;
+    // clean up
+    growl.removeEventListener( getAnimationString(growl), showDelay);
+  }
+
+  const dismiss = (_g, _callback=null) => {
+    _g.className = _g.className + ' fsa-growl--dismissing';
+    _g.addEventListener( getAnimationString(_g), (_e) => {
+      dismissDelay(_e, _callback)
+    });
+    if( hasClass(_g, 'fsa-growl--centered') ) _g.focus();
+  }
+
+  const dismissDelay = (_e, _callback=null) => {
+    let growl = _e.target;
+
+    growl.className = growl.className.replace(' fsa-growl--dismissing','');
+    growl.setAttribute('aria-hidden', 'true');
+
+    removeOrigin();
     if(_callback) _callback();
+
+    // clean up
+    growl.removeEventListener( getAnimationString(growl), dismissDelay);
+  }
+
+  const setOrigin = (_id) => {
+    let el = document.getElementById(_id);
+    el.setAttribute( originStr ,'');
+    el.setAttribute('aria-expanded', 'true');
+  }
+
+  const getOrigin = () => {
+    return document.querySelector('['+ originStr +']');
+  }
+
+  const removeOrigin = () => {
+    let origin = getOrigin();
+    origin.removeAttribute( originStr );
+    origin.setAttribute('aria-expanded', 'false');
+    // set focus back to the originating element
+    origin.focus();
   }
 
   const showDefaultGrowl = (_obj) => {
+    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
-      extraClasses: 'x',
+      extraClasses: '',
       title: _obj.title,
       useIcon: _obj.useIcon || 'false',
       iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
@@ -31,6 +127,7 @@ export function useGrowlControls() {
   }
 
   const showSuccessGrowl = (_obj) => {
+    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: 'fsa-growl--success',
@@ -45,6 +142,7 @@ export function useGrowlControls() {
   }
 
   const showErrorGrowl = (_obj) => {
+    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: 'fsa-growl--error',
@@ -59,6 +157,7 @@ export function useGrowlControls() {
   }
 
   const showWarningGrowl = (_obj) => {
+    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: 'fsa-growl--warning',
@@ -73,6 +172,7 @@ export function useGrowlControls() {
   }
 
   const showErrorModalGrowl = (_obj) => {
+    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       useCentered: 'true',
@@ -106,6 +206,7 @@ export function useGrowlControls() {
     showSuccessGrowl,
     showErrorGrowl,
     showWarningGrowl,
-    showErrorModalGrowl
+    showErrorModalGrowl,
+    setOrigin
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <div id="alertSystem">
-    <div v-for="alert in alertsData" :key="alert.id">
+  <div class="fsa-growl-container" id="alertSystem">
+    <span v-for="alert in alertsData" :key="alert.id">
       <growl
         :ID="alert.id"
         :EXTRA_CLASSES="alert.extraClasses"
@@ -20,7 +20,7 @@
         </template>
       </growl>
 
-    </div>
+    </span>
   </div>
 </template>
 <script>
@@ -96,7 +96,8 @@ export default {
     }
 
     watch( alerts, (value) => { 
-      updateAlerts(value);
+      let reversedAlerts = [...value].reverse();
+      updateAlerts(reversedAlerts);
     });
 
     return {

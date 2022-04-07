@@ -33,6 +33,8 @@
             <button
               v-for="alert in alertsData"
               :key="alert.id"
+              :id="alert.id"
+              :aria-controls="alert.id"
               @click="triggerAlert(alert.id)"
               class="fsa-btn fsa-btn--secondary">
               {{ alert.label }}
@@ -76,7 +78,8 @@ export default {
       showErrorGrowl,
       showWarningGrowl,
       showErrorModalGrowl,
-      showWhiteout
+      showWhiteout,
+      setOrigin
     } = useGrowlControls();
 
     const alertOneId = ref(uuidv4());
