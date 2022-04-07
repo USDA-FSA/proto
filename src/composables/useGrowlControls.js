@@ -86,7 +86,7 @@ export function useGrowlControls() {
     growl.className = growl.className.replace(' fsa-growl--dismissing','');
     growl.setAttribute('aria-hidden', 'true');
 
-    removeOrigin();
+    if( getOrigin() ) removeOrigin();
     if(_callback) _callback();
 
     // clean up
@@ -112,7 +112,6 @@ export function useGrowlControls() {
   }
 
   const showDefaultGrowl = (_obj) => {
-    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: '',
@@ -127,7 +126,6 @@ export function useGrowlControls() {
   }
 
   const showSuccessGrowl = (_obj) => {
-    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: 'fsa-growl--success',
@@ -142,7 +140,6 @@ export function useGrowlControls() {
   }
 
   const showErrorGrowl = (_obj) => {
-    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: 'fsa-growl--error',
@@ -157,7 +154,6 @@ export function useGrowlControls() {
   }
 
   const showWarningGrowl = (_obj) => {
-    setOrigin(_obj.id);
     let alertObj = {
       id: String( uuidv4() ),
       extraClasses: 'fsa-growl--warning',
