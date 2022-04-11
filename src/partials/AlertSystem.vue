@@ -1,7 +1,7 @@
 <template>
   <div class="fsa-growl-container" id="alertSystem">
-    <span v-for="alert in alertsData" :key="alert.id">
-      <growl
+    <!--<span v-for="alert in alertsData" :key="alert.id">-->
+      <growl v-for="alert in alertsData" :key="alert.id"
         :ID="alert.id"
         :EXTRA_CLASSES="alert.extraClasses"
         :TITLE="alert.title"
@@ -20,7 +20,7 @@
         </template>
       </growl>
 
-    </span>
+    <!--</span>-->
   </div>
 </template>
 <script>
