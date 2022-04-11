@@ -105,10 +105,14 @@ export function useGrowlControls() {
 
   const removeOrigin = () => {
     let origin = getOrigin();
-    origin.removeAttribute( originStr );
-    origin.setAttribute('aria-expanded', 'false');
-    // set focus back to the originating element
-    origin.focus();
+    try {
+      origin.removeAttribute( originStr );
+      origin.setAttribute('aria-expanded', 'false');
+      // set focus back to the originating element
+      origin.focus();
+    } catch(e) {
+      console.log('Origin Catch', e)
+    }
   }
 
   const showDefaultGrowl = (_obj) => {
