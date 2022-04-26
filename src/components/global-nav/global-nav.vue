@@ -79,21 +79,55 @@
                 </div>
               </div>
             </div>
-            <div v-else="item.hasChild=='false'">
 
+            <div v-else>
               <a href="#" @click.prevent="goto(item.path)" class="fsa-nav-global__link">
                 <span class="fsa-nav-global__text">{{item.label}}</span>
               </a>
-
             </div>
+
           </li>
         </ul>
+        
         <div v-if="navData.side" class="fsa-nav-global__aside">
+          <div class="fsa-level">
+
+            <div v-for="sideItem in navData.side" :data-control-id="sideItem.uid" :key="sideItem.uid">
+                <button v-if="sideItem.hasChild=='true'" :id="sideItem.uid+'-BTN'" @click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="sideItem.uid">
+                  <span class="fsa-nav-global__text" :id="sideItem.uid+'-SUB'">{{sideItem.label}}</span>
+                </button>
+                <div v-if="sideItem.hasChild=='true'" class="fsa-nav-global__sub-menu" :id="sideItem.uid" aria-hidden="true">
+                  <div class="fsa-nav-global__sub-menu-bd">
+                    <ul class="fsa-nav-global__sub-menu-list" :aria-labelledby="sideItem.uid+'-SUB'">
+                      <li v-for="child in sideItem.children" :key="child.id" class="fsa-nav-global__sub-menu-item">
+
+                        <a href="#" @click.prevent="goto(child.path)" class="fsa-nav-global__sub-menu-link">{{ child.label }}</a>
+                        
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <a v-if="sideItem.hasChild=='false'" href="#" @click.prevent="goto(sideItem.path)">
+                  <span class="fsa-level fsa-level--inline fsa-level--gutter-xs">
+                    <svg v-if="sideItem.icon"
+                      :class="sideItem.icon.class" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> 
+                      <path :d="sideItem.icon.path"></path>
+                    </svg>
+                    <span>{{sideItem.label}}</span>
+                  </span>
+                </a>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div v-if="false" class="fsa-nav-global__aside">
           <div class="fsa-level">
             <span v-for="sideItem in navData.side" :key="sideItem.uid">
               
               <a href="#" @click.prevent="goto(sideItem.path)">
-
                 <span class="fsa-level fsa-level--inline fsa-level--gutter-xs">
                   <svg v-if="sideItem.icon"
                     :class="sideItem.icon.class" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> 
@@ -101,11 +135,12 @@
                   </svg>
                   <span>{{sideItem.label}}</span>
                 </span>
-                
               </a>
+
             </span>
           </div>
         </div>
+
         <div v-if="USE_SEARCH == 'true'" class="fsa-nav-global__search">
           <div class="fsa-search fsa-search--small" role="search">
             <div class="fsa-search__bd">

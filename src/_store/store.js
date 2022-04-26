@@ -5,12 +5,14 @@ import { navigation } from './navigation.module.js';
 import { alerts } from './alerts.module.js';
 import { users } from './users.module.js';
 import { web } from './web.module.js';
+import { fpacnow } from './fpacnow.module.js';
 
 export const store = createStore({
   modules: {
     navigation: navigation,
     alerts: alerts,
     users: users,
-    web: web
+    web: web,
+    fpacnow: fpacnow
   }
 });

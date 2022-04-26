@@ -3,11 +3,13 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { sharedRoutes } from './shared.routes';
 import { demosRoutes } from './demos.routes';
 import { webRoutes } from './web.routes';
+import { fpacnowRoutes } from './fpacnow.routes';
 
 const routes = [
   ...sharedRoutes,
   ...demosRoutes,
   ...webRoutes,
+  ...fpacnowRoutes,
   { 
     path: '/:pathMatch(.*)*',
     name: 'not-found',
