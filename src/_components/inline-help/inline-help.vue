@@ -36,7 +36,7 @@
 
 <script>
 import { computed } from 'vue';
-import { usePopoverControls } from '@/composables/usePopoverControls';
+import { usePopoverControls } from '@/_composables/usePopoverControls';
 export default {
   props:{
     POPOVER_TYPE: String,

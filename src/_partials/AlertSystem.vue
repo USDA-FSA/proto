@@ -26,8 +26,8 @@
 <script>
 import { ref, onMounted, watch, computed } from 'vue';
 import { useStore } from 'vuex';
-import { useGrowlControls } from '@/composables/useGrowlControls';
-import growl from '@/components/growl/growl.vue';
+import { useGrowlControls } from '@/_composables/useGrowlControls';
+import growl from '@/_components/growl/growl.vue';
 
 
 export default {

@@ -26,8 +26,8 @@
 </template>
 <script>
 import { ref, reactive, onMounted } from 'vue';
-import { useErrorState } from '@/composables/useErrorState';
-import { useUtilities } from '@/composables/useUtilities';
+import { useErrorState } from '@/_composables/useErrorState';
+import { useUtilities } from '@/_composables/useUtilities';
 
 export default {
   props: {

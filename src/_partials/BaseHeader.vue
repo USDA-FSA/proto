@@ -32,14 +32,14 @@
 <script>
 import { onMounted, ref, reactive, computed } from 'vue';
 
-import { navigationService } from '@/_services/navigation.service';
+import { navigationService } from '@/Shared/_services/navigation.service';
 import { useStore } from 'vuex';
 
 
-import tophat from '@/components/tophat/tophat.vue';
-import headerApp from '@/components/header-app/header-app.vue';
-import globalNav from '@/components/global-nav/global-nav.vue';
-//import modal from '@/components/Modal.vue';
+import tophat from '@/_components/tophat/tophat.vue';
+import headerApp from '@/_components/header-app/header-app.vue';
+import globalNav from '@/_components/global-nav/global-nav.vue';
+//import modal from '@/_components/Modal.vue';
 
 export default {
   components: {

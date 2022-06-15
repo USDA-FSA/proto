@@ -57,8 +57,8 @@
 </template>
 <script>
 import { ref, onMounted } from 'vue';
-import { useErrorState } from '@/composables/useErrorState';
-import { usePopoverControls } from '@/composables/usePopoverControls';
+import { useErrorState } from '@/_composables/useErrorState';
+import { usePopoverControls } from '@/_composables/usePopoverControls';
 
 export default {
   props: {

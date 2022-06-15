@@ -44,8 +44,8 @@
 <script>
 import { ref, computed, watch, onMounted} from 'vue';
 import { useStore } from "vuex";
-import { useNavigation } from '@/composables/useNavigation.js';
-import { useUtilities } from '@/composables/useUtilities.js';
+import { useNavigation } from '@/_composables/useNavigation.js';
+import { useUtilities } from '@/_composables/useUtilities.js';
 
 export default {
   props: {

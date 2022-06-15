@@ -89,12 +89,12 @@
 </template>
 <script>
 import { defineAsyncComponent, ref, computed, onMounted } from 'vue';
-import { useErrorState } from '@/composables/useErrorState';
-import { usePopoverControls } from '@/composables/usePopoverControls';
-import { useSpinboxControls } from '@/composables/useSpinboxControls';
-import { useRangeControls } from '@/composables/useRangeControls';
+import { useErrorState } from '@/_composables/useErrorState';
+import { usePopoverControls } from '@/_composables/usePopoverControls';
+import { useSpinboxControls } from '@/_composables/useSpinboxControls';
+import { useRangeControls } from '@/_composables/useRangeControls';
 
-const spinbox = defineAsyncComponent(() => import('@/components/spinbox/spinbox.vue'));
+const spinbox = defineAsyncComponent(() => import('@/_components/spinbox/spinbox.vue'));
 
 export default {
   props: {

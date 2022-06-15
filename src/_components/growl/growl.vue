@@ -67,7 +67,7 @@
 </template>
 <script>
 import { ref, computed } from 'vue';
-import { useGrowlControls } from '@/composables/useGrowlControls';
+import { useGrowlControls } from '@/_composables/useGrowlControls';
 
 export default {
   props: {

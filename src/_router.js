@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { sharedRoutes } from '@/Shared/_routes/shared.routes';
 import { demosRoutes } from '@/Demos/_routes/demos.routes';
 import { webRoutes } from '@/Web/_routes/web.routes';
-import { fpacnowRoutes } from '@FPACNow/_routes/fpacnow.routes';
+import { fpacnowRoutes } from '@/FPACNow/_routes/fpacnow.routes';
 
 const routes = [
   ...sharedRoutes,

@@ -54,8 +54,8 @@
 
 <script>
 import { ref, computed, onMounted } from 'vue';
-import { useErrorState } from '@/composables/useErrorState';
-import { useSpinboxControls } from '@/composables/useSpinboxControls';
+import { useErrorState } from '@/_composables/useErrorState';
+import { useSpinboxControls } from '@/_composables/useSpinboxControls';
 
 export default {
   props: {

@@ -22,7 +22,7 @@
 
 <script>
 import { ref, computed, onMounted } from 'vue';
-import { useUtilities } from '@/composables/useUtilities';
+import { useUtilities } from '@/_composables/useUtilities';
 
 export default {
 

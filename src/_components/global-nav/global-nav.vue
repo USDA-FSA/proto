@@ -184,8 +184,8 @@
 
 <script>
 import { ref, reactive, computed, onMounted, watch, onBeforeUnmount } from 'vue';
-import { useMenuSystem } from '@/composables/useMenuSystem';
-import { useNavigation } from "@/composables/useNavigation";
+import { useMenuSystem } from '@/_composables/useMenuSystem';
+import { useNavigation } from "@/_composables/useNavigation";
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
