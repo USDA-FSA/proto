@@ -99,9 +99,9 @@
         
         
         {
-          "uid": "budgetary-max-funding-id",
-          "label": "Budgetary Max Funding",
-          "path": "/reports/budgetary-max-funding",
+          "uid": "today-button-datepicker-id",
+          "label": "Date Picker - Today Button",
+          "path": "/demos/today",
           "hasChild": "false"
         },
         {

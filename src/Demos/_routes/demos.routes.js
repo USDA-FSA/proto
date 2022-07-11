@@ -29,5 +29,9 @@ export const demosRoutes = [
   {
     path: '/demos/alerts/growl',
     component: () => import('@/Demos/_views/alerts/Growl.vue')
+  },
+  {
+    path: '/demos/today',
+    component: () => import('@/Demos/_views/today/Today.vue')
   }
 ]

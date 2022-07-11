@@ -1,6 +1,10 @@
 import { createApp } from 'vue';
-import App from '@/_App.vue'
+//import VS2 from 'vue-script2';
+import App from '@/_App.vue';
+
 const app = createApp(App);
+
+//app.use(VS2);
 
 import { store } from '@/_store.js';
 app.use(store);
