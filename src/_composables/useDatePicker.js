@@ -14,21 +14,17 @@ export function useDatePicker() {
   });
 
   const initializeDatePicker = (_path) => {
-    console.log('initializeDatePicker > isLoaded', isLoaded.value)
     if(!isLoaded.value){
       let scriptTag = document.createElement('script');
       let scriptPath = _path;
       scriptTag.setAttribute('src', scriptPath);
       document.head.appendChild(scriptTag);
-      
-      console.log('SCRIPT ADDED');
       store.dispatch("today/setLoaded", true);
     }
     
   }
 
   const getController = () => {
-    console.log('getController() called')
     // this value needs to match the value in the datepicker.js code
     return datePickerController;
   }
@@ -36,10 +32,16 @@ export function useDatePicker() {
   const createDatePicker = (_obj) => {
     let isReady = false;
     let int = setInterval(function () {
-      if ( getController() ) {
-        isReady = true;
-        clearInterval(int);
-        datePicker(_obj);
+      try{
+        if ( getController() ) {
+          isReady = true;
+          clearInterval(int);
+          datePicker(_obj);
+        }
+      }
+      catch(err){
+        //console.log('catch err >>> ',err)
+        isReady = false;
       }
       return isReady;
     }, 500);
@@ -93,8 +95,6 @@ export function useDatePicker() {
     if( _format.includes('%y') ) {
       year = year.slice(-2);
     }
-
-    console.log('_format',_format)
 
     switch(_format){
       case "%m%d%Y":

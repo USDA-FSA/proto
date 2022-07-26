@@ -12,7 +12,6 @@ const getters = {
 const actions = {
 
   setLoaded( { commit }, _payload ){
-    console.log('SET_IS_LOADED', _payload);
     commit('SET_IS_LOADED', _payload );
   }
 
