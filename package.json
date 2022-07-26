@@ -1,6 +1,6 @@
 {
   "name": "proto",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "SEE LICENSE in LICENSE.md",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "author": "USDA FPAC - Farm Production and Conservation, ISSDOB/FBCSS",
   "contributors": [
-    "Casey Hill <bignamehere@gmail.com> (https://github.com/bignamehere)",
+    "Casey Hill <bignamehere@gmail.com> (https://github.com/bignamehere)"
   ],
   "scripts": {
     "dev": "vite",
