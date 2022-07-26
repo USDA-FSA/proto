@@ -4,7 +4,7 @@
       AG_ABBR="USDA"
       AG_FULL="United States Department of Agriculture"
       AG_URL="//www.usda.gov"
-      AG_LOGO="/img/usda-logo--white.svg"
+      :AG_LOGO="baseUrl + 'img/usda-logo--white.svg'"
       SUB_AG_ABBR="FPAC"
       SUB_AG_FULL="Farm Production and Conservation"
       SUB_AG_URL="//fsa.usda.gov"
@@ -52,6 +52,8 @@ export default {
 
     const navigationData = computed(() => store.getters["navigation/getNavigation"]);
 
+    const baseUrl = ref(import.meta.env.BASE_URL);
+
     const submitSearch = ( obj ) => {
       emit('emitSearch',obj)
       console.log('NAV SEARCH BASEHEADER', obj)
@@ -62,6 +64,7 @@ export default {
     });
 
     return {
+      baseUrl,
       navigationData,
       submitSearch
     }
