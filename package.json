@@ -8,7 +8,7 @@
   },
   "author": "USDA FPAC - Farm Production and Conservation, ISSDOB/FBCSS",
   "contributors": [
-    "Casey Hill <bignamehere@gmail.com> (https://github.com/bignamehere)",
+    "Casey Hill <bignamehere@gmail.com> (https://github.com/bignamehere)"
   ],
   "scripts": {
     "dev": "vite",
