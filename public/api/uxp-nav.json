@@ -23,7 +23,7 @@
     },
     {
       "uid": "menu-demo-id",
-      "label": "Menu Demo",
+      "label": "Page Name Demo",
       "path": "/demos",
       "hasChild": "true",
       "multiColumn": "false",
@@ -32,14 +32,14 @@
       "children": [
         {
           "uid": "menu-demo-one-id",
-          "label": "Submenu System",
-          "path": "/",
+          "label": "Introduction",
+          "path": "/demos/name/introduction",
           "hasChild": "false"
         },
         {
           "uid": "menu-demo-two-id",
-          "label": "Menu Subsystem",
-          "path": "/",
+          "label": "Conclusion",
+          "path": "/demos/name/conclusion",
           "hasChild": "false"
         }
       ]

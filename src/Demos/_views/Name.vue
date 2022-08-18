@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 import baseHeader from '@/_partials/BaseHeader.vue';
@@ -40,7 +40,9 @@ export default {
     
     const route = useRoute();
 
-    const pageName = route.params.id;
+    const pageName = ref(route.params.id);
+
+    watch( () => route.params.id, _newId => pageName.value = _newId );
 
     return {
       pageName

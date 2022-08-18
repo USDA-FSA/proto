@@ -33,5 +33,10 @@ export const demosRoutes = [
   {
     path: '/demos/today',
     component: () => import('@/Demos/_views/today/Today.vue')
+  },
+  {
+    path: '/demos/name/:id',
+    component: () => import('@/Demos/_views/Name.vue'),
+    props: true
   }
 ]
