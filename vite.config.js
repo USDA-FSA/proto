@@ -3,9 +3,9 @@ import path from 'path';
 import vue from '@vitejs/plugin-vue'
 //import path from 'path'
 
-//const fsaScssPath = path.resolve(__dirname, "./node_modules/fsa-style/src/stylesheets/fsa-style.scss")
+//const fdsScssPath = path.resolve(__dirname, "./node_modules/fds-style/src/stylesheets/fds-style.scss")
 // FSA Style path to allow for usage of SCSS variables
-//const fsaScssPath = "./node_modules/fsa-style/src/stylesheets/fsa-style.scss"
+//const fdsScssPath = "./node_modules/fds-style/src/stylesheets/fds-style.scss"
 
 const config = {
   server: { port: 3000 },
@@ -21,7 +21,7 @@ const config = {
     preprocessorOptions: {
       scss: {
         javascriptEnabled: true,
-        additionalData: `@import "${fsaScssPath}";`
+        additionalData: `@import "${fdsScssPath}";`
       }
     }
   }

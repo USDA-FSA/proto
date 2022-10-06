@@ -13,7 +13,7 @@
       "path": "#",
       "hasChild": "true",
       "multiColumn": "false",
-      "columnClass": "fsa-nav-global__link--has-sub-menu",
+      "columnClass": "fds-nav-global__link--has-sub-menu",
       "hasHeaders": "false",
       "children": [
         {
@@ -60,7 +60,7 @@
       "path": "#demos",
       "hasChild": "true",
       "multiColumn": "false",
-      "columnClass": "fsa-nav-global__link--has-sub-menu",
+      "columnClass": "fds-nav-global__link--has-sub-menu",
       "hasHeaders": "false",
       "children": [
         {
@@ -83,7 +83,7 @@
       "path": "#demos",
       "hasChild": "true",
       "multiColumn": "false",
-      "columnClass": "fsa-nav-global__link--has-sub-menu",
+      "columnClass": "fds-nav-global__link--has-sub-menu",
       "hasHeaders": "false",
       "children": [
         {
@@ -136,7 +136,7 @@
       "path": "#",
       "hasChild": "true",
       "multiColumn": "false",
-      "columnClass": "fsa-nav-global__link--has-sub-menu",
+      "columnClass": "fds-nav-global__link--has-sub-menu",
       "hasHeaders": "false",
       "children": [
         {
