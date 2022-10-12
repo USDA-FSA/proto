@@ -1,18 +1,18 @@
 <template>
-  <div class="fsa-tophat">
-    <div class="fsa-tophat__bd">
-      <div class="fsa-tophat__primary">
-        <span class="fsa-tophat__agency">
-          <a :href="AG_URL" class="fsa-tophat__link" :title="agTitleValue">
-            <img role="presentation" class="fsa-tophat__agency-logo" :src="AG_LOGO" alt="">
-            <abbr class="fsa-tophat__agency-abbr" title="">{{ AG_ABBR }}</abbr>
-            <span class="fsa-tophat__agency-fullname">{{ AG_FULL }}</span>
+  <div class="fds-tophat">
+    <div class="fds-tophat__bd">
+      <div class="fds-tophat__primary">
+        <span class="fds-tophat__agency">
+          <a :href="AG_URL" class="fds-tophat__link" :title="agTitleValue">
+            <img role="presentation" class="fds-tophat__agency-logo" :src="AG_LOGO" alt="">
+            <abbr class="fds-tophat__agency-abbr" title="">{{ AG_ABBR }}</abbr>
+            <span class="fds-tophat__agency-fullname">{{ AG_FULL }}</span>
           </a>
         </span>
       </div>
-      <div class="fsa-tophat__secondary">
-        <span class="fsa-tophat__subagency">
-          <a :href="SUB_AG_URL" class="fsa-tophat__link" :title="subAgTitleValue">{{ SUB_AG_FULL }}</a>
+      <div class="fds-tophat__secondary">
+        <span class="fds-tophat__subagency">
+          <a :href="SUB_AG_URL" class="fds-tophat__link" :title="subAgTitleValue">{{ SUB_AG_FULL }}</a>
         </span>
       </div>
     </div>

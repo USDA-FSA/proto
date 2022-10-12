@@ -4,11 +4,11 @@
     <baseHeader @emitSearch="submitSearch"></baseHeader>
 
     <main id="main-content" tabindex="-1">
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <h1>Home Page</h1>
 
-          <div class="fsa-level fsa-level--justify-between fsa-level--align-top">
+          <div class="fds-level fds-level--justify-between fds-level--align-top">
             <span>
               <field
                 ID="name"
@@ -28,18 +28,18 @@
               </field>
             </span>
             <span>
-              <p class="fsa-m-t--l">
-                <button @click="setError('name')" class="fsa-btn fsa-btn--secondary">Toggle Name Error</button>
+              <p class="fds-m-t--l">
+                <button @click="setError('name')" class="fds-btn fds-btn--secondary">Toggle Name Error</button>
               </p>
             </span>
           </div>
         </div>
       </div>
       <!-- Search Results Section -->
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <h2>{{headerText}}</h2>
-          <span class="fsa-m-t--l">{{searchResults}}</span>
+          <span class="fds-m-t--l">{{searchResults}}</span>
         </div>
       </div>
 

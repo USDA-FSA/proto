@@ -7,7 +7,7 @@
       :AG_LOGO="baseUrl + 'img/usda-logo--white.svg'"
       SUB_AG_ABBR="FPAC"
       SUB_AG_FULL="Farm Production and Conservation"
-      SUB_AG_URL="//fsa.usda.gov"
+      SUB_AG_URL="//www.fpacbc.usda.gov/"
      >
      </tophat>
      
@@ -21,7 +21,7 @@
     
     <globalNav
       :NAV_DATA="navigationData"
-      EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"
+      EXTRA_CLASSES="fds-nav-global__list-item--multi-column"
       @emitSearch="submitSearch"
       USE_SEARCH="true"
     ></globalNav>

@@ -1,16 +1,16 @@
 <template>
   <span>
     <div v-if="USE_CENTERED!='true'"
-      :class="'fsa-growl ' + EXTRA_CLASSES"
+      :class="'fds-growl ' + EXTRA_CLASSES"
       :id="ID" aria-hidden="true" tabindex="0"
       role="dialog">
-      <div class="fsa-growl__hd">
-        <button @click="hideThisGrowl(ID)" class="fsa-growl__close" data-behavior="growl-dismiss" type="button" title="Close Notification" aria-label="Close Notification"></button>
+      <div class="fds-growl__hd">
+        <button @click="hideThisGrowl(ID)" class="fds-growl__close" data-behavior="growl-dismiss" type="button" title="Close Notification" aria-label="Close Notification"></button>
           
-        <h2 class="fsa-growl__title">
+        <h2 class="fds-growl__title">
           <svg
             v-if="USE_ICON=='true'"
-            :class="'fsa-icon '+ ICON_SIZE_CLASS!='' ? ICON_SIZE_CLASS : 'fsa-icon--size-2'"
+            :class="'fds-icon '+ ICON_SIZE_CLASS!='' ? ICON_SIZE_CLASS : 'fds-icon--size-2'"
             aria-hidden="true"
             focusable="false"
             role="img"
@@ -24,25 +24,25 @@
         </h2>
 
       </div>
-      <div class="fsa-growl__bd">
+      <div class="fds-growl__bd">
         <p v-if="USE_MESSAGE">{{ MESSAGE }}</p>
-        <button v-if="false" @click="hideThisGrowl(ID)" data-behavior="growl-dismiss" class="fsa-btn fsa-btn--small fsa-btn--secondary" type="button">Close</button>
+        <button v-if="false" @click="hideThisGrowl(ID)" data-behavior="growl-dismiss" class="fds-btn fds-btn--small fds-btn--secondary" type="button">Close</button>
         <slot name="growlContainer"></slot>
       </div>
     </div>
 
-    <div v-if="USE_CENTERED=='true'" class="fsa-growl-container fsa-growl-container--centered">
+    <div v-if="USE_CENTERED=='true'" class="fds-growl-container fds-growl-container--centered">
       <div 
-        :class="'fsa-growl ' + EXTRA_CLASSES + ' fsa-growl--centered'"
+        :class="'fds-growl ' + EXTRA_CLASSES + ' fds-growl--centered'"
         :id="ID" aria-hidden="true" tabindex="0"
         role="alertdialog">
-        <div class="fsa-growl__hd">
-          <button @click="hideThisGrowl(ID)" class="fsa-growl__close" data-behavior="growl-dismiss" type="button" title="Close Notification" aria-label="Close Notification"></button>
+        <div class="fds-growl__hd">
+          <button @click="hideThisGrowl(ID)" class="fds-growl__close" data-behavior="growl-dismiss" type="button" title="Close Notification" aria-label="Close Notification"></button>
             
-          <h2 class="fsa-growl__title">
+          <h2 class="fds-growl__title">
             <svg
               v-if="USE_ICON=='true'"
-              :class="'fsa-icon '+ ICON_SIZE_CLASS!='' ? ICON_SIZE_CLASS : 'fsa-icon--size-2'"
+              :class="'fds-icon '+ ICON_SIZE_CLASS!='' ? ICON_SIZE_CLASS : 'fds-icon--size-2'"
               aria-hidden="true"
               focusable="false"
               role="img"
@@ -56,9 +56,9 @@
           </h2>
 
         </div>
-        <div class="fsa-growl__bd">
+        <div class="fds-growl__bd">
           <p v-if="USE_MESSAGE">{{ MESSAGE }}</p>
-          <button v-if="false" @click="hideThisGrowl(ID)" data-behavior="growl-dismiss" class="fsa-btn fsa-btn--small fsa-btn--secondary" type="button">Close</button>
+          <button v-if="false" @click="hideThisGrowl(ID)" data-behavior="growl-dismiss" class="fds-btn fds-btn--small fds-btn--secondary" type="button">Close</button>
           <slot name="growlContainer"></slot>
         </div>
       </div>

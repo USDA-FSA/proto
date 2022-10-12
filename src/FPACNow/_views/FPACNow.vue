@@ -2,13 +2,13 @@
   <div>
     <header>
       <globalNav :NAV_DATA="navigationData"
-        EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"
+        EXTRA_CLASSES="fds-nav-global__list-item--multi-column"
         USE_SEARCH="false"
         ></globalNav>
     </header>
     <main id="main-content" tabindex="-1">
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <h1>Page Header</h1>
         </div>
       </div>

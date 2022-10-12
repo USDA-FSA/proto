@@ -30,7 +30,7 @@ export function useModalControls() {
 
     // Fix double scrollbar issue
     let body = document.getElementsByTagName('body')[0];
-    body.className = body.className + ' fsa-modal-scroll-fix';
+    body.className = body.className + ' fds-modal-scroll-fix';
 
     // gain focus --- needs rewrite
     setTimeout(function() {
@@ -47,7 +47,7 @@ export function useModalControls() {
 
     // Fix double scrollbar issue
     let body = document.getElementsByTagName('body')[0];
-    body.className = body.className.replace(' fsa-modal-scroll-fix','');
+    body.className = body.className.replace(' fds-modal-scroll-fix','');
 
     // set focus back to the originating element
     let origin = document.querySelector('[data-modal-origin]');

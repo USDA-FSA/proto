@@ -1,16 +1,16 @@
 <template>
   <nav aria-label="Breadcrumbs">
-    <div :id="ID" class="fsa-stepped-tabs">
-      <div class="fsa-stepped-tabs__bd">
-        <ol class="fsa-stepped-tabs__list">
-          <li v-for="tab in tabsData" :key="tab.id" class="fsa-stepped-tabs__item">
+    <div :id="ID" class="fds-stepped-tabs">
+      <div class="fds-stepped-tabs__bd">
+        <ol class="fds-stepped-tabs__list">
+          <li v-for="tab in tabsData" :key="tab.id" class="fds-stepped-tabs__item">
             <!-- if enabled -->
             <a v-if="tab.isEnabled" @click.prevent="setSelected(tab.id)"
-              :class="'fsa-stepped-tabs__label ' + getTabStatusClass(tab.id)"
+              :class="'fds-stepped-tabs__label ' + getTabStatusClass(tab.id)"
               href="#">
-              <span class="fsa-stepped-tabs__text">
+              <span class="fds-stepped-tabs__text">
               <svg v-if="tab.useIcon=='true'"
-                class="fsa-icon fsa-icon--size-2"
+                class="fds-icon fds-icon--size-2"
                 aria-hidden="true"
                 focusable="false"
                 role="img"
@@ -21,10 +21,10 @@
               </svg> {{ tab.label }}</span>
             </a>
             <!-- if disabled -->
-            <span v-if="!tab.isEnabled" :class="'fsa-stepped-tabs__label ' + getTabStatusClass(tab.id)">
-              <span class="fsa-stepped-tabs__text">
+            <span v-if="!tab.isEnabled" :class="'fds-stepped-tabs__label ' + getTabStatusClass(tab.id)">
+              <span class="fds-stepped-tabs__text">
               <svg v-if="tab.useIcon=='true'"
-                class="fsa-icon fsa-icon--size-2"
+                class="fds-icon fds-icon--size-2"
                 aria-hidden="true"
                 focusable="false"
                 role="img"
@@ -66,9 +66,9 @@ export default {
     const tabsData = ref(null);
     
     const tabStatesClasses = ref({
-      complete: 'fsa-stepped-tabs__label--complete',
-      active: 'fsa-stepped-tabs__label--active',
-      incomplete: 'fsa-stepped-tabs__label--incomplete'
+      complete: 'fds-stepped-tabs__label--complete',
+      active: 'fds-stepped-tabs__label--active',
+      incomplete: 'fds-stepped-tabs__label--incomplete'
     })
     const getTabStatusClass = (_id) => tabStatesClasses.value[ getPropertyFromId(_id, 'status', tabsData.value) ];
     

@@ -5,16 +5,16 @@
 
     <main id="main-content" tabindex="-1">
 
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
 
-          <div class="fsa-m-t--l">
-            <div class="fsa-level@m fsa-level--justify-between">
-              <h1 class="fsa-m--none">Stepped Demos</h1>
-              <div class="fsa-level fsa-level--justify-between fsa-level--grow-auto">
+          <div class="fds-m-t--l">
+            <div class="fds-level@m fds-level--justify-between">
+              <h1 class="fds-m--none">Stepped Demos</h1>
+              <div class="fds-level fds-level--justify-between fds-level--grow-auto">
                 <span>
-                  <button @click="showModal(helpModalId)" class="fsa-btn fsa-btn--block fsa-btn--flat" type="button">
-                    <svg class="fsa-icon fsa-icon--size-1" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+                  <button @click="showModal(helpModalId)" class="fds-btn fds-btn--block fds-btn--flat" type="button">
+                    <svg class="fds-icon fds-icon--size-1" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
                     Help
                   </button>
                 </span>
@@ -25,8 +25,8 @@
         </div>
       </div>
 
-      <div class="fsa-section">
-        <div v-if="tabsData" class="fsa-section__bd">
+      <div class="fds-section">
+        <div v-if="tabsData" class="fds-section__bd">
           <stepped-tabs
             :ID="steppedTabsId"
             :TABS_DATA="tabsData"
@@ -35,15 +35,15 @@
           </stepped-tabs>
 
 
-          <div class="fsa-m-t--l">
+          <div class="fds-m-t--l">
             <h3>Page Content Below</h3>
           </div>
-          <div v-if="tabsData" class="fsa-m-t--l fsa-box fsa-level fsa-level--gutter-l">
+          <div v-if="tabsData" class="fds-m-t--l fds-box fds-level fds-level--gutter-l">
             <button
               v-for="tab in tabsData"
               :key="tab.id"
               @click="setActiveTab(tab.id)"
-              class="fsa-btn fsa-btn--secondary">
+              class="fds-btn fds-btn--secondary">
               {{ tab.label }}
             </button>
           </div>
@@ -52,8 +52,8 @@
         </div>
       </div>
 
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           
           <!--
           USE_PREV: String,
@@ -74,7 +74,7 @@
             :PREV_LABEL="prevLabel"
             :USE_NEXT="useNext"
             :NEXT_LABEL="nextLabel"
-            EXTRA_CLASSES="fsa-m-t--l"
+            EXTRA_CLASSES="fds-m-t--l"
             @emitPrev="prev"
             @emitNext="next">
           </stepped-control>

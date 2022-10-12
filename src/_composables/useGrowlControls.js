@@ -20,7 +20,7 @@ export function useGrowlControls() {
 
     growl.setAttribute('aria-hidden', false);    
     // for Center Modal style only
-    if( hasClass(growl, 'fsa-growl--centered') ){
+    if( hasClass(growl, 'fds-growl--centered') ){
       // trap tabs inside of modal
       growl.addEventListener('keydown', trapTab);
       // Find all focusable children
@@ -73,17 +73,17 @@ export function useGrowlControls() {
   }
 
   const dismiss = (_g, _callback=null) => {
-    _g.className = _g.className + ' fsa-growl--dismissing';
+    _g.className = _g.className + ' fds-growl--dismissing';
     _g.addEventListener( getAnimationString(_g), (_e) => {
       dismissDelay(_e, _callback)
     });
-    if( hasClass(_g, 'fsa-growl--centered') ) _g.focus();
+    if( hasClass(_g, 'fds-growl--centered') ) _g.focus();
   }
 
   const dismissDelay = (_e, _callback=null) => {
     let growl = _e.target;
 
-    growl.className = growl.className.replace(' fsa-growl--dismissing','');
+    growl.className = growl.className.replace(' fds-growl--dismissing','');
     growl.setAttribute('aria-hidden', 'true');
 
     if( getOrigin() ) removeOrigin();
@@ -122,7 +122,7 @@ export function useGrowlControls() {
       title: _obj.title,
       useIcon: _obj.useIcon || 'false',
       iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
-      iconSizeClass: 'fsa-icon--size-1',
+      iconSizeClass: 'fds-icon--size-1',
       useMessage: _obj.useMessage || 'true',
       message: _obj.msg
     }
@@ -132,11 +132,11 @@ export function useGrowlControls() {
   const showSuccessGrowl = (_obj) => {
     let alertObj = {
       id: String( uuidv4() ),
-      extraClasses: 'fsa-growl--success',
+      extraClasses: 'fds-growl--success',
       title: _obj.title,
       useIcon: _obj.useIcon || 'false',
       iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
-      iconSizeClass: 'fsa-icon--size-1',
+      iconSizeClass: 'fds-icon--size-1',
       useMessage: _obj.useMessage || 'true',
       message: _obj.msg
     }
@@ -146,11 +146,11 @@ export function useGrowlControls() {
   const showErrorGrowl = (_obj) => {
     let alertObj = {
       id: String( uuidv4() ),
-      extraClasses: 'fsa-growl--error',
+      extraClasses: 'fds-growl--error',
       title: _obj.title,
       useIcon: _obj.useIcon || 'false',
       iconPath: 'M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z',
-      iconSizeClass: 'fsa-icon--size-1',
+      iconSizeClass: 'fds-icon--size-1',
       useMessage: _obj.useMessage || 'true',
       message: _obj.msg
     }
@@ -160,11 +160,11 @@ export function useGrowlControls() {
   const showWarningGrowl = (_obj) => {
     let alertObj = {
       id: String( uuidv4() ),
-      extraClasses: 'fsa-growl--warning',
+      extraClasses: 'fds-growl--warning',
       title: _obj.title,
       useIcon: _obj.useIcon || 'false',
       iconPath: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z',
-      iconSizeClass: 'fsa-icon--size-1',
+      iconSizeClass: 'fds-icon--size-1',
       useMessage: _obj.useMessage || 'true',
       message: _obj.msg
     }
@@ -176,11 +176,11 @@ export function useGrowlControls() {
     let alertObj = {
       id: String( uuidv4() ),
       useCentered: 'true',
-      extraClasses: 'fsa-growl--error',
+      extraClasses: 'fds-growl--error',
       title: _obj.title,
       useIcon: _obj.useIcon || 'false',
       iconPath: 'M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z',
-      iconSizeClass: 'fsa-icon--size-1',
+      iconSizeClass: 'fds-icon--size-1',
       useMessage: _obj.useMessage || 'true',
       message: _obj.msg
     }
@@ -189,11 +189,11 @@ export function useGrowlControls() {
   }
 
   const showWhiteout = () => {
-    document.getElementById('fsa-whiteout').setAttribute('aria-hidden', 'false');
+    document.getElementById('fds-whiteout').setAttribute('aria-hidden', 'false');
   }
 
   const hideWhiteout = () => {
-    document.getElementById('fsa-whiteout').setAttribute('aria-hidden', 'true');
+    document.getElementById('fds-whiteout').setAttribute('aria-hidden', 'true');
   }
 
 

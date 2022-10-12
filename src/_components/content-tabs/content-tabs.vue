@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div v-if="tabsData" class="fsa-content-tabs fsa-content-tabs--justified-equal">
-      <ul class="fsa-content-tabs__list">
-        <li v-for="tab in tabsData" :key="tab.id" class="fsa-content-tabs__item">
+    <div v-if="tabsData" class="fds-content-tabs fds-content-tabs--justified-equal">
+      <ul class="fds-content-tabs__list">
+        <li v-for="tab in tabsData" :key="tab.id" class="fds-content-tabs__item">
           <a :id="tab.id"
             @click.prevent="handleTabSelected(tab.id)"
-            :class="'fsa-content-tabs__label fsa-content-tabs__label--large ' + setSelectedClass(tab.isSelected)"
+            :class="'fds-content-tabs__label fds-content-tabs__label--large ' + setSelectedClass(tab.isSelected)"
             href="">
-            <span class="fsa-content-tabs__label-text">{{ tab.label }}</span>
+            <span class="fds-content-tabs__label-text">{{ tab.label }}</span>
           </a>
         </li>
       </ul>
     </div>
 
-    <div class="fsa-m-t--l">
+    <div class="fds-m-t--l">
       <slot name="containers"></slot>
     </div>
 
@@ -46,7 +46,7 @@ export default {
       emit("emitTabSelection",{id: _id})
     }
     //const setIsSelectedContainer = (_id) => getPropertyFromId(_id, 'isSelected', tabsData.value);
-    const setSelectedClass = (_boo) => { return _boo ? 'fsa-content-tabs__label--active' : ''};
+    const setSelectedClass = (_boo) => { return _boo ? 'fds-content-tabs__label--active' : ''};
 
     const setVisibility = () => {
       tabsData.value.forEach( (o) => {

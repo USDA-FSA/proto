@@ -1,18 +1,18 @@
 <template>
-  <div class="fsa-header-app">
-    <div class="fsa-header-app__bd">
-      <div class="fsa-header-app__primary">
-        <router-link to="home" class="fsa-header-app__home-link">
-          <span class="fsa-header-app__app-name">
-            <abbr class="fsa-header-app__app-abbr" :title="appTitleValue">{{ APP_ABBR_NAME }}</abbr>
-            <span class="fsa-header-app__app-full">{{ APP_FULL_NAME }}</span>
+  <div class="fds-header-app">
+    <div class="fds-header-app__bd">
+      <div class="fds-header-app__primary">
+        <router-link to="home" class="fds-header-app__home-link">
+          <span class="fds-header-app__app-name">
+            <abbr class="fds-header-app__app-abbr" :title="appTitleValue">{{ APP_ABBR_NAME }}</abbr>
+            <span class="fds-header-app__app-full">{{ APP_FULL_NAME }}</span>
           </span>
         </router-link>
       </div>
-      <div class="fsa-header-app__secondary">
-        <span class="fsa-header-app__profile">
-          <a :href="LOGOFF_URL" class="fsa-header-app__profile-link">
-            <span class="fsa-header-app__profile-name">{{ PROFILE_NAME }}</span>
+      <div class="fds-header-app__secondary">
+        <span class="fds-header-app__profile">
+          <a :href="LOGOFF_URL" class="fds-header-app__profile-link">
+            <span class="fds-header-app__profile-name">{{ PROFILE_NAME }}</span>
           </a>
         </span>
       </div>

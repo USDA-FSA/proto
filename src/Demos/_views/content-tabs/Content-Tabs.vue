@@ -4,10 +4,10 @@
     <baseHeader></baseHeader>
 
     <main id="main-content" tabindex="-1">
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <h1>Content Tabs Demo</h1>
-          <div class="fsa-m-t--m">
+          <div class="fds-m-t--m">
 
             <content-tabs :TABS_DATA="tabsData" @emitTabSelection="handleTabSelected">
               
@@ -28,9 +28,9 @@
 
           </div>
         </div>
-        <!-- fsa-section__bd END --> 
+        <!-- fds-section__bd END --> 
       </div>
-      <!-- fsa-section END --> 
+      <!-- fds-section END --> 
     </main>
 
     <baseFooter></baseFooter>

@@ -4,12 +4,12 @@
     <baseHeader></baseHeader>
 
     <main id="main-content" tabindex="-1">
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <h1>Dynamic Router Demo</h1>
 
-          <div class="fsa-m-t--sm">
-              <p class="fsa-m-t--7">What page are we on?  <span class="fsa-text-size--5">{{ pageName }}</span></p>
+          <div class="fds-m-t--sm">
+              <p class="fds-m-t--7">What page are we on?  <span class="fds-text-size--5">{{ pageName }}</span></p>
           </div>
 
           

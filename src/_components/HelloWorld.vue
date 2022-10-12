@@ -8,26 +8,26 @@
 
     <p class="cdh">Testing Paragraph Text</p>
 
-    <button class="fsa-btn fsa-btn--primary" @click="incrementCount()">count is: {{ count }}</button> <button class="fsa-btn fsa-btn--tertiary" @click="decrementCount()">count is: {{ count }}</button>
+    <button class="fds-btn fds-btn--primary" @click="incrementCount()">count is: {{ count }}</button> <button class="fds-btn fds-btn--tertiary" @click="decrementCount()">count is: {{ count }}</button>
     <p>Edit<code>components/HelloWorld.vue</code> to test hot module replacement.</p>
 
     <div>
-      <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-ID-123" aria-expanded="false" type="button">Eject</button>
+      <button class="fds-btn fds-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-ID-123" aria-expanded="false" type="button">Eject</button>
     </div>
 
-    <div class="fsa-spinbox">
-      <div class="fsa-spinbox__number">
-        <input class="fsa-input fsa-spinbox__input" id="lorem-ipsum-amount__hsus" name="lorem-ipsum-amount" type="number" step=".01" value="10">
+    <div class="fds-spinbox">
+      <div class="fds-spinbox__number">
+        <input class="fds-input fds-spinbox__input" id="lorem-ipsum-amount__hsus" name="lorem-ipsum-amount" type="number" step=".01" value="10">
       </div>
-      <div class="fsa-spinbox__actions" aria-hidden="true">
-        <button tabindex="-1" class="fsa-spinbox__btn fsa-spinbox__btn--increment" type="button" data-behavior="spinbox-spin" title="Increase"></button>
-        <button tabindex="-1" class="fsa-spinbox__btn fsa-spinbox__btn--decrement" type="button" data-behavior="spinbox-spin" title="Decrease"></button>
+      <div class="fds-spinbox__actions" aria-hidden="true">
+        <button tabindex="-1" class="fds-spinbox__btn fds-spinbox__btn--increment" type="button" data-behavior="spinbox-spin" title="Increase"></button>
+        <button tabindex="-1" class="fds-spinbox__btn fds-spinbox__btn--decrement" type="button" data-behavior="spinbox-spin" title="Decrease"></button>
       </div>
     </div>
 
-    <div class="fsa-level">
+    <div class="fds-level">
       <span>
-        <input @change="sliderChange()" class="fsa-slider fsa-slider--block" id="theSlider" name="lorem-range-4672" type="range" min="0" max="100" :value="slider" step="10">
+        <input @change="sliderChange()" class="fds-slider fds-slider--block" id="theSlider" name="lorem-range-4672" type="range" min="0" max="100" :value="slider" step="10">
       </span>
       <span><output aria-live="polite" id="lorem-range-ouput-6789" name="lorem-range-ouput-6789" for="lorem-range-4672">{{slider}}</output></span>
     </div>
@@ -42,7 +42,7 @@ import modal from '@/_components/Modal.vue';
 
 export default {
   setup(props){
-    const fsaModal = inject('fsaModal');
+    const fdsModal = inject('fdsModal');
     let count = ref(0);
     let slider = ref(0);
     function incrementCount(){
@@ -55,7 +55,7 @@ export default {
       slider.value = document.getElementById('theSlider').value;
     };
     onMounted(() => {
-      fsaModal.init();
+      fdsModal.init();
     });
     return {
       count,
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss">
-$cdh-color: $color-fsa-yellow;
+$cdh-color: $color-fds-yellow;
 
 .cdh {
   color: $cdh-color;

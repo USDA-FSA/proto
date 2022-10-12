@@ -1,5 +1,5 @@
 <template>
-  <div class="fsa-growl-container" id="alertSystem">
+  <div class="fds-growl-container" id="alertSystem">
     <!--<span v-for="alert in alertsData" :key="alert.id">-->
       <growl v-for="alert in alertsData" :key="alert.id"
         :ID="alert.id"

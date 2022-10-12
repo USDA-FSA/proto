@@ -1,27 +1,27 @@
 <template>
-  <div :class="'fsa-field '+ (hasError ? fieldErrorClass : '') +' '+ extraFieldClasses">
+  <div :class="'fds-field '+ (hasError ? fieldErrorClass : '') +' '+ extraFieldClasses">
     <label
-      class="fsa-field__label"
+      class="fds-field__label"
       :for="ID"
       :id="ID +'_label'">
-        {{ LABEL }} <span v-if="REQUIRED=='true'" class="fsa-field__label-desc">Required</span>
+        {{ LABEL }} <span v-if="REQUIRED=='true'" class="fds-field__label-desc">Required</span>
     </label>
-    <div class="fsa-select-multi fsa-field__item">
-      <ul class="fsa-select-multi__list" :aria-describedby="ID + '__help'">
-        <li v-for="data in selectMultiData" :key="data.id" class="fsa-select-multi__item">
-          <input class="fsa-checkbox fsa-select-multi__check"
+    <div class="fds-select-multi fds-field__item">
+      <ul class="fds-select-multi__list" :aria-describedby="ID + '__help'">
+        <li v-for="data in selectMultiData" :key="data.id" class="fds-select-multi__item">
+          <input class="fds-checkbox fds-select-multi__check"
             type="checkbox"
             :id="data.id"
             :data-behavior="'select-multi'+ (data.behavior != '' ? ' '+data.behavior : '')"
             :name="data.name"
             :value="data.val"
           >
-          <label class="fsa-select-multi__label" :for="data.id">{{ data.label }}</label>
+          <label class="fds-select-multi__label" :for="data.id">{{ data.label }}</label>
         </li>
       </ul>
     </div>
-    <span v-if="HELP_MESSAGE" :id="ID + '__help'" class="fsa-field__help">{{ HELP_MESSAGE }}</span>
-    <span v-if="hasError" :id="ID + '__error-message'" class="fsa-field__message" role="alert">{{ ERROR_MESSAGE }}</span>
+    <span v-if="HELP_MESSAGE" :id="ID + '__help'" class="fds-field__help">{{ HELP_MESSAGE }}</span>
+    <span v-if="hasError" :id="ID + '__error-message'" class="fds-field__message" role="alert">{{ ERROR_MESSAGE }}</span>
   </div>
 </template>
 <script>
@@ -45,7 +45,7 @@ export default {
 
   setup(props){
     const selectMultiData = props.DATA ? props.DATA : reactive(null);
-    const fieldErrorClass = props.FIELD_ERROR_CLASS ? props.FIELD_ERROR_CLASS : ref('fsa-field--error');
+    const fieldErrorClass = props.FIELD_ERROR_CLASS ? props.FIELD_ERROR_CLASS : ref('fds-field--error');
     const extraFieldClasses = ref('');
     let triggers = reactive([]);
 
@@ -76,7 +76,7 @@ export default {
     function resetCheckboxes(e){
       let cb = e.currentTarget ? e.currentTarget : e;
       let id = cb.id;
-      let par = getClosest(cb, '.fsa-select-multi');
+      let par = getClosest(cb, '.fds-select-multi');
       let selectAll = par.querySelector('[data-behavior~="select-multi-all"]');
       if(selectAll){
         if(cb != selectAll){

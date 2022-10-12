@@ -1,10 +1,10 @@
 <template>
-  <div :class="'fsa-spinbox ' + (hasError ? ERROR_CLASS : '')">
-    <div class="fsa-spinbox__number">
+  <div :class="'fds-spinbox ' + (hasError ? ERROR_CLASS : '')">
+    <div class="fds-spinbox__number">
 
-      <span class="fsa-affix fsa-affix--fill">
-        <label v-if="usePrefix" :for="+'-prefix-label'" class="fsa-affix__prefix" aria-hidden="true" :title="LABEL_TITLE">
-          <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <span class="fds-affix fds-affix--fill">
+        <label v-if="usePrefix" :for="+'-prefix-label'" class="fds-affix__prefix" aria-hidden="true" :title="LABEL_TITLE">
+          <svg v-if="USE_ICON=='true'" :class="'fds-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
           </svg>
           <span v-if="usePrefix">{{ PREFIX }}</span>
@@ -14,7 +14,7 @@
         <input
           @blur="handleBlur"
           @keydown="handleKeydown"
-          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (usePrefix || useSuffix ? 'fsa-affix__item' : '') + (hasError ? ' '+ inputErrorClass : '')"
+          :class="'fds-input fds-field__item fds-spinbox__input ' + (usePrefix || useSuffix ? 'fds-affix__item' : '') + (hasError ? ' '+ inputErrorClass : '')"
           type="number"
           :value="INPUT_VALUE"
           :step="STEP"
@@ -26,7 +26,7 @@
         <!-- <input
           @blur="handleBlur"
           @keydown="handleKeydown"
-          :class="'fsa-input fsa-field__item fsa-spinbox__input ' + (useSuffix  ? 'fsa-affix__item' : '') + (hasError ? inputErrorClass : '')"
+          :class="'fds-input fds-field__item fds-spinbox__input ' + (useSuffix  ? 'fds-affix__item' : '') + (hasError ? inputErrorClass : '')"
           type="number"
           :value="INPUT_VALUE"
           :step="STEP"
@@ -36,8 +36,8 @@
         > -->
 
         
-        <label v-if="useSuffix" :for="ID +'-suffix-label'" class="fsa-affix__suffix" aria-hidden="true" :title="LABEL_TITLE">
-          <svg v-if="USE_ICON=='true'" :class="'fsa-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <label v-if="useSuffix" :for="ID +'-suffix-label'" class="fds-affix__suffix" aria-hidden="true" :title="LABEL_TITLE">
+          <svg v-if="USE_ICON=='true'" :class="'fds-icon '+ ICON_SIZE_CLASS" aria-hidden="true" focusable="false" role="img" fill="#494440" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path :d="ICON_PATH"></path>
           </svg>
           <span v-if="useSuffix">{{ SUFFIX }}</span>
@@ -45,9 +45,9 @@
       </span>
 
     </div>
-    <div class="fsa-spinbox__actions" aria-hidden="true">
-      <button @click="spin('up')" tabindex="-1" class="fsa-spinbox__btn fsa-spinbox__btn--increment" type="button" data-behavior="spinbox-spin" title="Increase"></button>
-      <button @click="spin('down')" tabindex="-1" class="fsa-spinbox__btn fsa-spinbox__btn--decrement" type="button" data-behavior="spinbox-spin" title="Decrease"></button>
+    <div class="fds-spinbox__actions" aria-hidden="true">
+      <button @click="spin('up')" tabindex="-1" class="fds-spinbox__btn fds-spinbox__btn--increment" type="button" data-behavior="spinbox-spin" title="Increase"></button>
+      <button @click="spin('down')" tabindex="-1" class="fds-spinbox__btn fds-spinbox__btn--decrement" type="button" data-behavior="spinbox-spin" title="Decrease"></button>
     </div>
   </div>
 </template>
@@ -75,7 +75,7 @@ export default {
     ARIA_DESCRIBEDBY: String
   },
   setup(props, {emit}) {
-    const inputErrorClass = props.INPUT_ERROR_CLASS ? props.INPUT_ERROR_CLASS : ref('fsa-input--error');
+    const inputErrorClass = props.INPUT_ERROR_CLASS ? props.INPUT_ERROR_CLASS : ref('fds-input--error');
     const usePrefix = ref(false);
     const useSuffix = ref(false);
 

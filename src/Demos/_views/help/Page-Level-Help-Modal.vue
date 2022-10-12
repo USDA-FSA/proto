@@ -1,9 +1,9 @@
 <template>
-  <div tabindex="0" :id="MODAL_ID" class="fsa-modal fsa-modal--large" role="dialog" aria-hidden="true">
-    <div class="fsa-modal__dialog">
-      <div class="fsa-modal__content">
-        <button @click="hideModal(MODAL_ID)" class="fsa-modal__close" data-behavior="close-modal" title="Close Modal" aria-label="Close Modal" type="button"></button>
-        <h1 class="fsa-modal__title">Payment Certification Approval Help</h1>
+  <div tabindex="0" :id="MODAL_ID" class="fds-modal fds-modal--large" role="dialog" aria-hidden="true">
+    <div class="fds-modal__dialog">
+      <div class="fds-modal__content">
+        <button @click="hideModal(MODAL_ID)" class="fds-modal__close" data-behavior="close-modal" title="Close Modal" aria-label="Close Modal" type="button"></button>
+        <h1 class="fds-modal__title">Payment Certification Approval Help</h1>
         
         <p>This screen provides the details of an individual payment as well as a payment that is associated with a package. The same general information listed on the Payment Certification screen is repeated. A transaction summary will be provided below detailing increases and reductions of the payment amount to the customer. The additional information may include:</p>
 

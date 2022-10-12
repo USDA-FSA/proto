@@ -2,33 +2,33 @@
   <div>
     <header>
       <globalNav :NAV_DATA="navigationData"
-        EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"
+        EXTRA_CLASSES="fds-nav-global__list-item--multi-column"
         USE_SEARCH="true"
         @emitSearch="submitSearch"
         ></globalNav>
     </header>
     <main id="main-content" tabindex="-1">
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
-          <div class="fsa-breadcrumb">
-            <nav class="fsa-breadcrumb__nav" aria-label="Breadcrumbs">
-              <ol class="fsa-breadcrumb__list">
-                <li class="fsa-breadcrumb__item">
-                  <a class="fsa-breadcrumb__link" href="link.html">Inspections</a>
+      <div class="fds-section">
+        <div class="fds-section__bd">
+          <div class="fds-breadcrumb">
+            <nav class="fds-breadcrumb__nav" aria-label="Breadcrumbs">
+              <ol class="fds-breadcrumb__list">
+                <li class="fds-breadcrumb__item">
+                  <a class="fds-breadcrumb__link" href="link.html">Inspections</a>
                 </li>
-                <li class="fsa-breadcrumb__item" aria-current="page">
-                  <a class="fsa-breadcrumb__link" href="link.html">Inspection Detail</a>
+                <li class="fds-breadcrumb__item" aria-current="page">
+                  <a class="fds-breadcrumb__link" href="link.html">Inspection Detail</a>
                 </li>
               </ol>
             </nav>
           </div>
-          <div class="fsa-level@m fsa-level--justify-between">
-            <h1 class="fsa-m--none">Inspection&nbsp;#9458</h1>
-            <div class="fsa-level fsa-level--justify-between fsa-level--grow-auto">
+          <div class="fds-level@m fds-level--justify-between">
+            <h1 class="fds-m--none">Inspection&nbsp;#9458</h1>
+            <div class="fds-level fds-level--justify-between fds-level--grow-auto">
               <span>
-                <button class="fsa-btn fsa-btn--block fsa-btn--secondary" type="button">
+                <button class="fds-btn fds-btn--block fds-btn--secondary" type="button">
                   <svg
-                    class="fsa-icon fsa-icon--size-2"
+                    class="fds-icon fds-icon--size-2"
                     aria-hidden="true"
                     focusable="false"
                     role="img"
@@ -45,9 +45,9 @@
                 </button>
               </span>
               <span>
-                <button class="fsa-btn fsa-btn--block fsa-btn--primary" type="button">
+                <button class="fds-btn fds-btn--block fds-btn--primary" type="button">
                   <svg
-                    class="fsa-icon fsa-icon--size-2"
+                    class="fds-icon fds-icon--size-2"
                     aria-hidden="true"
                     focusable="false"
                     role="img"
@@ -67,14 +67,14 @@
           </div>
         </div>
       </div>
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <h2>{{headerText}}</h2>
-          <span class="fsa-m-t--l">{{searchResults}}</span>
+          <span class="fds-m-t--l">{{searchResults}}</span>
         </div>
       </div>
-      <div class="fsa-section">
-        <div class="fsa-section__bd">
+      <div class="fds-section">
+        <div class="fds-section__bd">
           <field
             :ID="nameFieldId"
             EXTRA_CLASSES=""
@@ -90,7 +90,7 @@
             HAS_ERROR="false"
             USE_POPOVER="true"
             POPOVER_TYPE="help"
-            POPOVER_CLASSES="fsa-popover--tr fsa-popover--size-small"
+            POPOVER_CLASSES="fds-popover--tr fds-popover--size-small"
             :POPOVER_ID="nameFieldId+'-help-popover'"
             POPOVER_HEADER="Full Name Help"
             ref="nameField"

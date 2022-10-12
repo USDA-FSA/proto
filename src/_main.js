@@ -12,10 +12,10 @@ app.use(store);
 import { router } from '@/_router.js';
 app.use(router);
 
-// Import FSA Style here to allow for font, image, and CSS assets
-import 'fsa-style';
+// Import FDS Style here to allow for font, image, and CSS assets
+import 'fds-style';
 // uncomment below if importing individual components
-//import { fsaModal } from 'fsa-style';
-//app.use(fsaModal);
+//import { fdsModal } from 'fds-style';
+//app.use(fdsModal);
 
 app.mount('#app');

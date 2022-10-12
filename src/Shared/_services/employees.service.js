@@ -5,31 +5,31 @@ const apiData = {
     {
       uid: "UID-01",
       thLabel: "Full Name",
-      thClass: "fsa-table__th--sticky",
+      thClass: "fds-table__th--sticky",
       useSort: "true",
       thSort: "ascending",
-      thSortType: "fsa-table__sort fsa-table__sort--descending"
+      thSortType: "fds-table__sort fds-table__sort--descending"
     },
     {
       uid: "UID-02",
       thLabel: "Title",
-      thClass: "fsa-table__th--sticky",
+      thClass: "fds-table__th--sticky",
       useSort: "true",
       thSort: "ascending",
-      thSortType: "fsa-table__sort fsa-table__sort--descending"
+      thSortType: "fds-table__sort fds-table__sort--descending"
     },
     {
       uid: "UID-03",
       thLabel: "Email",
-      thClass: "fsa-table__th--sticky",
+      thClass: "fds-table__th--sticky",
       useSort: "true",
       thSort: "ascending",
-      thSortType: "fsa-table__sort fsa-table__sort--descending"
+      thSortType: "fds-table__sort fds-table__sort--descending"
     },
     {
       uid: "UID-04",
       thLabel: "Actions",
-      thClass: "fsa-table__th--sticky fsa-text-align--right",
+      thClass: "fds-table__th--sticky fds-text-align--right",
       useSort: "false",
       thSort: "",
       thSortType: ""
@@ -71,12 +71,12 @@ const apiData = {
         },
         {
           uid: "UID-09",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -117,12 +117,12 @@ const apiData = {
         },
         {
           uid: "UID-14",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -163,12 +163,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -209,12 +209,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -255,12 +255,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -301,12 +301,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -347,12 +347,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -393,12 +393,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -439,12 +439,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -485,12 +485,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -531,12 +531,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -577,12 +577,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -623,12 +623,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -669,12 +669,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -714,58 +714,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
-          label: "Delete"           
-        }
-      ]
-    },
-
-    {
-      uid: "UID-15",
-      rowData: [
-        {
-          uid: "UID-16",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "true",
-          link: "/boilerplate",
-          hasButton: "false",
-          btnClass: "",
-          label: "Karen McQueen"           
-        },
-        {
-          uid: "UID-17",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "true",
-          link: "/boilerplate",
-          hasButton: "false",
-          btnClass: "",
-          label: "VP of Strategy"           
-        },
-        {
-          uid: "UID-18",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "false",
-          link: "",
-          hasButton: "false",
-          btnClass: "",
-          label: "karenbomb@google.com"           
-        },
-        {
-          uid: "UID-19",
-          tdClass: "fsa-text-align--right",
-          ariaLabel: "",
-          hasLink: "false",
-          link: "",
-          hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -806,12 +760,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -852,12 +806,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -898,12 +852,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -944,12 +898,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -990,57 +944,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
-          label: "Delete"           
-        }
-      ]
-    },
-    {
-      uid: "UID-15",
-      rowData: [
-        {
-          uid: "UID-16",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "true",
-          link: "/boilerplate",
-          hasButton: "false",
-          btnClass: "",
-          label: "Karen McQueen"           
-        },
-        {
-          uid: "UID-17",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "true",
-          link: "/boilerplate",
-          hasButton: "false",
-          btnClass: "",
-          label: "VP of Strategy"           
-        },
-        {
-          uid: "UID-18",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "false",
-          link: "",
-          hasButton: "false",
-          btnClass: "",
-          label: "karenbomb@google.com"           
-        },
-        {
-          uid: "UID-19",
-          tdClass: "fsa-text-align--right",
-          ariaLabel: "",
-          hasLink: "false",
-          link: "",
-          hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1081,12 +990,57 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
+          label: "Delete"           
+        }
+      ]
+    },
+    {
+      uid: "UID-15",
+      rowData: [
+        {
+          uid: "UID-16",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "true",
+          link: "/boilerplate",
+          hasButton: "false",
+          btnClass: "",
+          label: "Karen McQueen"           
+        },
+        {
+          uid: "UID-17",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "true",
+          link: "/boilerplate",
+          hasButton: "false",
+          btnClass: "",
+          label: "VP of Strategy"           
+        },
+        {
+          uid: "UID-18",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "false",
+          link: "",
+          hasButton: "false",
+          btnClass: "",
+          label: "karenbomb@google.com"           
+        },
+        {
+          uid: "UID-19",
+          tdClass: "fds-text-align--right",
+          ariaLabel: "",
+          hasLink: "false",
+          link: "",
+          hasButton: "true",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1127,12 +1081,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1173,12 +1127,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1219,12 +1173,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1265,12 +1219,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1311,12 +1265,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1357,12 +1311,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1403,12 +1357,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1449,12 +1403,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1495,12 +1449,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1541,57 +1495,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
-          label: "Delete"           
-        }
-      ]
-    },
-    {
-      uid: "UID-15",
-      rowData: [
-        {
-          uid: "UID-16",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "true",
-          link: "/boilerplate",
-          hasButton: "false",
-          btnClass: "",
-          label: "Karen McQueen"           
-        },
-        {
-          uid: "UID-17",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "true",
-          link: "/boilerplate",
-          hasButton: "false",
-          btnClass: "",
-          label: "VP of Strategy"           
-        },
-        {
-          uid: "UID-18",
-          tdClass: "",
-          ariaLabel: "",
-          hasLink: "false",
-          link: "",
-          hasButton: "false",
-          btnClass: "",
-          label: "karenbomb@google.com"           
-        },
-        {
-          uid: "UID-19",
-          tdClass: "fsa-text-align--right",
-          ariaLabel: "",
-          hasLink: "false",
-          link: "",
-          hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1632,12 +1541,57 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
+          label: "Delete"           
+        }
+      ]
+    },
+    {
+      uid: "UID-15",
+      rowData: [
+        {
+          uid: "UID-16",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "true",
+          link: "/boilerplate",
+          hasButton: "false",
+          btnClass: "",
+          label: "Karen McQueen"           
+        },
+        {
+          uid: "UID-17",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "true",
+          link: "/boilerplate",
+          hasButton: "false",
+          btnClass: "",
+          label: "VP of Strategy"           
+        },
+        {
+          uid: "UID-18",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "false",
+          link: "",
+          hasButton: "false",
+          btnClass: "",
+          label: "karenbomb@google.com"           
+        },
+        {
+          uid: "UID-19",
+          tdClass: "fds-text-align--right",
+          ariaLabel: "",
+          hasLink: "false",
+          link: "",
+          hasButton: "true",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1678,12 +1632,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1724,12 +1678,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1770,12 +1724,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1816,12 +1770,12 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]
@@ -1862,12 +1816,58 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "fsa-text-align--right",
+          tdClass: "fds-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
           hasButton: "true",
-          btnClass: "fsa-btn--secondary",
+          btnClass: "fds-btn--secondary",
+          label: "Delete"           
+        }
+      ]
+    },
+
+    {
+      uid: "UID-15",
+      rowData: [
+        {
+          uid: "UID-16",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "true",
+          link: "/boilerplate",
+          hasButton: "false",
+          btnClass: "",
+          label: "Karen McQueen"           
+        },
+        {
+          uid: "UID-17",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "true",
+          link: "/boilerplate",
+          hasButton: "false",
+          btnClass: "",
+          label: "VP of Strategy"           
+        },
+        {
+          uid: "UID-18",
+          tdClass: "",
+          ariaLabel: "",
+          hasLink: "false",
+          link: "",
+          hasButton: "false",
+          btnClass: "",
+          label: "karenbomb@google.com"           
+        },
+        {
+          uid: "UID-19",
+          tdClass: "fds-text-align--right",
+          ariaLabel: "",
+          hasLink: "false",
+          link: "",
+          hasButton: "true",
+          btnClass: "fds-btn--secondary",
           label: "Delete"           
         }
       ]

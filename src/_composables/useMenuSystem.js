@@ -78,7 +78,7 @@ export function useMenuSystem() {
   // Utility Method to cycle thru ALL of top level nav items
   //
   const loopItems = ( action, passedCB=null ) => {
-    let menuItems = document.getElementsByClassName('fsa-nav-global__link--has-sub-menu');
+    let menuItems = document.getElementsByClassName('fds-nav-global__link--has-sub-menu');
     for (let i = 0; i < menuItems.length; i++) {
       let item = menuItems[i];
       item.cb = loopItems;

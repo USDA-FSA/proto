@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="fsa-whiteout" tabindex="-1" id="fsa-whiteout" aria-hidden="true"></div>
+    <div class="fds-whiteout" tabindex="-1" id="fds-whiteout" aria-hidden="true"></div>
     <alert-system></alert-system>
     <router-view v-slot="{ Component }">
       <!-- <keep-alive>
@@ -30,5 +30,5 @@ export default {
 
 </script>
 <style lang="scss">
-@import '@/_style/fsa-popover.scss'
+@import '@/_style/fds-popover.scss'
 </style>
