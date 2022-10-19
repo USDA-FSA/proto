@@ -1,4 +1,11 @@
-# proto
+# DEPRECATION NOTICE: Proto will no longer be updated on this repo, and the USDA-FPAC repository is the new location for this Design Toolkit.
+
+The new location can be found here: [https://github.com/USDA-FPAC/proto](https://github.com/USDA-FPAC/proto)
+
+
+
+
+## proto
 
 Open Source design resource that allows for quick prototypes utilizing the Farm Production and Conservation Design System.
 
